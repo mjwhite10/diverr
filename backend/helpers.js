@@ -80,15 +80,24 @@ const getRandomAvatar = async () => {
 
 //Función que devuelve un fichero random
 const getRandomFile = async () => {
-  let serviceFiles = await fs.readdir(path.join(__dirname, '/testing/files'));
+  let diverrsFiles = await fs.readdir(path.join(__dirname, '/testing/files'));
 
   let file = path.join(
     __dirname,
     `/testing/files/${
-      serviceFiles[Math.floor(Math.random() * serviceFiles.length)]
+      diverrsFiles[Math.floor(Math.random() * diverrsFiles.length)]
     }`
   );
   return file;
+};
+//Función que devuelve una protada random
+const getRandomCover = async () => {
+  //Leemos el directorio
+  let coverImage = await fs.readdir(path.join(__dirname, '/testing/portadas'));
+  //Seleccionamos una imagen de forma aleatoria
+  let cover = coverImage[Math.floor(Math.random() * coverImage.length)];
+  //Devolvemos la imagen
+  return await fs.readFile(path.join(__dirname, `/testing/portadas/${cover}`));
 };
 
 module.exports = {
@@ -101,4 +110,5 @@ module.exports = {
   getRandomAvatar,
   getRandomFile,
   processAndSaveFile,
+  getRandomCover,
 };
