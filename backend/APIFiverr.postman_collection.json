@@ -1,0 +1,718 @@
+{
+	"info": {
+		"_postman_id": "4423e85f-f6ef-4c26-8e5b-a27ec5299a13",
+		"name": "APIFiverr",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "New User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"manublanco@hackaboss.com\",\r\n    \"password\": \"1234\",\r\n    \"name\": \"Manu\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"manu@hackaboss.com\",\r\n    \"password\": \"node\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTY3MDY4LCJleHAiOjE2NTQxNTkwNjh9.Y4k55wX7PP54hBo5S3GsBm7E7O3lFi-VLu716bPXo_Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "manublanco@hackaboss.com",
+									"type": "text"
+								},
+								{
+									"key": "bio",
+									"value": "Lorem Ipsum Ipsum",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Lorem Ipsum Ipsum",
+									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/E:/HACKABOSS/APIFiverr/testing/avatares/avatar7.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/users/13",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTg1MDcwLCJleHAiOjE2NTQxNzcwNzB9.2DDtxsSaDYd0OM6hcBfvP9SW2_1sFxidlgqkF7hb20A",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/users/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTY3NDQyLCJleHAiOjE2NTQxNTk0NDJ9.hpgHwbC3jnyqfCPPxGIwh-P5FlCKPku2mySnCXFbndU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/users/13",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit User Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE2NTE1ODQ1MjMsImV4cCI6MTY1NDE3NjUyM30.NKlnJphBxvtjFqqfRXhYr739UPTrp65ZvI94QbBXjN4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\": \"1234\",\r\n    \"newPassword\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users/13/password",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"13",
+								"password"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "En esta carpeta se añaden todos los endpoints de usuarios"
+		},
+		{
+			"name": "Services",
+			"item": [
+				{
+					"name": "List Services",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/services?direction=desc&order=status",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"services"
+							],
+							"query": [
+								{
+									"key": "direction",
+									"value": "desc"
+								},
+								{
+									"key": "order",
+									"value": "status"
+								},
+								{
+									"key": "search",
+									"value": "et",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Service",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/services/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"services",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Service",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTg0OTUyLCJleHAiOjE2NTQxNzY5NTJ9.55aBOEewQZeQlMJLNz6laoq6Gxfsmvwd-ppM1vwfjMQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Hola",
+									"type": "text"
+								},
+								{
+									"key": "info",
+									"value": "Hola",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Lifestyle",
+									"type": "text"
+								},
+								{
+									"key": "serviceFile",
+									"type": "file",
+									"src": "/E:/HACKABOSS/APIFiverr/testing/services_files/file6.docx"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/services",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Service",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTg0OTUyLCJleHAiOjE2NTQxNzY5NTJ9.55aBOEewQZeQlMJLNz6laoq6Gxfsmvwd-ppM1vwfjMQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Hola 2",
+									"type": "text"
+								},
+								{
+									"key": "info",
+									"value": "Hola 2",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Lifestyle",
+									"type": "text"
+								},
+								{
+									"key": "serviceFile",
+									"type": "file",
+									"src": "/C:/Users/Equipo/Desktop/Portal de necesidades.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/services/6",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"services",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Service",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTg0OTUyLCJleHAiOjE2NTQxNzY5NTJ9.55aBOEewQZeQlMJLNz6laoq6Gxfsmvwd-ppM1vwfjMQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/services/6",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"services",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Service Solution",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTg0OTUyLCJleHAiOjE2NTQxNzY5NTJ9.55aBOEewQZeQlMJLNz6laoq6Gxfsmvwd-ppM1vwfjMQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/services/1/solution",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"services",
+								"1",
+								"solution"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Service Solution",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE2NTE1Njg0MjYsImV4cCI6MTY1NDE2MDQyNn0.BAkWHTP40SaJUEqhXJiY7u_XZ6ERpEZEoqEEkFa0W38",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/services/1/solution",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"services",
+								"1",
+								"solution"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Service Solution",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTg1MDcwLCJleHAiOjE2NTQxNzcwNzB9.2DDtxsSaDYd0OM6hcBfvP9SW2_1sFxidlgqkF7hb20A",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "finished",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "solutionFile",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/services/1/solution",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"services",
+								"1",
+								"solution"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Service Solution",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTY4MjExLCJleHAiOjE2NTQxNjAyMTF9.2m4JfOF_BdKaO2NUq54Yxzk_ywWxrEwprzIQ8s30SJQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/services/3/solution",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"services",
+								"3",
+								"solution"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Service Comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/services/3/comments",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"services",
+								"3",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Service Comment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTY2ODMxLCJleHAiOjE2NTQxNTg4MzF9.G--ezk77NZJwyA4cZzMZ7fJEUnxSNfdpeizdrUdYVNI",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/services/2/comments/76",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"services",
+								"2",
+								"comments",
+								"76"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Service Comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTY4MjExLCJleHAiOjE2NTQxNjAyMTF9.2m4JfOF_BdKaO2NUq54Yxzk_ywWxrEwprzIQ8s30SJQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\":\"Hola mundo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/services/2/comments",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"services",
+								"2",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Service Comment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTY4MjExLCJleHAiOjE2NTQxNjAyMTF9.2m4JfOF_BdKaO2NUq54Yxzk_ywWxrEwprzIQ8s30SJQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\":\"Hola mundo mundo MUNDO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/services/2/comments/76",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"services",
+								"2",
+								"comments",
+								"76"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Service Comment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTY4MjExLCJleHAiOjE2NTQxNjAyMTF9.2m4JfOF_BdKaO2NUq54Yxzk_ywWxrEwprzIQ8s30SJQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/services/3/comments/31",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"services",
+								"3",
+								"comments",
+								"31"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Service Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/categories",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Service Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/services/status",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"services",
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

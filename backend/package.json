@@ -1,0 +1,40 @@
+{
+  "name": "apifiverr",
+  "version": "1.0.0",
+  "description": "Implementar una API que permita gestionar una web donde personas que necesiten algún\r servicio digital puedan pedir ayuda a otros usuarios (estilo Fiverr). Por ejemplo: traducir un\r texto, editar una foto, revisar un documento, etc… Solo necesidades que puedan realizarse\r mediante un fichero digital.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjwhite10/APIFiverr.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mjwhite10/APIFiverr/issues"
+  },
+  "homepage": "https://github.com/mjwhite10/APIFiverr#readme",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.0",
+    "express-fileupload": "^1.3.1",
+    "faker": "^5.5.3",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
+    "sharp": "^0.30.4",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "bcrypt": "^5.0.1",
+    "eslint": "^8.14.0",
+    "prettier": "^2.6.2"
+  }
+}
