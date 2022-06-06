@@ -2,9 +2,9 @@ const {
   getServiceById,
   getServiceSolutionByIdService,
   createServiceSolution,
-} = require('../../db/services');
+} = require('../../db/diverrs');
 const { generateError } = require('../../helpers');
-const { idServiceSchema } = require('../../validators/servicesValidators');
+const { idServiceSchema } = require('../../validators/diverrsValidators');
 const newServiceSolution = async (req, res, next) => {
   try {
     //Validamos los parámetros

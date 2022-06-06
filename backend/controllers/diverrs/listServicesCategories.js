@@ -1,4 +1,4 @@
-const { getServiceCategories } = require('../../db/services');
+const { getServiceCategories } = require('../../db/diverrs');
 
 const listServicesCategories = async (req, res, next) => {
   try {

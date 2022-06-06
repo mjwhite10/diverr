@@ -1,9 +1,9 @@
 const {
   getServiceSolutionByIdService,
   getServiceById,
-} = require('../../db/services');
+} = require('../../db/diverrs');
 const { generateError } = require('../../helpers');
-const { idServiceSchema } = require('../../validators/servicesValidators');
+const { idServiceSchema } = require('../../validators/diverrsValidators');
 
 const getServiceSolution = async (req, res, next) => {
   try {

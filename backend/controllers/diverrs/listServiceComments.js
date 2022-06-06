@@ -1,5 +1,5 @@
-const { getServiceById, getServiceComments } = require('../../db/services');
-const { idServiceSchema } = require('../../validators/servicesValidators');
+const { getServiceById, getServiceComments } = require('../../db/diverrs');
+const { idServiceSchema } = require('../../validators/diverrsValidators');
 
 const listServiceComments = async (req, res, next) => {
   try {

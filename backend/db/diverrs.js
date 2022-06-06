@@ -1,7 +1,7 @@
 const { generateError } = require('../helpers');
 const { getConnection } = require('./getDB');
 
-const searchServices = async (search, orderBy, orderDirection) => {
+const searchDiverrs = async (search, orderBy, orderDirection) => {
   let connection;
   try {
     connection = await getConnection();
@@ -11,28 +11,28 @@ const searchServices = async (search, orderBy, orderDirection) => {
     if (search) {
       queryResults = await connection.query(
         `
-          SELECT S.id, S.idUser, U.name as user, S.title, S.info, S.file, SC.description as category, SS.description as status, S.createdAt
-          FROM services AS S
-          INNER JOIN services_categories AS SC
-          ON S.idCategory = SC.id
-          INNER JOIN services_status AS SS
-          ON S.idStatus = SS.id
+          SELECT D.id, D.idUser, U.name as user, D.title,D.picture,D.price, D.info, D.file, DC.description as category, DS.description as status, D.createdAt
+          FROM diverrs AS D
+          INNER JOIN diverrs_categories AS DC
+          ON D.idCategory = DC.id
+          INNER JOIN diverrs_status AS DS
+          ON D.idStatus = DS.id
           INNER JOIN users AS U
-          ON S.idUser = U.id
+          ON D.idUser = U.id
           WHERE S.title LIKE '%${search}%' OR info LIKE '%${search}%'
           ORDER BY ${orderBy} ${orderDirection}`
       );
     } else {
       queryResults = await connection.query(
         `
-          SELECT S.id, S.idUser, U.name as user, S.title, S.info, S.file, SC.description as category, SS.description as status, S.createdAt
-          FROM services AS S
-          INNER JOIN services_categories AS SC
-          ON S.idCategory = SC.id
-          INNER JOIN services_status AS SS
-          ON S.idStatus = SS.id
+          SELECT D.id, D.idUser, U.name as user, D.title,D.picture,D.price, D.info, D.file, DC.description as category, DS.description as status, D.createdAt
+          FROM diverrs AS D
+          INNER JOIN diverrs_categories AS DC
+          ON D.idCategory = DC.id
+          INNER JOIN diverrs_status AS DS
+          ON D.idStatus = DS.id
           INNER JOIN users AS U
-          ON S.idUser = U.id
+          ON D.idUser = U.id
           ORDER BY ${orderBy} ${orderDirection}`
       );
     }
@@ -44,84 +44,100 @@ const searchServices = async (search, orderBy, orderDirection) => {
   }
 };
 
-const getServiceById = async (id) => {
+const getDiverrById = async (id) => {
   let connection;
   try {
     connection = await getConnection();
-    const [service] = await connection.query(
+    const [diverr] = await connection.query(
       `
-        SELECT S.id, S.idUser, U.name as user, S.title, S.info, S.file, SC.description as category, SS.description as status, S.createdAt
-        FROM services AS S
-        INNER JOIN services_categories AS SC
-        ON S.idCategory = SC.id
-        INNER JOIN services_status AS SS
-        ON S.idStatus = SS.id
+        SELECT D.id, D.idUser, U.name as user, D.title, D.info, D.file, DC.description as category, DS.description as status, D.createdAt
+        FROM diverrs AS D
+        INNER JOIN diverrs_categories AS DC
+        ON D.idCategory = DC.id
+        INNER JOIN diverrs_status AS DS
+        ON D.idStatus = DS.id
         INNER JOIN users AS U
-        ON S.idUser = U.id
-        WHERE S.id = ?`,
+        ON D.idUser = U.id
+        WHERE D.id = ?`,
       [id]
     );
 
-    if (!service[0])
-      throw generateError(`No existe ningún servicio con id ${id}`, 404);
+    if (!diverr[0])
+      throw generateError(`No existe ningún diverr con id ${id}`, 404);
 
-    return service[0];
+    return diverr[0];
   } finally {
     if (connection) connection.release();
   }
 };
 
-const createService = async (idUser, title, info, file, category) => {
+const createDiverr = async (
+  idUser,
+  title,
+  info,
+  file,
+  picture,
+  price,
+  category
+) => {
   let connection;
   try {
     connection = await getConnection();
 
-    const [newService] = await connection.query(
+    const [newDiverr] = await connection.query(
       `
-      INSERT INTO services (idUser,title, info, file, idCategory, idStatus, createdAt)
-      VALUES(?,?,?,?,?,1,UTC_TIMESTAMP)
+      INSERT INTO diverrs (idUser,title, info, file, picture, price, idCategory, idStatus, createdAt)
+      VALUES(?,?,?,?,?,?,?,1,UTC_TIMESTAMP)
     `,
-      [idUser, title, info, file, category]
+      [idUser, title, info, file, picture, price, category]
     );
-    return newService.insertId;
+    return newDiverr.insertId;
   } finally {
     if (connection) connection.release();
   }
 };
 
-const editServiceById = async (idService, title, info, file, category) => {
+const editDiverrById = async (
+  idService,
+  title,
+  info,
+  file,
+  picture,
+  price,
+  category
+) => {
   let connection;
   try {
     connection = await getConnection();
 
     await connection.query(
       `
-      UPDATE services
-      SET title = ?, info = ?, file = ?, idCategory = ?, modifiedAt = UTC_TIMESTAMP
+      UPDATE diverrs
+      SET title = ?, info = ?, file = ?,picture=?,price = ?, idCategory = ?, modifiedAt = UTC_TIMESTAMP
       WHERE id = ?`,
-      [title, info, file, category, idService]
+      [title, info, file, picture, price, category, idService]
     );
   } finally {
     if (connection) connection.release();
   }
 };
 
-const deleteServiceById = async (idService) => {
+const deleteDiverrById = async (idDiverr) => {
   let connection;
   try {
     connection = await getConnection();
     await connection.query(`START TRANSACTION`);
     await connection.query(
       `
-    DELETE FROM services_comments
-    WHERE idService = ?`,
-      [idService]
+    DELETE FROM diverrs_comments
+    WHERE idDiverr = ?`,
+      [idDiverr]
     );
     await connection.query(
       `
-      DELETE FROM services
+      DELETE FROM diverrs
       WHERE id = ?`,
-      [idService]
+      [idDiverr]
     );
     await connection.query(`COMMIT`);
   } catch (error) {
@@ -131,18 +147,18 @@ const deleteServiceById = async (idService) => {
   }
 };
 
-const getServiceSolutionByIdService = async (idService) => {
+const getDiverrSolutionById = async (idDiverr) => {
   let connection;
   try {
     connection = await getConnection();
     const [solution] = await connection.query(
       `
-      SELECT SS.id, SS.idUser, U.name as user, SS.file, SS.startedAt, SS.finishedAt
-      FROM services_solution AS SS
+      SELECT DS.id, DS.idUser, U.name as user, DS.file, DS.startedAt, DS.finishedAt
+      FROM diverrs_solution AS DS
       INNER JOIN users AS U
-      ON SS.idUser = U.id
-      WHERE SS.idService = ?`,
-      [idService]
+      ON DS.idUser = U.id
+      WHERE DS.idDiverr = ?`,
+      [idDiverr]
     );
     return solution[0];
   } finally {
@@ -250,7 +266,7 @@ const getIdCategory = async (category) => {
 
     const [idCategory] = await connection.query(
       `SELECT id 
-      FROM services_categories WHERE description = ? 
+      FROM diverrs_categories WHERE description = ? 
       `,
       [category]
     );
@@ -384,16 +400,16 @@ const getServiceStatus = async () => {
   }
 };
 module.exports = {
-  searchServices,
-  getServiceSolutionByIdService,
-  getServiceById,
-  deleteServiceById,
+  searchDiverrs,
+  getDiverrSolutionById,
+  getDiverrById,
+  deleteDiverrById,
   createServiceSolution,
-  createService,
+  createDiverr,
   getIdCategory,
   createServiceComment,
   deleteServiceCommentById,
-  editServiceById,
+  editDiverrById,
   editServiceSolutionById,
   deleteServiceSolutionById,
   getServiceCommentById,

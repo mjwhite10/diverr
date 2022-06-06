@@ -1,7 +1,7 @@
-const { getServiceById, getServiceCommentById } = require('../../db/services');
+const { getServiceById, getServiceCommentById } = require('../../db/diverrs');
 const {
   getServiceCommentSchema,
-} = require('../../validators/servicesValidators');
+} = require('../../validators/diverrsValidators');
 
 const getServiceComment = async (req, res, next) => {
   try {

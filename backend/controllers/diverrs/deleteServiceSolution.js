@@ -3,9 +3,9 @@ const {
   getServiceSolutionByIdService,
   getServiceById,
   deleteServiceSolutionById,
-} = require('../../db/services');
+} = require('../../db/diverrs');
 const { generateError, deleteFile } = require('../../helpers');
-const { idServiceSchema } = require('../../validators/servicesValidators');
+const { idServiceSchema } = require('../../validators/diverrsValidators');
 
 const deleteServiceSolution = async (req, res, next) => {
   try {

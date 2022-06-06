@@ -82,13 +82,13 @@ async function main() {
     await connection.query(`
         CREATE TABLE diverrs_solution (
            id INTEGER PRIMARY KEY AUTO_INCREMENT,
-           idService INTEGER UNIQUE NOT NULL,
+           idDiverr INTEGER UNIQUE NOT NULL,
            idUser INTEGER NOT NULL,
            file VARCHAR (100),
            startedAt DATETIME NOT NULL,
            finishedAt DATETIME,
            markAsFinished BIT NOT NULL,
-           FOREIGN KEY (idService) REFERENCES diverrs(id),
+           FOREIGN KEY (idDiverr) REFERENCES diverrs(id),
            FOREIGN KEY (idUser) REFERENCES users(id)
            );`);
 
@@ -98,11 +98,11 @@ async function main() {
           id INTEGER PRIMARY KEY AUTO_INCREMENT,
           content VARCHAR (280) NOT NULL,
           idUser INTEGER NOT NULL,
-          idService INTEGER NOT NULL,
+          idDiverr INTEGER NOT NULL,
           createdAt DATETIME NOT NULL,
           modifiedAt DATETIME,
           FOREIGN KEY (idUser) REFERENCES users(id),
-          FOREIGN KEY (idService) REFERENCES diverrs(id)
+          FOREIGN KEY (idDiverr) REFERENCES diverrs(id)
     );`);
 
     console.log('Creando usuarios administradores');
@@ -245,7 +245,7 @@ async function main() {
 
         await connection.query(
           `
-        INSERT INTO diverrs_comments(idUser,idService,content,createdAt)
+        INSERT INTO diverrs_comments(idUser,idDiverr,content,createdAt)
         VALUES(?,?,?,UTC_TIMESTAMP)
         `,
           [idUserComment, result.insertId, content]
@@ -266,7 +266,7 @@ async function main() {
 
       await connection.query(
         `
-        INSERT INTO diverrs_solution (idUser,idService,file,startedAt,markAsFinished)
+        INSERT INTO diverrs_solution (idUser,idDiverr,file,startedAt,markAsFinished)
         VALUES (?,?,?,UTC_TIMESTAMP,0)`,
         [
           idUserSolution,
