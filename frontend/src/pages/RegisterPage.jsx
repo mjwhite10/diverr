@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Emoji } from "../components/Emoji";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { registerUserService } from "../services";
@@ -14,66 +13,87 @@ const RegisterPage = () => {
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
   const [error, setError] = useState("");
+  const [errorUsername, setErrorUsername] = useState("");
+  const [errorMail, setErrorMail] = useState("");
+  const [errorPass, setErrorPass] = useState("");
 
   const handleForm = async e => {
     e.preventDefault();
 
-    if (!username || !email || !pass1) {
-      setError("You must fill every field");
+    if (!username) {
+      setErrorUsername("El nombre de usuario es obligatorio");
+    } else if (!email) {
+      setErrorMail("El email es obligatorio");
+    } else if (!pass1 || !pass2) {
+      setErrorPass("Los campos de contraseña son obligatorios");
     } else if (pass1 !== pass2) {
-      setError("Passwords do not match");
+      setErrorPass("Las contraseñas deben ser iguales");
     }
 
     try {
       await registerUserService({ username, email, password: pass1 });
 
       navigate("/login");
-    } catch (error) {}
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
     <section>
-      <h1>Register</h1>
+      <h1>Registro</h1>
       <form onSubmit={handleForm}>
         <InputFieldName
-          label="Username"
-          type="text"
-          id="username"
+          label={"Nombre de usuario"}
+          placeholder={"Nombre de usuario"}
+          type={"text"}
+          id={"username"}
           required
+          autofocus={"autofocus"}
           onChange={e => setUsername(e.target.value)}
-        />
+        >
+          {error ? <p>{`${setErrorUsername}`}</p> : null}
+        </InputFieldName>
+
         <InputFieldName
-          label="Email"
-          type="email"
-          id="email"
-          name="email"
+          label={"Email"}
+          placeholder={"Email"}
+          type={"email"}
+          id={"email"}
+          name={"email"}
           required
           onChange={e => setEmail(e.target.value)}
-        />
+        >
+          {error ? <p>{`${setErrorMail}`}</p> : null}
+        </InputFieldName>
+
         <InputFieldName
-          label="Password"
-          type="password"
-          id="password"
-          name="password"
+          label={"Contraseña"}
+          placeholder={"Contraseña"}
+          type={"password"}
+          id={"password"}
+          name={"password"}
           required
           onChange={e => setPass1(e.target.value)}
-        />
+        >
+          {error ? <p>{`${setErrorPass}`}</p> : null}
+        </InputFieldName>
+
         <InputFieldName
-          label="Repeat password"
-          type="password"
-          id="pass2"
-          name="pass2"
+          label={"Repetir contraseña"}
+          placeholder={"Repetir contraseña"}
+          type={"password"}
+          id={"pass2"}
+          name={"pass2"}
           required
           onChange={e => setPass2(e.target.value)}
-        />
+        >
+          <p>{`${setErrorPass}`}</p>
+        </InputFieldName>
 
-        <button>Register </button>
-        {error ? (
-          <p style={{ color: "red" }}>
-            {error} <Emoji label="crossmark" symbol="❌" />
-          </p>
-        ) : null}
-        <Link to="/login">Already a member? Log in</Link>
+        <button>¡Únete!</button>
+
+        <Link to="/login">¿Ya eres miembro? Ingresa</Link>
       </form>
     </section>
   );
