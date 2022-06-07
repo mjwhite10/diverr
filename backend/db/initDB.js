@@ -87,7 +87,7 @@ async function main() {
            file VARCHAR (100),
            startedAt DATETIME NOT NULL,
            finishedAt DATETIME,
-           markAsFinished BIT NOT NULL,
+           markAsFinished TINYINT NOT NULL DEFAULT 0,
            FOREIGN KEY (idDiverr) REFERENCES diverrs(id),
            FOREIGN KEY (idUser) REFERENCES users(id)
            );`);

@@ -19,8 +19,8 @@ const {
   newDiverr,
   editDiverr,
   deleteDiverr,
-  // newServiceSolution,
-  // getServiceSolution,
+  getDiverrSolution,
+  newDiverrSolution,
   // editServiceSolution,
   // deleteServiceSolution,
   // newServiceComment,
@@ -63,9 +63,9 @@ app.get('/diverrs/:idDiverr', getDiverr);
 app.post('/diverrs', isUser, newDiverr);
 app.put('/diverrs/:idDiverr', isUser, editDiverr);
 app.delete('/diverrs/:idDiverr', isUser, deleteDiverr);
-// //Services solutions
-// app.post('/diverrs/:idDiverr/solution', isUser, newServiceSolution);
-// app.get('/diverrs/:idDiverr/solution', isUser, getServiceSolution);
+//Diverrss solutions
+app.get('/diverrs/:idDiverr/solution', isUser, getDiverrSolution);
+app.post('/diverrs/:idDiverr/solution', isUser, newDiverrSolution);
 // app.put('/diverrs/:idDiverr/solution', isUser, editServiceSolution);
 // app.delete('/diverrs/:idDiverr/solution', isUser, deleteServiceSolution);
 // //Services comments

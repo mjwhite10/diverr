@@ -142,6 +142,7 @@ const deleteDiverrById = async (idDiverr) => {
     await connection.query(`COMMIT`);
   } catch (error) {
     await connection.query(`ROLLBACK`);
+    throw generateError(error);
   } finally {
     if (connection) connection.release();
   }
@@ -153,7 +154,7 @@ const getDiverrSolutionById = async (idDiverr) => {
     connection = await getConnection();
     const [solution] = await connection.query(
       `
-      SELECT DS.id, DS.idUser, U.name as user, DS.file, DS.startedAt, DS.finishedAt
+      SELECT DS.id, DS.idUser, U.name as user, DS.file, DS.startedAt, DS.finishedAt, DS.markAsFinished
       FROM diverrs_solution AS DS
       INNER JOIN users AS U
       ON DS.idUser = U.id
@@ -166,28 +167,29 @@ const getDiverrSolutionById = async (idDiverr) => {
   }
 };
 
-const createServiceSolution = async (idService, idUser) => {
+const createDiverrSolution = async (idDiverr, idUser) => {
   let connection;
   try {
     connection = await getConnection();
     await connection.query(`START TRANSACTION`);
     const [newSolution] = await connection.query(
       `
-      INSERT INTO services_solution (idService,idUser,startedAt)
+      INSERT INTO diverrs_solution (idDiverr,idUser,startedAt)
       VALUES (?,?,UTC_TIMESTAMP)`,
-      [idService, idUser]
+      [idDiverr, idUser]
     );
     await connection.query(
       `
-      UPDATE services
+      UPDATE diverrs
       SET idStatus = 2
       WHERE id = ?`,
-      [idService]
+      [idDiverr]
     );
     await connection.query(`COMMIT`);
     return newSolution.insertId;
   } catch (error) {
     await connection.query(`ROLLBACK`);
+    throw generateError(error);
   } finally {
     if (connection) connection.release();
   }
@@ -226,6 +228,7 @@ const editServiceSolutionById = async (idService, file, finished) => {
     await connection.query(`COMMIT`);
   } catch (error) {
     await connection.query(`ROLLBACK`);
+    throw generateError(error);
   } finally {
     if (connection) connection.release();
   }
@@ -254,6 +257,7 @@ const deleteServiceSolutionById = async (idService) => {
     await connection.query(`COMMIT`);
   } catch (error) {
     await connection.query(`ROLLBACK`);
+    throw generateError(error);
   } finally {
     if (connection) connection.release();
   }
@@ -404,7 +408,7 @@ module.exports = {
   getDiverrSolutionById,
   getDiverrById,
   deleteDiverrById,
-  createServiceSolution,
+  createDiverrSolution,
   createDiverr,
   getIdCategory,
   createServiceComment,

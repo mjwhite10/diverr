@@ -3,8 +3,8 @@ const { getDiverr } = require('./getDiverr');
 const { newDiverr } = require('./newDiverr');
 const { editDiverr } = require('./editDiverr');
 const { deleteDiverr } = require('./deleteDiverr');
-const { newServiceSolution } = require('./newServiceSolution');
-const { getServiceSolution } = require('./getServiceSolution');
+const { newDiverrSolution } = require('./newDiverrSolution');
+const { getDiverrSolution } = require('./getDiverrSolution');
 const { editServiceSolution } = require('./editServiceSolution');
 const { deleteServiceSolution } = require('./deleteServiceSolution');
 const { newServiceComment } = require('./newServiceComment');
@@ -20,8 +20,8 @@ module.exports = {
   newDiverr,
   editDiverr,
   deleteDiverr,
-  newServiceSolution,
-  getServiceSolution,
+  newDiverrSolution,
+  getDiverrSolution,
   editServiceSolution,
   deleteServiceSolution,
   newServiceComment,
