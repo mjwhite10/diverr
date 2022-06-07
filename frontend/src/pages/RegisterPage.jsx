@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
-import { EmailInput } from "../components/EmailInput";
-import UsernameInput from "../components/UsernameInput";
-import { PasswordInput } from "../components/PasswordInput";
 import { Emoji } from "../components/Emoji";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { registerUserService } from "../services";
 import "./RegisterPage.css";
+import { InputFieldName } from "../components/InputFieldName";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -24,7 +22,6 @@ const RegisterPage = () => {
       setError("You must fill every field");
     } else if (pass1 !== pass2) {
       setError("Passwords do not match");
-      return;
     }
 
     try {
@@ -38,9 +35,38 @@ const RegisterPage = () => {
     <section>
       <h1>Register</h1>
       <form onSubmit={handleForm}>
-        <UsernameInput />
-        <EmailInput />
-        <PasswordInput />
+        <InputFieldName
+          label="Username"
+          type="text"
+          id="username"
+          required
+          onChange={e => setUsername(e.target.value)}
+        />
+        <InputFieldName
+          label="Email"
+          type="email"
+          id="email"
+          name="email"
+          required
+          onChange={e => setEmail(e.target.value)}
+        />
+        <InputFieldName
+          label="Password"
+          type="password"
+          id="password"
+          name="password"
+          required
+          onChange={e => setPass1(e.target.value)}
+        />
+        <InputFieldName
+          label="Repeat password"
+          type="password"
+          id="pass2"
+          name="pass2"
+          required
+          onChange={e => setPass2(e.target.value)}
+        />
+
         <button>Register </button>
         {error ? (
           <p style={{ color: "red" }}>

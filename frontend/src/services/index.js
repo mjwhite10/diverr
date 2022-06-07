@@ -1,5 +1,5 @@
 export const registerUserService = async ({ username, email, password }) => {
-  const res = await fetch(`${process.env.REACT_APP_BACKEND}/register`, {
+  const res = await fetch(`${process.env.REACT_APP_BACKEND}/users`, {
     method: "POST",
     headers: {
       "Content-type": "application/json",

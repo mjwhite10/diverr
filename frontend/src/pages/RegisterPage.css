@@ -5,12 +5,48 @@
   font-size: 1.3rem;
 }
 
+body {
+  text-align: center;
+}
+
 form {
-  display: grid;
+  display: inline-block;
   text-align: center;
   gap: 4rem;
 }
 
 h1 {
   font-size: 5rem;
+}
+
+fieldset {
+  border: none;
+}
+
+label,
+input {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  width: 40rem;
+  border: 3px solid #535353;
+  border-radius: 0.4rem;
+  padding: 0.2rem;
+  margin: 0.5rem;
+}
+
+button {
+  margin: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #535353;
+  color: white;
+  border-radius: 0.5rem;
+  width: 40rem;
+}
+
+button:hover {
+  cursor: pointer;
 }
