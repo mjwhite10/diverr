@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Auth from './Auth';
+import SearchBar from './SearchBar';
 
 const Header = () => {
   return (
@@ -13,6 +14,7 @@ const Header = () => {
           ></img>
         </Link>
       </h1>
+      <SearchBar />
       <nav>
         <Auth />
       </nav>

@@ -11,6 +11,11 @@ html {
   --error: #c84d4d;
 }
 
+.main {
+  min-height: 100vh;
+}
+
+/*HEADER*/
 .header {
   display: flex;
   justify-content: space-between;
@@ -36,6 +41,8 @@ html {
 .header-button:hover {
   cursor: pointer;
 }
+
+/*LOGIN PAGE*/
 .login {
   color: var(--background);
   background-color: var(--bright);
@@ -43,6 +50,7 @@ html {
   border: none;
   box-shadow: none;
 }
+/*REGISTER PAGE*/
 .register {
   color: var(--background);
   background-color: var(--bright);
@@ -57,4 +65,21 @@ html {
 
 .error {
   color: var(--error);
+}
+.login-page {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+.button {
+  background: url('../public/images/LOGO_DIVERR.svg') no-repeat center center;
+  width: 16px;
+  height: 16px;
+
+  /* background-image: url('/images/LOGO_DIVERR.svg'); */
 }
