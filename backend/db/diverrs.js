@@ -43,7 +43,6 @@ const searchDiverrs = async (search, orderBy, orderDirection) => {
     if (connection) connection.release();
   }
 };
-
 const getDiverrById = async (id) => {
   let connection;
   try {
@@ -70,7 +69,6 @@ const getDiverrById = async (id) => {
     if (connection) connection.release();
   }
 };
-
 const createDiverr = async (
   idUser,
   title,
@@ -96,7 +94,6 @@ const createDiverr = async (
     if (connection) connection.release();
   }
 };
-
 const editDiverrById = async (
   idService,
   title,
@@ -121,7 +118,6 @@ const editDiverrById = async (
     if (connection) connection.release();
   }
 };
-
 const deleteDiverrById = async (idDiverr) => {
   let connection;
   try {
@@ -147,7 +143,6 @@ const deleteDiverrById = async (idDiverr) => {
     if (connection) connection.release();
   }
 };
-
 const getDiverrSolutionById = async (idDiverr) => {
   let connection;
   try {
@@ -166,7 +161,6 @@ const getDiverrSolutionById = async (idDiverr) => {
     if (connection) connection.release();
   }
 };
-
 const createDiverrSolution = async (idDiverr, idUser) => {
   let connection;
   try {
@@ -194,8 +188,7 @@ const createDiverrSolution = async (idDiverr, idUser) => {
     if (connection) connection.release();
   }
 };
-
-const editServiceSolutionById = async (idService, file, finished) => {
+const editDiverrSolutionById = async (idDiverr, file, finished) => {
   let connection;
   try {
     connection = await getConnection();
@@ -204,25 +197,25 @@ const editServiceSolutionById = async (idService, file, finished) => {
     if (finished.toLowerCase() === 'true') {
       await connection.query(
         `
-      UPDATE services_solution
-      SET file = ?, finishedAt = UTC_TIMESTAMP
-      WHERE idService = ?`,
-        [file, idService]
+      UPDATE diverrs_solution
+      SET file = ?, finishedAt = UTC_TIMESTAMP, markAsFinished = 1
+      WHERE idDiverr = ?`,
+        [file, idDiverr]
       );
       await connection.query(
         `
-      UPDATE services
+      UPDATE diverrs
       SET idStatus = 3
       WHERE id = ?`,
-        [idService]
+        [idDiverr]
       );
     } else {
       await connection.query(
         `
-        UPDATE services_solution
+        UPDATE diverrs_solution
         SET file = ?
-        WHERE idService = ?`,
-        [file, idService]
+        WHERE idDiverr = ?`,
+        [file, idDiverr]
       );
     }
     await connection.query(`COMMIT`);
@@ -233,26 +226,24 @@ const editServiceSolutionById = async (idService, file, finished) => {
     if (connection) connection.release();
   }
 };
-
-const deleteServiceSolutionById = async (idService) => {
+const deleteDiverrSolutionById = async (idDiverr) => {
   let connection;
   try {
     connection = await getConnection();
     await connection.query(`START TRANSACTION`);
 
-    console.log('Paso 1');
     await connection.query(
       `
-    UPDATE services
+    UPDATE diverrs
     SET idStatus = 1
     WHERE id = ?`,
-      [idService]
+      [idDiverr]
     );
     await connection.query(
       `
-    DELETE FROM services_solution
-    WHERE idService = ?`,
-      [idService]
+    DELETE FROM diverrs_solution
+    WHERE idDiverr = ?`,
+      [idDiverr]
     );
     await connection.query(`COMMIT`);
   } catch (error) {
@@ -262,7 +253,6 @@ const deleteServiceSolutionById = async (idService) => {
     if (connection) connection.release();
   }
 };
-
 const getIdCategory = async (category) => {
   let connection;
   try {
@@ -281,55 +271,53 @@ const getIdCategory = async (category) => {
     if (connection) connection.release();
   }
 };
-
-const createServiceComment = async (idUser, idService, content) => {
+const createServiceComment = async (idUser, idDiverr, content) => {
   let connection;
   try {
     connection = await getConnection();
 
     const [newServiceComment] = await connection.query(
       `
-      INSERT INTO services_comments (idUser, idService, content, createdAt)
+      INSERT INTO diverrs_comments (idUser, idDiverr, content, createdAt)
       VALUES(?,?,?,UTC_TIMESTAMP)
     `,
-      [idUser, idService, content]
+      [idUser, idDiverr, content]
     );
     return newServiceComment.insertId;
   } finally {
     if (connection) connection.release();
   }
 };
-
-const editServiceCommentById = async (idService, idComment, content) => {
+const editDiverrCommentById = async (idDiverr, idComment, content) => {
   let connection;
   try {
     connection = await getConnection();
 
     const [newServiceComment] = await connection.query(
       `
-      UPDATE services_comments 
+      UPDATE diverrs_comments 
       SET content = ?, modifiedAt = UTC_TIMESTAMP
-      WHERE idService = ? AND id = ?
+      WHERE idDiverr = ? AND id = ?
     `,
-      [content, idService, idComment]
+      [content, idDiverr, idComment]
     );
     return newServiceComment.insertId;
   } finally {
     if (connection) connection.release();
   }
 };
-const getServiceCommentById = async (idComment, idService) => {
+const getDiverrCommentById = async (idComment, idDiverr) => {
   let connection;
   try {
     connection = await getConnection();
     const [comment] = await connection.query(
       `
-      SELECT SC.id, SC.content, U.name, SC.idUser, SC.idService, SC.createdAt, SC.modifiedAt
-      FROM services_comments AS SC
+      SELECT DC.id, DC.content, U.name, DC.idUser, DC.idDiverr, DC.createdAt, DC.modifiedAt
+      FROM diverrs_comments AS DC
       INNER JOIN users AS U
-      ON U.id = SC.idUser
-      WHERE SC.id = ? AND SC.idService = ?`,
-      [idComment, idService]
+      ON U.id = DC.idUser
+      WHERE DC.id = ? AND DC.idDiverr = ?`,
+      [idComment, idDiverr]
     );
     if (!comment[0])
       throw generateError(
@@ -341,14 +329,13 @@ const getServiceCommentById = async (idComment, idService) => {
     if (connection) connection.release();
   }
 };
-
-const deleteServiceCommentById = async (idComment) => {
+const deleteDiverrCommentById = async (idComment) => {
   let connection;
   try {
     connection = await getConnection();
     await connection.query(
       `
-      DELETE FROM services_comments
+      DELETE FROM diverrs_comments
       WHERE id = ?`,
       [idComment]
     );
@@ -356,47 +343,46 @@ const deleteServiceCommentById = async (idComment) => {
     if (connection) connection.release();
   }
 };
-
-const getServiceComments = async (idService) => {
+const getDiverrComments = async (idDiverr) => {
   let connection;
   try {
     connection = await getConnection();
     const [result] = await connection.query(
       `
-      SELECT SC.id, SC.content, U.name, SC.idUser, SC.idService, SC.createdAt, SC.modifiedAt
-      FROM services_comments AS SC
+      SELECT DC.id, DC.content, U.name, DC.idUser, DC.idDiverr, DC.createdAt, DC.modifiedAt
+      FROM diverrs_comments AS DC
       INNER JOIN users AS U
-      ON U.id = SC.idUser
-      WHERE SC.idService = ?`,
-      [idService]
+      ON U.id = DC.idUser
+      WHERE DC.idDiverr = ?`,
+      [idDiverr]
     );
     return result;
   } finally {
     if (connection) connection.release();
   }
 };
-const getServiceCategories = async () => {
+const getDiverrsCategories = async () => {
   let connection;
   try {
     connection = await getConnection();
     const [result] = await connection.query(
       `
       SELECT id,description
-      FROM services_categories`
+      FROM diverrs_categories`
     );
     return result;
   } finally {
     if (connection) connection.release();
   }
 };
-const getServiceStatus = async () => {
+const getDiverrsStatus = async () => {
   let connection;
   try {
     connection = await getConnection();
     const [result] = await connection.query(
       `
       SELECT id,description
-      FROM services_status`
+      FROM diverrs_status`
     );
     return result;
   } finally {
@@ -412,13 +398,13 @@ module.exports = {
   createDiverr,
   getIdCategory,
   createServiceComment,
-  deleteServiceCommentById,
+  deleteDiverrCommentById,
   editDiverrById,
-  editServiceSolutionById,
-  deleteServiceSolutionById,
-  getServiceCommentById,
-  getServiceComments,
-  editServiceCommentById,
-  getServiceCategories,
-  getServiceStatus,
+  editDiverrSolutionById,
+  deleteDiverrSolutionById,
+  getDiverrCommentById,
+  getDiverrComments,
+  editDiverrCommentById,
+  getDiverrsCategories,
+  getDiverrsStatus,
 };
