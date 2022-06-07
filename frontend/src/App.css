@@ -32,7 +32,7 @@ html {
 }
 .auth li {
   text-decoration: none;
-  margin-left: 2rem;
+  /* margin-left: 2rem; */
 }
 .header-button {
   padding: 0.5rem;
@@ -43,7 +43,6 @@ html {
 .header-button:hover {
   display: flex;
   cursor: pointer;
-  text-align: right;
 }
 
 /*LOGIN PAGE*/
@@ -96,9 +95,9 @@ html {
 
 .search-button {
   background: url("../public/images/lupa.svg") no-repeat center center;
-  width: 32px;
-  height: 32px;
-  transform: translateY(-150%);
+  width: 20px;
+  height: 20px;
+  transform: translateY(-210%);
   border: none;
   margin: 1rem;
   cursor: pointer;
