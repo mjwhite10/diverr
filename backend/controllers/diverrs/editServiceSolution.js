@@ -3,7 +3,7 @@ const {
   getServiceById,
   getServiceSolutionByIdService,
   editServiceSolutionById,
-} = require('../../db/services');
+} = require('../../db/diverrs');
 const {
   generateError,
   createPathIfNotExits,
@@ -13,7 +13,7 @@ const {
 const {
   idServiceSchema,
   editServiceSolutionSchema,
-} = require('../../validators/servicesValidators');
+} = require('../../validators/diverrsValidators');
 
 const editServiceSolution = async (req, res, next) => {
   try {

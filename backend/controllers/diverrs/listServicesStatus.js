@@ -1,4 +1,4 @@
-const { getServiceStatus } = require('../../db/services');
+const { getServiceStatus } = require('../../db/diverrs');
 
 const listServicesStatus = async (req, res, next) => {
   try {

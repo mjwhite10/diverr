@@ -2,11 +2,11 @@ const {
   getServiceById,
   deleteServiceCommentById,
   getServiceCommentById,
-} = require('../../db/services');
+} = require('../../db/diverrs');
 const { generateError } = require('../../helpers');
 const {
   getServiceCommentSchema,
-} = require('../../validators/servicesValidators');
+} = require('../../validators/diverrsValidators');
 
 const deleteServiceComment = async (req, res, next) => {
   try {
