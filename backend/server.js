@@ -21,15 +21,15 @@ const {
   deleteDiverr,
   getDiverrSolution,
   newDiverrSolution,
-  // editServiceSolution,
-  // deleteServiceSolution,
-  // newServiceComment,
-  // getServiceComment,
-  // listServiceComments,
-  // editServiceComment,
-  // deleteServiceComment,
-  // listServicesCategories,
-  // listServicesStatus,
+  editDiverrSolution,
+  deleteDiverrSolution,
+  listDiverrComments,
+  getDiverrComment,
+  newDiverrComment,
+  editDiverrComment,
+  deleteDiverrComment,
+  listDiverrCategories,
+  listDiverrStatus,
 } = require('./controllers/diverrs');
 
 //Middlewares
@@ -58,38 +58,38 @@ app.delete('/users/:idUser', isUser, isAdmin, deleteUser);
 
 //Diverrs endpoints//
 //Diverrs
-app.get('/diverrs', listDiverrs);
-app.get('/diverrs/:idDiverr', getDiverr);
-app.post('/diverrs', isUser, newDiverr);
-app.put('/diverrs/:idDiverr', isUser, editDiverr);
-app.delete('/diverrs/:idDiverr', isUser, deleteDiverr);
+app.get('/diverr', listDiverrs);
+app.get('/diverr/:idDiverr', getDiverr);
+app.post('/diverr', isUser, newDiverr);
+app.put('/diverr/:idDiverr', isUser, editDiverr);
+app.delete('/diverr/:idDiverr', isUser, deleteDiverr);
 //Diverrss solutions
-app.get('/diverrs/:idDiverr/solution', isUser, getDiverrSolution);
-app.post('/diverrs/:idDiverr/solution', isUser, newDiverrSolution);
-// app.put('/diverrs/:idDiverr/solution', isUser, editServiceSolution);
-// app.delete('/diverrs/:idDiverr/solution', isUser, deleteServiceSolution);
-// //Services comments
-// app.post('/diverrs/:idDiverr/comments', isUser, newServiceComment);
-// app.get('/diverrs/:idDiverr/comments/:idComment', getServiceComment);
-// app.get('/diverrs/:idDiverr/comments', listServiceComments);
-// app.put('/diverrs/:idDiverr/comments/:idComment', editServiceComment);
-// app.delete(
-//   '/diverrs/:idDiverr/comments/:idComment',
-//   isUser,
-//   deleteServiceComment
-// );
-// //Services categories
-// app.get('/categories', listServicesCategories);
-// //Services status
-// app.get('/status', listServicesStatus);
-// //Not found Middleware
-// app.use((req, res) => {
-//   console.warn('Error 404 Not Found');
-//   res.status(404).send({
-//     status: 'error',
-//     message: 'Not found',
-//   });
-// });
+app.get('/diverr/:idDiverr/solution', isUser, getDiverrSolution);
+app.post('/diverr/:idDiverr/solution', isUser, newDiverrSolution);
+app.put('/diverr/:idDiverr/solution', isUser, editDiverrSolution);
+app.delete('/diverr/:idDiverr/solution', isUser, deleteDiverrSolution);
+//Services comments
+app.get('/diverr/:idDiverr/comments', listDiverrComments);
+app.get('/diverr/:idDiverr/comments/:idComment', getDiverrComment);
+app.post('/diverr/:idDiverr/comments', isUser, newDiverrComment);
+app.put('/diverr/:idDiverr/comments/:idComment', editDiverrComment);
+app.delete(
+  '/diverr/:idDiverr/comments/:idComment',
+  isUser,
+  deleteDiverrComment
+);
+//Services categories
+app.get('/categories', listDiverrCategories);
+//Services status
+app.get('/status', listDiverrStatus);
+//Not found Middleware
+app.use((req, res) => {
+  console.warn('Error 404 Not Found');
+  res.status(404).send({
+    status: 'error',
+    message: 'Not found',
+  });
+});
 
 //Middlewares de errores
 app.use((error, req, res, next) => {

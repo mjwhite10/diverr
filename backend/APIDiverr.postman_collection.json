@@ -1,8 +1,9 @@
 {
 	"info": {
 		"_postman_id": "4423e85f-f6ef-4c26-8e5b-a27ec5299a13",
-		"name": "APIFiverr",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"name": "APIDiverr",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19335323"
 	},
 	"item": [
 		{
@@ -15,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"manublanco@hackaboss.com\",\r\n    \"password\": \"1234\",\r\n    \"name\": \"Manu\"\r\n}",
+							"raw": "{\r\n    \"email\": \"manu2@hackaboss.com\",\r\n    \"password\": \"1234\",\r\n    \"name\": \"Manu\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -42,7 +43,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"manu@hackaboss.com\",\r\n    \"password\": \"node\"\r\n}",
+							"raw": "{\r\n    \"email\": \"luna@hackaboss.com\",\r\n    \"password\": \"node\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -70,7 +71,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTY3MDY4LCJleHAiOjE2NTQxNTkwNjh9.Y4k55wX7PP54hBo5S3GsBm7E7O3lFi-VLu716bPXo_Y",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTEzMjUxLCJleHAiOjE2NTcxMDUyNTF9.CYSHKZKTsY2rKwHKD5QeBPG1S9jo1WNsz4hRWSCs9y0",
 								"type": "text"
 							}
 						],
@@ -79,7 +80,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "manublanco@hackaboss.com",
+									"value": "manubla@hackaboss.com",
 									"type": "text"
 								},
 								{
@@ -120,19 +121,19 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTg1MDcwLCJleHAiOjE2NTQxNzcwNzB9.2DDtxsSaDYd0OM6hcBfvP9SW2_1sFxidlgqkF7hb20A",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTEzMjUxLCJleHAiOjE2NTcxMDUyNTF9.CYSHKZKTsY2rKwHKD5QeBPG1S9jo1WNsz4hRWSCs9y0",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/users/2",
+							"raw": "localhost:3000/users/13",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"users",
-								"2"
+								"13"
 							]
 						}
 					},
@@ -145,7 +146,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTY3NDQyLCJleHAiOjE2NTQxNTk0NDJ9.hpgHwbC3jnyqfCPPxGIwh-P5FlCKPku2mySnCXFbndU",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTEzMjUxLCJleHAiOjE2NTcxMDUyNTF9.CYSHKZKTsY2rKwHKD5QeBPG1S9jo1WNsz4hRWSCs9y0",
 								"type": "text"
 							}
 						],
@@ -170,7 +171,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE2NTE1ODQ1MjMsImV4cCI6MTY1NDE3NjUyM30.NKlnJphBxvtjFqqfRXhYr739UPTrp65ZvI94QbBXjN4",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTEzMjUxLCJleHAiOjE2NTcxMDUyNTF9.CYSHKZKTsY2rKwHKD5QeBPG1S9jo1WNsz4hRWSCs9y0",
 								"type": "text"
 							}
 						],
@@ -184,14 +185,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/users/13/password",
+							"raw": "localhost:3000/users/15/password",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"users",
-								"13",
+								"15",
 								"password"
 							]
 						}
@@ -202,10 +203,10 @@
 			"description": "En esta carpeta se añaden todos los endpoints de usuarios"
 		},
 		{
-			"name": "Services",
+			"name": "Diverrs",
 			"item": [
 				{
-					"name": "List Services",
+					"name": "List Diverrs",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -222,22 +223,24 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/services?direction=desc&order=status",
+							"raw": "localhost:3000/diverr",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"services"
+								"diverr"
 							],
 							"query": [
 								{
 									"key": "direction",
-									"value": "desc"
+									"value": "desc",
+									"disabled": true
 								},
 								{
 									"key": "order",
-									"value": "status"
+									"value": "status",
+									"disabled": true
 								},
 								{
 									"key": "search",
@@ -250,7 +253,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Service",
+					"name": "Get Diverr",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -262,13 +265,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost:3000/services/1",
+							"raw": "localhost:3000/diverr/1",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"services",
+								"diverr",
 								"1"
 							]
 						}
@@ -276,13 +279,13 @@
 					"response": []
 				},
 				{
-					"name": "New Service",
+					"name": "New Diverr",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTg0OTUyLCJleHAiOjE2NTQxNzY5NTJ9.55aBOEewQZeQlMJLNz6laoq6Gxfsmvwd-ppM1vwfjMQ",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTkzNDk1LCJleHAiOjE2NTcxODU0OTV9.lHzzES1b0zAFGEHrgXqnD4ljSTgax-P6SJFOY32YGJo",
 								"type": "text"
 							}
 						],
@@ -305,33 +308,43 @@
 									"type": "text"
 								},
 								{
-									"key": "serviceFile",
+									"key": "file",
 									"type": "file",
-									"src": "/E:/HACKABOSS/APIFiverr/testing/services_files/file6.docx"
+									"src": "/C:/Users/Equipo/Desktop/Buen trabajo en equipo.docx"
+								},
+								{
+									"key": "picture",
+									"type": "file",
+									"src": "/E:/HACKABOSS/ProyectoFinal/diverr/backend/testing/portadas/image9.jpg"
+								},
+								{
+									"key": "price",
+									"value": "50.5",
+									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/services",
+							"raw": "localhost:3000/diverr",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"services"
+								"diverr"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Edit Service",
+					"name": "Edit Diverr",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTg0OTUyLCJleHAiOjE2NTQxNzY5NTJ9.55aBOEewQZeQlMJLNz6laoq6Gxfsmvwd-ppM1vwfjMQ",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTMxOTgwLCJleHAiOjE2NTcxMjM5ODB9.S1NqSuq6FNQ9HT3scaTuFy5fXrmyFxhdDjHf4zAIUcU",
 								"type": "text"
 							}
 						],
@@ -354,20 +367,30 @@
 									"type": "text"
 								},
 								{
-									"key": "serviceFile",
+									"key": "file",
 									"type": "file",
-									"src": "/C:/Users/Equipo/Desktop/Portal de necesidades.pdf"
+									"src": "/C:/Users/Equipo/Pictures/star-wars-1440p-wallpaper-clone-trooper-star-wars-hd-t1-2560x1440.jpg"
+								},
+								{
+									"key": "picture",
+									"type": "file",
+									"src": "/C:/Users/Equipo/Pictures/star-wars-1440p-wallpaper-clone-trooper-star-wars-hd-t1-2560x1440.jpg"
+								},
+								{
+									"key": "price",
+									"value": "200.1",
+									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/services/6",
+							"raw": "localhost:3000/diverr/6",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"services",
+								"diverr",
 								"6"
 							]
 						}
@@ -381,18 +404,18 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTg0OTUyLCJleHAiOjE2NTQxNzY5NTJ9.55aBOEewQZeQlMJLNz6laoq6Gxfsmvwd-ppM1vwfjMQ",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTMxOTgwLCJleHAiOjE2NTcxMjM5ODB9.S1NqSuq6FNQ9HT3scaTuFy5fXrmyFxhdDjHf4zAIUcU",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/services/6",
+							"raw": "localhost:3000/diverr/6",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"services",
+								"diverr",
 								"6"
 							]
 						}
@@ -400,25 +423,25 @@
 					"response": []
 				},
 				{
-					"name": "Get Service Solution",
+					"name": "Get Diverr Solution",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTg0OTUyLCJleHAiOjE2NTQxNzY5NTJ9.55aBOEewQZeQlMJLNz6laoq6Gxfsmvwd-ppM1vwfjMQ",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTkzNDk1LCJleHAiOjE2NTcxODU0OTV9.lHzzES1b0zAFGEHrgXqnD4ljSTgax-P6SJFOY32YGJo",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/services/1/solution",
+							"raw": "localhost:3000/diverr/6/solution",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"services",
-								"1",
+								"diverr",
+								"6",
 								"solution"
 							]
 						}
@@ -426,13 +449,13 @@
 					"response": []
 				},
 				{
-					"name": "New Service Solution",
+					"name": "New Diverr Solution",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE2NTE1Njg0MjYsImV4cCI6MTY1NDE2MDQyNn0.BAkWHTP40SaJUEqhXJiY7u_XZ6ERpEZEoqEEkFa0W38",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTkzNTQ3LCJleHAiOjE2NTcxODU1NDd9.HPPnspdFnqH2d-Y2A1oNEaBErg8WKAZ6vYPTpyq9_qA",
 								"type": "text"
 							}
 						],
@@ -447,14 +470,14 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/services/1/solution",
+							"raw": "localhost:3000/diverr/6/solution",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"services",
-								"1",
+								"diverr",
+								"6",
 								"solution"
 							]
 						}
@@ -462,13 +485,13 @@
 					"response": []
 				},
 				{
-					"name": "Edit Service Solution",
+					"name": "Edit Diverr Solution",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTg1MDcwLCJleHAiOjE2NTQxNzcwNzB9.2DDtxsSaDYd0OM6hcBfvP9SW2_1sFxidlgqkF7hb20A",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTk4OTM5LCJleHAiOjE2NTcxOTA5Mzl9.FGG4EuzT5BiXmc2118Y4eBS28FlSiq6_7isqnLDTQYI",
 								"type": "text"
 							}
 						],
@@ -483,20 +506,19 @@
 								{
 									"key": "solutionFile",
 									"type": "file",
-									"src": [],
-									"disabled": true
+									"src": "/C:/Users/Equipo/Pictures/star-wars-1440p-wallpaper-clone-trooper-star-wars-hd-t1-2560x1440.jpg"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/services/1/solution",
+							"raw": "localhost:3000/diverr/5/solution",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"services",
-								"1",
+								"diverr",
+								"5",
 								"solution"
 							]
 						}
@@ -504,25 +526,25 @@
 					"response": []
 				},
 				{
-					"name": "Delete Service Solution",
+					"name": "Delete Diverr Solution",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTY4MjExLCJleHAiOjE2NTQxNjAyMTF9.2m4JfOF_BdKaO2NUq54Yxzk_ywWxrEwprzIQ8s30SJQ",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTk4OTM5LCJleHAiOjE2NTcxOTA5Mzl9.FGG4EuzT5BiXmc2118Y4eBS28FlSiq6_7isqnLDTQYI",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/services/3/solution",
+							"raw": "localhost:3000/diverr/5/solution",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"services",
-								"3",
+								"diverr",
+								"5",
 								"solution"
 							]
 						}
@@ -530,18 +552,18 @@
 					"response": []
 				},
 				{
-					"name": "List Service Comments",
+					"name": "List Diverr Comments",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/services/3/comments",
+							"raw": "localhost:3000/diverr/3/comments",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"services",
+								"diverr",
 								"3",
 								"comments"
 							]
@@ -550,7 +572,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Service Comment",
+					"name": "Get Diverr Comment",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -562,14 +584,14 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/services/2/comments/76",
+							"raw": "localhost:3000/diverr/6/comments/76",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"services",
-								"2",
+								"diverr",
+								"6",
 								"comments",
 								"76"
 							]
@@ -578,13 +600,13 @@
 					"response": []
 				},
 				{
-					"name": "New Service Comment",
+					"name": "New Diverr Comment",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTY4MjExLCJleHAiOjE2NTQxNjAyMTF9.2m4JfOF_BdKaO2NUq54Yxzk_ywWxrEwprzIQ8s30SJQ",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NjAwODIwLCJleHAiOjE2NTcxOTI4MjB9.FQAlsNuXVnEheDNBjOU1rsv1l2FvDK7A1bZcn7A8meA",
 								"type": "text"
 							}
 						],
@@ -598,14 +620,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/services/2/comments",
+							"raw": "localhost:3000/diverr/6/comments",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"services",
-								"2",
+								"diverr",
+								"6",
 								"comments"
 							]
 						}
@@ -619,7 +641,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTY4MjExLCJleHAiOjE2NTQxNjAyMTF9.2m4JfOF_BdKaO2NUq54Yxzk_ywWxrEwprzIQ8s30SJQ",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NjAwODIwLCJleHAiOjE2NTcxOTI4MjB9.FQAlsNuXVnEheDNBjOU1rsv1l2FvDK7A1bZcn7A8meA",
 								"type": "text"
 							}
 						],
@@ -633,14 +655,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/services/2/comments/76",
+							"raw": "localhost:3000/diverr/6/comments/76",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"services",
-								"2",
+								"diverr",
+								"6",
 								"comments",
 								"76"
 							]
@@ -655,28 +677,28 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTY4MjExLCJleHAiOjE2NTQxNjAyMTF9.2m4JfOF_BdKaO2NUq54Yxzk_ywWxrEwprzIQ8s30SJQ",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NjAwODIwLCJleHAiOjE2NTcxOTI4MjB9.FQAlsNuXVnEheDNBjOU1rsv1l2FvDK7A1bZcn7A8meA",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/services/3/comments/31",
+							"raw": "localhost:3000/diverr/6/comments/77",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"services",
-								"3",
+								"diverr",
+								"6",
 								"comments",
-								"31"
+								"77"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "List Service Categories",
+					"name": "List Diverrs Categories",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -694,18 +716,17 @@
 					"response": []
 				},
 				{
-					"name": "List Service Status",
+					"name": "List Diverrs Status",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/services/status",
+							"raw": "localhost:3000/status",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"services",
 								"status"
 							]
 						}

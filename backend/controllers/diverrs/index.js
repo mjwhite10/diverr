@@ -5,15 +5,15 @@ const { editDiverr } = require('./editDiverr');
 const { deleteDiverr } = require('./deleteDiverr');
 const { newDiverrSolution } = require('./newDiverrSolution');
 const { getDiverrSolution } = require('./getDiverrSolution');
-const { editServiceSolution } = require('./editServiceSolution');
-const { deleteServiceSolution } = require('./deleteServiceSolution');
-const { newServiceComment } = require('./newServiceComment');
-const { getServiceComment } = require('./getServiceComment');
-const { listServiceComments } = require('./listServiceComments');
-const { editServiceComment } = require('./editServiceComment');
-const { deleteServiceComment } = require('./deleteServiceComment');
-const { listServicesCategories } = require('./listServicesCategories');
-const { listServicesStatus } = require('./listServicesStatus');
+const { editDiverrSolution } = require('./editDiverrSolution');
+const { deleteDiverrSolution } = require('./deleteDiverrSolution');
+const { newDiverrComment } = require('./newDiverrComment');
+const { getDiverrComment } = require('./getDiverrComment');
+const { listDiverrComments } = require('./listDiverrComments');
+const { editDiverrComment } = require('./editDiverrComment');
+const { deleteDiverrComment } = require('./deleteDiverrComment');
+const { listDiverrCategories } = require('./listDiverrCategories');
+const { listDiverrStatus } = require('./listDiverrStatus');
 module.exports = {
   listDiverrs,
   getDiverr,
@@ -22,13 +22,13 @@ module.exports = {
   deleteDiverr,
   newDiverrSolution,
   getDiverrSolution,
-  editServiceSolution,
-  deleteServiceSolution,
-  newServiceComment,
-  getServiceComment,
-  listServiceComments,
-  editServiceComment,
-  deleteServiceComment,
-  listServicesCategories,
-  listServicesStatus,
+  editDiverrSolution,
+  deleteDiverrSolution,
+  newDiverrComment,
+  getDiverrComment,
+  listDiverrComments,
+  editDiverrComment,
+  deleteDiverrComment,
+  listDiverrCategories,
+  listDiverrStatus,
 };

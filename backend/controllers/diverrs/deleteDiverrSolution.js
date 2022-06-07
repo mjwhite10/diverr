@@ -1,26 +1,26 @@
 const path = require('path');
 const {
-  getServiceSolutionByIdService,
-  getServiceById,
-  deleteServiceSolutionById,
+  getDiverrSolutionById,
+  getDiverrById,
+  deleteDiverrSolutionById,
 } = require('../../db/diverrs');
 const { generateError, deleteFile } = require('../../helpers');
-const { idServiceSchema } = require('../../validators/diverrsValidators');
+const { idDiverrSchema } = require('../../validators/diverrsValidators');
 
-const deleteServiceSolution = async (req, res, next) => {
+const deleteDiverrSolution = async (req, res, next) => {
   try {
     //Validamos los parametros
-    await idServiceSchema.validateAsync(req.params);
-    const { idService } = req.params;
+    await idDiverrSchema.validateAsync(req.params);
+    const { idDiverr } = req.params;
 
-    //Comprobamos que existe el servicio
-    await getServiceById(idService);
+    //Comprobamos que existe el diverr
+    await getDiverrById(idDiverr);
 
     //Comprobamos que existe la solucion
-    const solution = await getServiceSolutionByIdService(idService);
+    const solution = await getDiverrSolutionById(idDiverr);
     if (!solution)
       throw generateError(
-        `El servicio con id ${idService} no tiene asignada ninguna solución`,
+        `El diverr con id ${idDiverr} no tiene asignada ninguna solución`,
         404
       );
 
@@ -38,14 +38,14 @@ const deleteServiceSolution = async (req, res, next) => {
     if (solution.file) await deleteFile(path.join(uploadPath, solution.file));
 
     //Eliminamos la solución
-    await deleteServiceSolutionById(idService);
+    await deleteDiverrSolutionById(idDiverr);
     res.send({
       status: 'Ok',
-      message: `Se eliminó la solución asignada al servicio con id ${idService}`,
+      message: `Se eliminó la solución asignada al diverr con id ${idDiverr}`,
     });
   } catch (error) {
     next(error);
   }
 };
 
-module.exports = { deleteServiceSolution };
+module.exports = { deleteDiverrSolution };
