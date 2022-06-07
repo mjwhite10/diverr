@@ -9,13 +9,14 @@ const SearchBar = () => {
     setQuery(e.target.value);
   };
   return (
-    <form>
-      <input
-        placeholder="¿Que estás buscando hoy?"
+    <form >
+      <input 
+        className="search-container"
+        placeholder="Buscar servicios"
         value={query}
         onChange={onChangeBar}
       ></input>
-      <button className="button"></button>
+      <button className="search-button"></button>
     </form>
   );
 };

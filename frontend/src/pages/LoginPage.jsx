@@ -19,7 +19,7 @@ const LoginPage = () => {
           error={errorEmail}
           type={'text'}
         />
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Contraseña</label>
         <InputFieldForm
           className="inputField"
           id={'password'}
