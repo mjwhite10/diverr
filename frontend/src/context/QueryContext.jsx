@@ -4,27 +4,47 @@ import { getAllDiverrsService } from '../services/diverrService';
 const QueryContext = createContext();
 
 const QueryContextProviderComponent = ({ children }) => {
-  const [query, setQuery] = useState('');
+  const [search, setSearch] = useState('');
+  const [order, setOrder] = useState('');
+  const [direction, setDirection] = useState('');
   const [result, setResult] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   useEffect(() => {
-    const loadDiverrs = async () => {
+    const loadData = async () => {
       try {
-        const queryParam = query ? `?search=${query}` : '';
+        setLoading(true);
+        let queryParam = '';
+        queryParam += search ? `${search}` : '';
+        queryParam += order ? `${order}` : '';
+        queryParam += direction ? `${direction}` : '';
+        if (queryParam !== '') {
+          queryParam = '?' + queryParam;
+        }
         const data = await getAllDiverrsService(queryParam);
         setResult(data);
       } catch (error) {
+        setError(error);
       } finally {
+        setLoading(false);
       }
     };
-    loadDiverrs();
-  }, [query]);
+    loadData();
+  }, [search, order, direction]);
 
   const searchText = (text) => {
-    setQuery(text);
+    text ? setSearch(`search=${text}`) : setSearch('');
   };
-  const clearQuery = () => setQuery('');
+  const orderBy = (order) => {
+    order ? setOrder(`order=${order}`) : setOrder('');
+  };
+  const queryDirection = (direction) => {
+    direction ? setDirection(`direction=${direction}`) : setDirection('');
+  };
   return (
-    <QueryContext.Provider value={{ searchText, clearQuery, result }}>
+    <QueryContext.Provider
+      value={{ searchText, orderBy, queryDirection, loading, error, result }}
+    >
       {children}
     </QueryContext.Provider>
   );

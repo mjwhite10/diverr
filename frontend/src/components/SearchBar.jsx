@@ -5,6 +5,7 @@ const SearchBar = ({ location }) => {
   const [value, setValue] = useState('');
   const { searchText } = useContext(QueryContext);
 
+  //Cuando damos click o hacemos enter, pasamos al contexto la query
   const handleForm = async (e) => {
     e.preventDefault();
     searchText(value);

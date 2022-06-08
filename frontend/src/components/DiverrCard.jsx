@@ -6,6 +6,7 @@ const DiverrCard = ({ diverr }) => {
         alt={diverr.title}
       ></img>
       <p>{diverr.title}</p>
+      <p>{diverr.category}</p>
     </article>
   );
 };

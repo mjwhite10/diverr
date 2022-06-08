@@ -5,12 +5,11 @@ import { useContext } from 'react';
 import { QueryContext } from '../context/QueryContext';
 
 const HomePage = () => {
-  const { result } = useContext(QueryContext);
-  // const { loading, diverrs, error } = useDiverrs();
-  // //Si sigue cargando devuelvo párrafo
-  // if (loading) return <p>cargando diverrs...</p>;
-  // //Si hay error devuelvo mensaje
-  // if (error) return <ErrorMessage message={error.message} />;
+  const { result, error, loading } = useContext(QueryContext);
+  //Si sigue cargando devuelvo párrafo
+  if (loading) return <p>cargando diverrs...</p>;
+  //Si hay error devuelvo mensaje
+  if (error) return <ErrorMessage message={error.message} />;
   //Si se cargaron los diverrs cargo la lista de tweets
   return (
     <section>
