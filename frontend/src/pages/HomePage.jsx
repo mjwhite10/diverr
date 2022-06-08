@@ -1,9 +1,11 @@
 import ErrorMessage from '../components/ErrorMessage';
 import DiverrsList from '../components/DiverrsList';
-import useDiverrs from '../hooks/useDiverr';
+import { useContext } from 'react';
+import { QueryContext } from '../context/QueryContext';
+import OrderByMenu from '../components/OrderByMenu';
 
 const HomePage = () => {
-  const { loading, diverrs, error } = useDiverrs();
+  const { result, error, loading } = useContext(QueryContext);
   //Si sigue cargando devuelvo párrafo
   if (loading) return <p>cargando diverrs...</p>;
   //Si hay error devuelvo mensaje
@@ -11,7 +13,7 @@ const HomePage = () => {
   //Si se cargaron los diverrs cargo la lista de tweets
   return (
     <section>
-      <DiverrsList diverrs={diverrs} />
+      <DiverrsList diverrs={result} />
     </section>
   );
 };

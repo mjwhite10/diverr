@@ -24,6 +24,9 @@ const listDiverrs = async (req, res, next) => {
       case 'category':
         orderBy = 'idCategory';
         break;
+      case 'price':
+        orderBy = 'price';
+        break;
       default:
         orderBy = 'createdAt';
         break;

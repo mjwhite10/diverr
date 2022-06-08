@@ -19,8 +19,8 @@ const searchDiverrs = async (search, orderBy, orderDirection) => {
           ON D.idStatus = DS.id
           INNER JOIN users AS U
           ON D.idUser = U.id
-          WHERE S.title LIKE '%${search}%' OR info LIKE '%${search}%'
-          ORDER BY ${orderBy} ${orderDirection}`
+          WHERE D.title LIKE '%${search}%' OR D.info LIKE '%${search}%'
+          ORDER BY D.${orderBy} ${orderDirection}`
       );
     } else {
       queryResults = await connection.query(
@@ -33,7 +33,7 @@ const searchDiverrs = async (search, orderBy, orderDirection) => {
           ON D.idStatus = DS.id
           INNER JOIN users AS U
           ON D.idUser = U.id
-          ORDER BY ${orderBy} ${orderDirection}`
+          ORDER BY D.${orderBy} ${orderDirection}`
       );
     }
     //Extraemos los resultados en un array

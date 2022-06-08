@@ -1,6 +1,7 @@
 //Función que hace una petición httpGet cualquiera.
 // Puede requerir cabecera de autentificación
 const httpGet = async (url, token = null) => {
+  console.log(`${process.env.REACT_APP_BACKEND}${url}`);
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}${url}`,
     token
