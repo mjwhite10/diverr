@@ -19,7 +19,7 @@ const searchDiverrs = async (search, orderBy, orderDirection) => {
           ON D.idStatus = DS.id
           INNER JOIN users AS U
           ON D.idUser = U.id
-          WHERE S.title LIKE '%${search}%' OR info LIKE '%${search}%'
+          WHERE D.title LIKE '%${search}%' OR D.info LIKE '%${search}%'
           ORDER BY ${orderBy} ${orderDirection}`
       );
     } else {

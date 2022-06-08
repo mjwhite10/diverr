@@ -1,6 +1,6 @@
 import DiverrCard from './DiverrCard';
 
-const List = ({ diverrs }) => {
+const DiverrsList = ({ diverrs }) => {
   return (
     <ul className="diverrList">
       {diverrs.map((d) => {
@@ -13,4 +13,4 @@ const List = ({ diverrs }) => {
     </ul>
   );
 };
-export default List;
+export default DiverrsList;
