@@ -11,6 +11,7 @@ const {
   getRandomAvatar,
   deleteFile,
   getRandomFile,
+  getRandomCover,
 } = require('../helpers');
 const { getConnection } = require('./getDB');
 
@@ -22,11 +23,11 @@ async function main() {
     connection = await getConnection();
 
     console.log('Borrando las tablas existentes...');
-    await connection.query('DROP TABLE IF EXISTS services_comments');
-    await connection.query('DROP TABLE IF EXISTS services_solution');
-    await connection.query('DROP TABLE IF EXISTS services');
-    await connection.query('DROP TABLE IF EXISTS services_status');
-    await connection.query('DROP TABLE IF EXISTS services_categories');
+    await connection.query('DROP TABLE IF EXISTS diverrs_comments');
+    await connection.query('DROP TABLE IF EXISTS diverrs_solution');
+    await connection.query('DROP TABLE IF EXISTS diverrs');
+    await connection.query('DROP TABLE IF EXISTS diverrs_status');
+    await connection.query('DROP TABLE IF EXISTS diverrs_categories');
     await connection.query('DROP TABLE IF EXISTS users');
 
     console.log('Creando la tabla users');
@@ -44,107 +45,118 @@ async function main() {
             lastAuthUpdate DATETIME NOT NULL
         );`);
 
-    console.log('Creando la tabla services_categories');
+    console.log('Creando la tabla diverrs_categories');
     await connection.query(`
-        CREATE TABLE services_categories (
+        CREATE TABLE diverrs_categories (
             id INTEGER PRIMARY KEY AUTO_INCREMENT,
             description VARCHAR(100) NOT NULL
         );`);
 
-    console.log('Creando la tabla services_status');
+    console.log('Creando la tabla diverrs_status');
     await connection.query(`
-        CREATE TABLE services_status (
+        CREATE TABLE diverrs_status (
             id INTEGER PRIMARY KEY AUTO_INCREMENT,
             description VARCHAR(100) NOT NULL
         );`);
 
-    console.log('Creando la tabla services');
+    console.log('Creando la tabla diverrs');
     await connection.query(`
-        CREATE TABLE services (
+        CREATE TABLE diverrs (
             id INTEGER PRIMARY KEY AUTO_INCREMENT,
             idUser INTEGER NOT NULL,
             title VARCHAR(100) NOT NULL,
             info VARCHAR(500) NOT NULL,
             file VARCHAR(100),
+            picture VARCHAR(100),
+            price DOUBLE NOT NULL,
             idStatus INTEGER NOT NULL,
             idCategory INTEGER NOT NULL,
             createdAt DATETIME NOT NULL,
             modifiedAt DATETIME,
             FOREIGN KEY (idUser) REFERENCES users(id),
-            FOREIGN KEY (idStatus) REFERENCES services_status(id),
-            FOREIGN KEY (idCategory) REFERENCES services_categories(id)
+            FOREIGN KEY (idStatus) REFERENCES diverrs_status(id),
+            FOREIGN KEY (idCategory) REFERENCES diverrs_categories(id)
             );`);
 
-    console.log('Creando la tabla services_solution');
+    console.log('Creando la tabla diverrs_solution');
     await connection.query(`
-        CREATE TABLE services_solution (
+        CREATE TABLE diverrs_solution (
            id INTEGER PRIMARY KEY AUTO_INCREMENT,
-           idService INTEGER UNIQUE NOT NULL,
+           idDiverr INTEGER UNIQUE NOT NULL,
            idUser INTEGER NOT NULL,
            file VARCHAR (100),
            startedAt DATETIME NOT NULL,
            finishedAt DATETIME,
-           FOREIGN KEY (idService) REFERENCES services(id),
+           markAsFinished TINYINT NOT NULL DEFAULT 0,
+           FOREIGN KEY (idDiverr) REFERENCES diverrs(id),
            FOREIGN KEY (idUser) REFERENCES users(id)
            );`);
 
-    console.log('Creando la tabla services_comments');
+    console.log('Creando la tabla diverrs_comments');
     await connection.query(`
-        CREATE TABLE services_comments (
+        CREATE TABLE diverrs_comments (
           id INTEGER PRIMARY KEY AUTO_INCREMENT,
           content VARCHAR (280) NOT NULL,
           idUser INTEGER NOT NULL,
-          idService INTEGER NOT NULL,
+          idDiverr INTEGER NOT NULL,
           createdAt DATETIME NOT NULL,
           modifiedAt DATETIME,
           FOREIGN KEY (idUser) REFERENCES users(id),
-          FOREIGN KEY (idService) REFERENCES services(id)
+          FOREIGN KEY (idDiverr) REFERENCES diverrs(id)
     );`);
 
-    console.log('Creando usuarios...');
-
     console.log('Creando usuarios administradores');
-    const adminPassHash = await bcrypt.hash(
-      process.env.DEFAULT_ADMIN_PASSWORD,
-      8
-    );
 
     const uploadAvatarPath = path.join(__dirname, '../uploads/avatar');
-    const uploadServicesPath = path.join(__dirname, '../uploads/services');
+    const uploadDiverrsPath = path.join(__dirname, '../uploads/diverrs');
     const uploadSolutionsPath = path.join(__dirname, '../uploads/solutions');
+    const uploadCoverPath = path.join(__dirname, '../uploads/covers');
 
     await deleteFile(uploadAvatarPath);
-    await deleteFile(uploadServicesPath);
+    await deleteFile(uploadDiverrsPath);
     await deleteFile(uploadSolutionsPath);
+    await deleteFile(uploadCoverPath);
 
     await createPathIfNotExits(uploadAvatarPath);
-    await createPathIfNotExits(uploadServicesPath);
+    await createPathIfNotExits(uploadDiverrsPath);
     await createPathIfNotExits(uploadSolutionsPath);
+    await createPathIfNotExits(uploadCoverPath);
 
     const avatar1 = await getRandomAvatar();
     const avatar2 = await getRandomAvatar();
+    const avatar3 = await getRandomAvatar();
     const fileAdmin1 = await processAndSaveImage(avatar1, uploadAvatarPath);
     const fileAdmin2 = await processAndSaveImage(avatar2, uploadAvatarPath);
+    const fileAdmin3 = await processAndSaveImage(avatar3, uploadAvatarPath);
 
     await connection.query(
       `
       INSERT INTO users (email,password,name,bio,role,lastAuthUpdate,avatar,modifiedAt,createdAt)
-      VALUES('luna@hackaboss.com', ?, 'Luna', 'Lorem ipsum','admin',UTC_TIMESTAMP,?,UTC_TIMESTAMP,UTC_TIMESTAMP)
+      VALUES('luna@hackaboss.com', ?, 'Luna', 'Lorem fistrum','admin',UTC_TIMESTAMP,?,UTC_TIMESTAMP,UTC_TIMESTAMP)
     `,
-      [adminPassHash, fileAdmin1]
+      [await bcrypt.hash(process.env.DEFAULT_ADMIN_PASSWORD, 8), fileAdmin1]
     );
     await connection.query(
       `
       INSERT INTO users (email,password,name,bio,role,lastAuthUpdate,avatar,modifiedAt,createdAt)
-      VALUES('manu@hackaboss.com', ?, 'Manu', 'Lorem ipsum','admin',UTC_TIMESTAMP,?,UTC_TIMESTAMP,UTC_TIMESTAMP)
+      VALUES('manu@hackaboss.com', ?, 'Manu', 'Lorem fistrum','admin',UTC_TIMESTAMP,?,UTC_TIMESTAMP,UTC_TIMESTAMP)
     `,
-      [adminPassHash, fileAdmin2]
+      [await bcrypt.hash(process.env.DEFAULT_ADMIN_PASSWORD, 8), fileAdmin2]
     );
+    await connection.query(
+      `
+      INSERT INTO users (email,password,name,bio,role,lastAuthUpdate,avatar,modifiedAt,createdAt)
+      VALUES('javi@hackaboss.com', ?, 'Javier', 'Lorem fistrum','admin',UTC_TIMESTAMP,?,UTC_TIMESTAMP,UTC_TIMESTAMP)
+    `,
+      [await bcrypt.hash(process.env.DEFAULT_ADMIN_PASSWORD, 8), fileAdmin3]
+    );
+
+    console.log('Creando usuarios normales...');
     const users = 10;
 
     for (let index = 0; index < users; index++) {
       const email = faker.internet.email();
-      const password = await bcrypt.hash(faker.internet.password(), 8);
+      const password = await bcrypt.hash(process.env.DEFAULT_USER_PASSWORD, 8);
       const name = faker.name.findName();
       const bio = faker.lorem.sentences();
       const avatar = await getRandomAvatar();
@@ -157,22 +169,22 @@ async function main() {
       );
     }
 
-    console.log('Creando status para los servicios...');
+    console.log('Creando status para los diverrs...');
 
-    const services_status = ['Unassigned', 'Assigned', 'Completed'];
+    const diverr_status = ['Unassigned', 'Assigned', 'Completed'];
 
-    for (let index = 0; index < services_status.length; index++) {
+    for (let index = 0; index < diverr_status.length; index++) {
       await connection.query(
         `
-        INSERT INTO services_status (description)
+        INSERT INTO diverrs_status (description)
         VALUES (?)`,
-        [services_status[index]]
+        [diverr_status[index]]
       );
     }
 
-    console.log('Creando las categorias de los servicios...');
+    console.log('Creando las categorias de los diverrs...');
 
-    const services_categories = [
+    const diverrs_categories = [
       'Graphic arts and design',
       'Digital marketing',
       'Writing and translation',
@@ -184,42 +196,44 @@ async function main() {
       'Trends',
     ];
 
-    for (let index = 0; index < services_categories.length; index++) {
+    for (let index = 0; index < diverrs_categories.length; index++) {
       await connection.query(
         `
-        INSERT INTO services_categories (description)
+        INSERT INTO diverrs_categories (description)
         VALUES (?)`,
-        [services_categories[index]]
+        [diverrs_categories[index]]
       );
     }
 
-    const services = 5;
+    const diverrs = 50;
 
-    console.log('Creando servicios...');
-    for (let i = 0; i < services; i++) {
+    console.log('Creando diverrs...');
+    for (let i = 0; i < diverrs; i++) {
       //SERVICIOS
       const [users] = await connection.query('SELECT COUNT(*) FROM users');
       const [categories] = await connection.query(
-        'SELECT COUNT(*) FROM services_categories'
+        'SELECT COUNT(*) FROM diverrs_categories'
       );
 
       const idUser = Math.floor(1 + Math.random() * users[0]['COUNT(*)']);
       const title = faker.lorem.word();
       const info = faker.lorem.sentence();
-      const service = await getRandomFile();
+      const diverr = await getRandomFile();
       //Generamos el nombre único con el que se guardará el archivo
-      const serviceName = `${uuid.v4()}${path.extname(service)}`;
+      const diverName = `${uuid.v4()}${path.extname(diverr)}`;
       //Copiamos y renombramos el archivo con el uuid
-      await fs.copyFile(service, path.join(uploadServicesPath, serviceName));
+      await fs.copyFile(diverr, path.join(uploadDiverrsPath, diverName));
       const idCategory = Math.floor(
         1 + Math.random() * categories[0]['COUNT(*)']
       );
-
+      const price = Math.floor(1 + Math.random() * 1000);
+      const picture = await getRandomCover();
+      const coverImage = await processAndSaveImage(picture, uploadCoverPath);
       const [result] = await connection.query(
         `
-        INSERT INTO services (idUser,title,info,file,idStatus,idCategory,createdAt)
-        VALUES (?,?,?,?,2,?,UTC_TIMESTAMP)`,
-        [idUser, title, info, serviceName, idCategory]
+        INSERT INTO diverrs (idUser,title,info,file,idStatus,idCategory,createdAt,picture,price)
+        VALUES (?,?,?,?,2,?,UTC_TIMESTAMP,?,?)`,
+        [idUser, title, info, diverName, idCategory, coverImage, price]
       );
 
       //COMENTARIOS
@@ -231,7 +245,7 @@ async function main() {
 
         await connection.query(
           `
-        INSERT INTO services_comments(idUser,idService,content,createdAt)
+        INSERT INTO diverrs_comments(idUser,idDiverr,content,createdAt)
         VALUES(?,?,?,UTC_TIMESTAMP)
         `,
           [idUserComment, result.insertId, content]
@@ -248,12 +262,12 @@ async function main() {
       //Generamos el nombre único con el que se guardará el archivo
       const solutionName = `${uuid.v4()}${path.extname(solution)}`;
       //Copiamos y renombramos el archivo con el uuid
-      await fs.copyFile(service, path.join(uploadSolutionsPath, solutionName));
+      await fs.copyFile(diverr, path.join(uploadSolutionsPath, solutionName));
 
       await connection.query(
         `
-        INSERT INTO services_solution (idUser,idService,file,startedAt)
-        VALUES (?,?,?,UTC_TIMESTAMP)`,
+        INSERT INTO diverrs_solution (idUser,idDiverr,file,startedAt,markAsFinished)
+        VALUES (?,?,?,UTC_TIMESTAMP,0)`,
         [
           idUserSolution,
           result.insertId,

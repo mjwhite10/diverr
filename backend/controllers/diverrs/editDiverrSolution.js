@@ -1,9 +1,9 @@
 const path = require('path');
 const {
-  getServiceById,
-  getServiceSolutionByIdService,
-  editServiceSolutionById,
-} = require('../../db/services');
+  getDiverrById,
+  getDiverrSolutionById,
+  editDiverrSolutionById,
+} = require('../../db/diverrs');
 const {
   generateError,
   createPathIfNotExits,
@@ -11,27 +11,27 @@ const {
   deleteFile,
 } = require('../../helpers');
 const {
-  idServiceSchema,
-  editServiceSolutionSchema,
-} = require('../../validators/servicesValidators');
+  idDiverrSchema,
+  editDiverrSolutionSchema,
+} = require('../../validators/diverrsValidators');
 
-const editServiceSolution = async (req, res, next) => {
+const editDiverrSolution = async (req, res, next) => {
   try {
     //Validamos los parámetros
-    await idServiceSchema.validateAsync(req.params);
+    await idDiverrSchema.validateAsync(req.params);
     //Validamos el body
-    await editServiceSolutionSchema.validateAsync(req.body);
-    const { idService } = req.params;
+    await editDiverrSolutionSchema.validateAsync(req.body);
+    const { idDiverr } = req.params;
     const { finished } = req.body;
 
-    //Comprobamos que existe el servicio
-    const service = await getServiceById(idService);
+    //Comprobamos que existe el diverr
+    const diverr = await getDiverrById(idDiverr);
 
-    //Comprobamos que el servicio tiene asignada una solución
-    const solution = await getServiceSolutionByIdService(idService);
+    //Comprobamos que el diverr tiene asignada una solución
+    const solution = await getDiverrSolutionById(idDiverr);
     if (!solution)
       throw generateError(
-        `No existe ninguna solución asignada al servicio con id ${idService}`,
+        `No existe ninguna solución asignada al diverr con id ${idDiverr}`,
         404
       );
 
@@ -63,11 +63,11 @@ const editServiceSolution = async (req, res, next) => {
         );
       }
     } else {
-      fileName = service.file;
+      fileName = diverr.file;
     }
 
     //Modificamos la solución
-    await editServiceSolutionById(idService, fileName, finished);
+    await editDiverrSolutionById(idDiverr, fileName, finished);
     res.send({
       status: 'Ok',
       message: 'La solución se modificó correctamente',
@@ -77,4 +77,4 @@ const editServiceSolution = async (req, res, next) => {
   }
 };
 
-module.exports = { editServiceSolution };
+module.exports = { editDiverrSolution };

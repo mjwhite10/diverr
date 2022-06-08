@@ -1,20 +1,20 @@
 const Joi = require('@hapi/joi');
 const { generateError } = require('../helpers');
 
-const idServiceSchema = Joi.object().keys({
-  idService: Joi.number()
+const idDiverrSchema = Joi.object().keys({
+  idDiverr: Joi.number()
     .positive()
     .required()
     .greater(0)
     .error(
       generateError(
-        'El campo idService debe exisitir y debe ser un entero mayor que 0 ',
+        'El campo idDiverr debe exisitir y debe ser un entero mayor que 0 ',
         400
       )
     ),
 });
 
-const serviceSchema = Joi.object().keys({
+const diverrSchema = Joi.object().keys({
   title: Joi.string()
     .max(100)
     .required()
@@ -42,9 +42,18 @@ const serviceSchema = Joi.object().keys({
         400
       )
     ),
+  price: Joi.number()
+    .max(10000)
+    .required()
+    .error(
+      generateError(
+        'El campo price debería existir y no exceder el valor de 10000',
+        400
+      )
+    ),
 });
 
-const newServiceCommentSchema = Joi.object().keys({
+const newDiverrCommentSchema = Joi.object().keys({
   content: Joi.string()
     .required()
     .max(280)
@@ -56,7 +65,7 @@ const newServiceCommentSchema = Joi.object().keys({
     ),
 });
 
-const editServiceSolutionSchema = Joi.object().keys({
+const editDiverrSolutionSchema = Joi.object().keys({
   finished: Joi.boolean()
     .required()
     .error(
@@ -67,8 +76,8 @@ const editServiceSolutionSchema = Joi.object().keys({
     ),
 });
 
-const getServiceCommentSchema = Joi.object().keys({
-  idService: Joi.number()
+const getDiverrCommentSchema = Joi.object().keys({
+  idDiverr: Joi.number()
     .positive()
     .required()
     .greater(0)
@@ -90,9 +99,9 @@ const getServiceCommentSchema = Joi.object().keys({
     ),
 });
 module.exports = {
-  idServiceSchema,
-  newServiceCommentSchema,
-  serviceSchema,
-  editServiceSolutionSchema,
-  getServiceCommentSchema,
+  idDiverrSchema,
+  newDiverrCommentSchema,
+  diverrSchema,
+  editDiverrSolutionSchema,
+  getDiverrCommentSchema,
 };

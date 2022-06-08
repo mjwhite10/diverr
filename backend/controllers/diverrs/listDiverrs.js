@@ -1,6 +1,6 @@
-const { searchServices } = require('../../db/services');
+const { searchDiverrs } = require('../../db/diverrs');
 
-const listServices = async (req, res, next) => {
+const listDiverrs = async (req, res, next) => {
   try {
     // Sacamos las posibles opciones del querystring:
     //  search: para listar solo las entradas que contengan su valor en place o description
@@ -29,26 +29,14 @@ const listServices = async (req, res, next) => {
         break;
     }
     //Recogemos el resultado de la query
-    const data = await searchServices(search, orderBy, orderDirection);
-    //Filtramos la información devuelta
-    const servicesInfo = [];
-    for (const service of data) {
-      servicesInfo.push({
-        User: service.user,
-        Title: service.title,
-        Info: service.info,
-        File: service.file,
-        Category: service.category,
-        Status: service.status,
-      });
-    }
+    const data = await searchDiverrs(search, orderBy, orderDirection);
     res.send({
       status: 'Ok',
-      message: servicesInfo,
+      message: data,
     });
   } catch (error) {
     next(error);
   }
 };
 
-module.exports = { listServices };
+module.exports = { listDiverrs };

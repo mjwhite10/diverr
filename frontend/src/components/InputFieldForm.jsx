@@ -2,19 +2,12 @@ export const InputFieldName = props => {
   const { label, type, id, name, error, placeholder, autofocus, onChange } =
     props;
 
+export const InputFieldForm = ({ id, placeholder, error, type }) => {
   return (
-    <fieldset>
-      <label htmlFor={id}>{label}</label>
-      <input
-        type={type}
-        id={id}
-        name={name}
-        placeholder={placeholder}
-        autoFocus={autofocus}
-        onChange={onChange}
-      />
+    <section>
+      <input name={id} id={id} type={type} placeholder={placeholder} autofocus={autofocus}></input>
       {error && <span>❌</span>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-    </fieldset>
+      {error && <p style={{color:"red"}}>{error}</p>}
+    </section>
   );
 };
