@@ -16,7 +16,10 @@ function App() {
   return (
     <main>
       <Header />
+<<<<<<< HEAD
 
+=======
+>>>>>>> 41d929e6e78be46db7cf0b189351b3f13340708c
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
