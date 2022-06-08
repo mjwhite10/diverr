@@ -24,6 +24,10 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat (2, 200px); */
 }
 
 .auth {
@@ -43,7 +47,32 @@ html {
   font-weight: 600;
 }
 .header-button:hover {
+  /* display: flex; */
+  cursor: pointer;
+}
+
+/* searchbar */
+.form-container {
   display: flex;
+}
+
+.search-container {
+  align-self: center;
+  height: 34px;
+  border: 3px solid #535353;
+  border-radius: 6px;
+  font-weight: 600;
+  text-align: center;
+  margin: 1rem;
+}
+
+.search-button {
+  background: url("../public/images/lupa.svg") no-repeat center center;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-210%);
+  border: none;
+  margin: 1rem;
   cursor: pointer;
 }
 /*FOOOTER*/
@@ -60,6 +89,13 @@ footer {
   border-radius: 6px;
   border: none;
   box-shadow: none;
+}
+
+.login-form {
+  /* display: flex; */
+  flex-direction: column;
+  font-weight: 600;
+  color: var(--background);
 }
 
 .login-button {
@@ -92,40 +128,12 @@ footer {
   align-content: center;
 }
 
-.login-form {
-  display: flex;
-  flex-direction: column;
-  font-weight: 600;
-  color: var(--background);
-}
-
 #label-input {
   padding: 3rem;
   border-color: red;
 }
 
-/*SEARCH BAR*/
-.search-container {
-  margin-top: 1rem;
-  box-sizing: border-box;
-  width: 296px;
-  height: 34px;
-  border: 3px solid #535353;
-  border-radius: 6px;
-  font-weight: 600;
-  text-align: center;
-}
-
-.search-button {
-  background: url("../public/images/lupa.svg") no-repeat center center;
-  width: 20px;
-  height: 20px;
-  transform: translateY(-210%);
-  border: none;
-  margin: 1rem;
-  cursor: pointer;
-}
-
+/* FOOTER */
 .footer {
   font-weight: 300;
   position: absolute;

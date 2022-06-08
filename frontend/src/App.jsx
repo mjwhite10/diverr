@@ -16,7 +16,6 @@ function App() {
   return (
     <main>
       <Header />
-      <SearchBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />

@@ -9,7 +9,7 @@ const SearchBar = () => {
     setQuery(e.target.value);
   };
   return (
-    <form >
+    <form className="form-container">
       <input 
         className="search-container"
         placeholder="Buscar servicios"
