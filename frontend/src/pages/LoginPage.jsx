@@ -27,7 +27,7 @@ const LoginPage = () => {
           error={errorPass}
           type={'password'}
         />
-        <button>Iniciar sesión</button>
+        <button className='login-button'>Iniciar sesión</button>
       </form>
     </section>
   );
