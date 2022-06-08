@@ -1,14 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Poppins;
 }
+
 html {
   --background: #535353;
   --bright: #ffffff;
   --action: #00acee;
   --error: #c84d4d;
+  margin: 2rem;
 }
 
 .main {
@@ -20,25 +24,26 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
 }
 
 .auth {
   display: flex;
   list-style: none;
 }
+
 .auth li {
   text-decoration: none;
-  margin-left: 2rem;
+  /* margin-left: 2rem; */
 }
+
 .header-button {
   padding: 0.5rem;
   width: 9rem;
   height: 2.5rem;
-  font-size: 1rem;
-  font-weight: bold;
+  font-weight: 600;
 }
 .header-button:hover {
+  display: flex;
   cursor: pointer;
 }
 /*FOOOTER*/
@@ -52,15 +57,23 @@ footer {
 .login {
   color: var(--background);
   background-color: var(--bright);
-  border-radius: 4px;
+  border-radius: 6px;
   border: none;
   box-shadow: none;
 }
+
+.login-button {
+  color: white;
+  background-color: #535353;
+  border-radius: 6px;
+  height: 34px;
+}
+
 /*REGISTER PAGE*/
 .register {
   color: var(--background);
   background-color: var(--bright);
-  border-radius: 4px;
+  border-radius: 6px;
   border: 1px solid var(--background);
   box-shadow: none;
 }
@@ -72,22 +85,61 @@ footer {
 .error {
   color: var(--error);
 }
+
 .login-page {
-  margin-top: 5rem;
   display: flex;
   justify-content: center;
   align-content: center;
 }
+
 .login-form {
   display: flex;
   flex-direction: column;
+  font-weight: 600;
+  color: var(--background);
 }
-.button {
-  background: url('../public/images/LOGO_DIVERR.svg') no-repeat center center;
-  width: 16px;
-  height: 16px;
 
-  /* background-image: url('/images/LOGO_DIVERR.svg'); */
+#label-input {
+  padding: 3rem;
+  border-color: red;
+}
+
+/*SEARCH BAR*/
+.search-container {
+  margin-top: 1rem;
+  box-sizing: border-box;
+  width: 296px;
+  height: 34px;
+  border: 3px solid #535353;
+  border-radius: 6px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.search-button {
+  background: url("../public/images/lupa.svg") no-repeat center center;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-210%);
+  border: none;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.footer {
+  font-weight: 300;
+  position: absolute;
+  bottom: 0;
+}
+
+@media (min-width: 700px) {
+  .search-button {
+
+  }
+
+  .search-container {
+   
+  }
 }
 
 .diverrList {

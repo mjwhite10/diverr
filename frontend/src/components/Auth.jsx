@@ -8,7 +8,7 @@ const Auth = () => {
           onClick={(e) => navigate('/login')}
           className="header-button login"
         >
-          Iniciar sesion
+          Inicia sesión
         </button>
       </li>
       <li>
