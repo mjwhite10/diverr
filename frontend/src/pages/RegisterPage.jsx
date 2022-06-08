@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { registerUserService } from "../services";
-import "./RegisterPage.css";
-import { InputFieldName } from "../components/InputFieldName";
+import { InputFieldForm } from "../components/InputFieldForm";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -30,72 +28,67 @@ const RegisterPage = () => {
       setErrorPass("Las contraseñas deben ser iguales");
     }
 
-    try {
-      await registerUserService({ username, email, password: pass1 });
+    // Aquí petición
 
-      navigate("/login");
-    } catch (error) {
-      setError(error.message);
-    }
+    return (
+      <section>
+        <h1>Registro</h1>
+        <form onSubmit={handleForm}>
+          <InputFieldForm
+            label="Nombre de usuario"
+            placeholder="Nombre de usuario"
+            type="text"
+            id="username"
+            name="username"
+            required
+            autofocus="autofocus"
+            onChange={e => setUsername(e.target.value)}
+          >
+            {error ? <p>{`${setErrorUsername}`}</p> : null}
+          </InputFieldForm>
+
+          <InputFieldForm
+            label="Email"
+            placeholder="Email"
+            type="email"
+            id="email"
+            name="email"
+            required
+            onChange={e => setEmail(e.target.value)}
+          >
+            {error ? <p>{`${setErrorMail}`}</p> : null}
+          </InputFieldForm>
+
+          <InputFieldForm
+            label="Contraseña"
+            placeholder="Contraseña"
+            type="password"
+            id="password"
+            name="password"
+            required
+            onChange={e => setPass1(e.target.value)}
+          >
+            {error ? <p>{`${setErrorPass}`}</p> : null}
+          </InputFieldForm>
+
+          <InputFieldForm
+            label="Repetir contraseña"
+            placeholder="Repetir contraseña"
+            type="password"
+            id="pass2"
+            name="pass2"
+            required
+            onChange={e => setPass2(e.target.value)}
+          >
+            <p>{`${setErrorPass}`}</p>
+          </InputFieldForm>
+
+          <button>¡Únete!</button>
+
+          <Link to="/login">¿Ya eres miembro? Ingresa</Link>
+        </form>
+      </section>
+    );
   };
-
-  return (
-    <section>
-      <h1>Registro</h1>
-      <form onSubmit={handleForm}>
-        <InputFieldName
-          label={"Nombre de usuario"}
-          placeholder={"Nombre de usuario"}
-          type={"text"}
-          id={"username"}
-          required
-          autofocus={"autofocus"}
-          onChange={e => setUsername(e.target.value)}
-        >
-          {error ? <p>{`${setErrorUsername}`}</p> : null}
-        </InputFieldName>
-
-        <InputFieldName
-          label={"Email"}
-          placeholder={"Email"}
-          type={"email"}
-          id={"email"}
-          name={"email"}
-          required
-          onChange={e => setEmail(e.target.value)}
-        >
-          {error ? <p>{`${setErrorMail}`}</p> : null}
-        </InputFieldName>
-
-        <InputFieldName
-          label={"Contraseña"}
-          placeholder={"Contraseña"}
-          type={"password"}
-          id={"password"}
-          name={"password"}
-          required
-          onChange={e => setPass1(e.target.value)}
-        >
-          {error ? <p>{`${setErrorPass}`}</p> : null}
-        </InputFieldName>
-
-        <InputFieldName
-          label={"Repetir contraseña"}
-          placeholder={"Repetir contraseña"}
-          type={"password"}
-          id={"pass2"}
-          name={"pass2"}
-          required
-          onChange={e => setPass2(e.target.value)}
-        >
-          <p>{`${setErrorPass}`}</p>
-        </InputFieldName>
-
-        <button>¡Únete!</button>
-
-        <Link to="/login">¿Ya eres miembro? Ingresa</Link>
-      </form>
-    </section>
-  );
 };
 export default RegisterPage;

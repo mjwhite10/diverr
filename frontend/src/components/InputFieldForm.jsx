@@ -1,5 +1,6 @@
 export const InputFieldName = props => {
-  const { label, type, id, name, error, placeholder, autofocus } = props;
+  const { label, type, id, name, error, placeholder, autofocus, onChange } =
+    props;
 
   return (
     <fieldset>
@@ -10,6 +11,7 @@ export const InputFieldName = props => {
         name={name}
         placeholder={placeholder}
         autoFocus={autofocus}
+        onChange={onChange}
       />
       {error && <span>❌</span>}
       {error && <p style={{ color: "red" }}>{error}</p>}
