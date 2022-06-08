@@ -205,10 +205,10 @@ async function main() {
       );
     }
 
-    const services = 5;
+    const diverrs = 50;
 
     console.log('Creando diverrs...');
-    for (let i = 0; i < services; i++) {
+    for (let i = 0; i < diverrs; i++) {
       //SERVICIOS
       const [users] = await connection.query('SELECT COUNT(*) FROM users');
       const [categories] = await connection.query(

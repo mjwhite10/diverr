@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const fileUpload = require('express-fileupload');
+const cors = require('cors');
 //Users controllers
 const {
   deleteUser,
@@ -38,7 +39,7 @@ const { isAdmin } = require('./middlewares/isAdmin');
 
 const app = express();
 app.use(express.json());
-
+app.use(cors());
 // Log de peticiones a la consola
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
