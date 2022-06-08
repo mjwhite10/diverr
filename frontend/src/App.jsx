@@ -10,7 +10,6 @@ import DiverrPage from './pages/DiverrPage';
 import EditUserPage from './pages/EditUserPage';
 import MyDiverrsPage from './pages/MyDiverrsPage';
 import NewDiverrPage from './pages/NewDiverrPage';
-import SearchBar from './components/SearchBar';
 
 function App() {
   return (

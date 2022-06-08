@@ -1,5 +1,5 @@
 import ErrorMessage from '../components/ErrorMessage';
-import List from '../components/List';
+import DiverrsList from '../components/DiverrsList';
 import useDiverrs from '../hooks/useDiverr';
 
 const HomePage = () => {
@@ -11,7 +11,7 @@ const HomePage = () => {
   //Si se cargaron los diverrs cargo la lista de tweets
   return (
     <section>
-      <List diverrs={diverrs} />
+      <DiverrsList diverrs={diverrs} />
     </section>
   );
 };
