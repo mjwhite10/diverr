@@ -7,11 +7,7 @@ const Header = () => {
     <header className="header">
       <h1>
         <Link to="/" className="link">
-          <img
-            src="/images/LOGO_DIVERR.svg"
-            alt="Logo"
-            style={{ width: '150px' }}
-          ></img>
+          <img src="/images/LOGO_DIVERR.svg" alt="Logo"></img>
         </Link>
       </h1>
       <SearchBar />

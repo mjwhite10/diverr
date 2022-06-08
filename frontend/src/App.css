@@ -12,7 +12,6 @@ html {
   --bright: #ffffff;
   --action: #00acee;
   --error: #c84d4d;
-  margin: 2rem;
 }
 
 .main {
@@ -21,6 +20,7 @@ html {
 
 /*HEADER*/
 .header {
+  margin: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,6 +28,9 @@ html {
   grid-gap: 20px;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat (2, 200px); */
+}
+.header h1 .link img {
+  width: 10rem;
 }
 
 .auth {
@@ -37,7 +40,6 @@ html {
 
 .auth li {
   text-decoration: none;
-  /* margin-left: 2rem; */
 }
 
 .header-button {
@@ -47,36 +49,32 @@ html {
   font-weight: 600;
 }
 .header-button:hover {
-  /* display: flex; */
-<<<<<<< HEAD
-=======
   cursor: pointer;
 }
 
-/* searchbar */
-.form-container {
-  display: flex;
-}
-
 .search-container {
-  align-self: center;
-  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  width: 45%;
+  height: 2.25rem;
+}
+.search-input {
   border: 3px solid #535353;
   border-radius: 6px;
   font-weight: 600;
   text-align: center;
-  margin: 1rem;
+  height: 100%;
+  width: 100%;
 }
-
 .search-button {
-  background: url("../public/images/lupa.svg") no-repeat center center;
+  background: url('../public/images/lupa.svg') no-repeat center center;
   width: 20px;
   height: 20px;
-  transform: translateY(-210%);
   border: none;
   margin: 1rem;
->>>>>>> 41d929e6e78be46db7cf0b189351b3f13340708c
   cursor: pointer;
+  transform: translateX(-3rem);
 }
 /*FOOOTER*/
 .footer {
@@ -105,7 +103,7 @@ html {
 
 .login-button {
   color: white;
-  background-color: #535353;
+  background-color: var(--background);
   border-radius: 6px;
   height: 34px;
 }
@@ -133,55 +131,6 @@ html {
   align-content: center;
 }
 
-#label-input {
-  padding: 3rem;
-  border-color: red;
-}
-
-<<<<<<< HEAD
-/*SEARCH BAR*/
-.search-bar {
-  display: flex;
-  align-items: center;
-  justify-items: center;
-}
-.search-container {
-  box-sizing: border-box;
-  border: 3px solid #535353;
-  border-radius: 6px;
-  font-weight: 600;
-  text-align: center;
-  height: 2rem;
-  width: 25rem;
-}
-
-.search-button {
-  background: url('../public/images/lupa.svg') no-repeat center center;
-  width: 20px;
-  height: 20px;
-  border: none;
-  margin: 1rem;
-  cursor: pointer;
-  transform: translateX(-2.75rem);
-=======
-/* FOOTER */
-.footer {
-  font-weight: 300;
-  position: absolute;
-  bottom: 0;
-}
-
-@media (min-width: 700px) {
-  .search-button {
-
-  }
-
-  .search-container {
-   
-  }
->>>>>>> 41d929e6e78be46db7cf0b189351b3f13340708c
-}
-
 .diverrList {
   list-style: none;
   width: 70%;
@@ -195,15 +144,17 @@ html {
   padding: 1rem;
   border-radius: 10px;
   height: 100%;
-
   display: flex;
   flex-direction: column;
   justify-items: center;
   align-items: center;
 }
-.diverrCard h2 {
-  align-self: flex-start;
+
+.diverrCard p {
+  text-align: center;
+  font-weight: 300;
 }
+
 .diverrCard > *:not(:last-child) {
   margin-bottom: 1rem;
   /* No le queremos dar margin botom al texto */
@@ -217,7 +168,7 @@ html {
   height: 100px;
   object-fit: cover;
   border-radius: 4px;
-  border: 2px solid black;
+  border: 3px solid var(--background);
 }
 
 @media (min-width: 700px) {
