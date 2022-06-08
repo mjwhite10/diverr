@@ -9,8 +9,8 @@ const SearchBar = () => {
     setQuery(e.target.value);
   };
   return (
-    <form >
-      <input 
+    <form className="search-bar">
+      <input
         className="search-container"
         placeholder="Buscar servicios"
         value={query}

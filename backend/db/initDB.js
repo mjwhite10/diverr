@@ -216,7 +216,7 @@ async function main() {
       );
 
       const idUser = Math.floor(1 + Math.random() * users[0]['COUNT(*)']);
-      const title = faker.lorem.word();
+      const title = faker.lorem.sentence();
       const info = faker.lorem.sentence();
       const diverr = await getRandomFile();
       //Generamos el nombre único con el que se guardará el archivo

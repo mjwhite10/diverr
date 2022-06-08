@@ -14,6 +14,7 @@ const Header = () => {
           ></img>
         </Link>
       </h1>
+      <SearchBar />
       <nav>
         <Auth />
       </nav>
