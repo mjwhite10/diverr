@@ -20,6 +20,7 @@ const QueryContextProviderComponent = ({ children }) => {
         queryParam += direction ? `${direction}` : '';
         if (queryParam !== '') {
           queryParam = '?' + queryParam;
+          queryParam = queryParam.slice(0, -1);
         }
         const data = await getAllDiverrsService(queryParam);
         setResult(data);
@@ -33,13 +34,13 @@ const QueryContextProviderComponent = ({ children }) => {
   }, [search, order, direction]);
 
   const searchText = (text) => {
-    text ? setSearch(`search=${text}`) : setSearch('');
+    text ? setSearch(`search=${text}&`) : setSearch('');
   };
   const orderBy = (order) => {
-    order ? setOrder(`order=${order}`) : setOrder('');
+    order ? setOrder(`order=${order}&`) : setOrder('');
   };
   const queryDirection = (direction) => {
-    direction ? setDirection(`direction=${direction}`) : setDirection('');
+    direction ? setDirection(`direction=${direction}&`) : setDirection('');
   };
   return (
     <QueryContext.Provider

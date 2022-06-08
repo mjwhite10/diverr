@@ -1,8 +1,8 @@
 import ErrorMessage from '../components/ErrorMessage';
 import DiverrsList from '../components/DiverrsList';
-import useDiverrs from '../hooks/useDiverr';
 import { useContext } from 'react';
 import { QueryContext } from '../context/QueryContext';
+import OrderByMenu from '../components/OrderByMenu';
 
 const HomePage = () => {
   const { result, error, loading } = useContext(QueryContext);

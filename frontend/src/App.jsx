@@ -10,11 +10,13 @@ import DiverrPage from './pages/DiverrPage';
 import EditUserPage from './pages/EditUserPage';
 import MyDiverrsPage from './pages/MyDiverrsPage';
 import NewDiverrPage from './pages/NewDiverrPage';
+import OrderByMenu from './components/OrderByMenu';
 
 function App() {
   return (
     <main>
       <Header />
+      <OrderByMenu />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
