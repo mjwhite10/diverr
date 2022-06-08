@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { InputFieldForm } from "../components/InputFieldForm";
 
 const RegisterPage = () => {
-  const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -15,8 +13,8 @@ const RegisterPage = () => {
   const [errorMail, setErrorMail] = useState("");
   const [errorPass, setErrorPass] = useState("");
 
-  const handleForm = async e => {
-    e.preventDefault();
+  // const handleForm = async e => {
+  //   e.preventDefault();
 
     if (!username) {
       setErrorUsername("El nombre de usuario es obligatorio");
