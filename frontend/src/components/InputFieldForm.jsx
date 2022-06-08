@@ -3,6 +3,7 @@ const InputFieldForm = ({
   placeholder,
   error,
   type,
+  className,
   autofocus = false,
   required = true,
 }) => {
@@ -13,8 +14,9 @@ const InputFieldForm = ({
         id={id}
         type={type}
         placeholder={placeholder}
-        autofocus={autofocus}
+        autoFocus={autofocus}
         required={required}
+        className={className}
       ></input>
       {error && <span>❌</span>}
       {error && <p className="error">{error}</p>}

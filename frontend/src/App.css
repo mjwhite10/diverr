@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
 * {
   margin: 0;
@@ -68,7 +68,7 @@ html {
   width: 100%;
 }
 .search-button {
-  background: url('../public/images/lupa.svg') no-repeat center center;
+  background: url("../public/images/lupa.svg") no-repeat center center;
   width: 20px;
   height: 20px;
   border: none;
@@ -101,21 +101,52 @@ html {
   color: var(--background);
 }
 
+.inputField {
+  height: 2.2rem;
+}
+
 .login-button {
   color: white;
   background-color: var(--background);
   border-radius: 6px;
-  height: 34px;
+  height: 3rem;
+  display: block;
+  width: 16.4rem;
+  margin-top: 2rem;
 }
 
 /*REGISTER PAGE*/
-.register {
+.register-page {
   color: var(--background);
   background-color: var(--bright);
   border-radius: 6px;
-  border: 1px solid var(--background);
+  /* border: 1px solid var(--background); */
   box-shadow: none;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-size: 1.6rem;
+  height: 85vh;
 }
+
+.register-form {
+  font-weight: 600;
+}
+
+.register-input {
+  height: 2.2rem;
+}
+
+.register-button {
+  color: white;
+  background-color: var(--background);
+  border-radius: 6px;
+  height: 3rem;
+  width: 16.4rem;
+  display: block;
+  margin-top: 2rem;
+}
+
 .register:hover {
   background-color: var(--background);
   color: var(--bright);
@@ -125,10 +156,17 @@ html {
   color: var(--error);
 }
 
+.link {
+  font-size: 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
 .login-page {
   display: flex;
   justify-content: center;
   align-content: center;
+  font-size: 1.6rem;
 }
 
 .diverrList {
