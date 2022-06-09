@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { QueryContext } from '../context/QueryContext';
 
-const SearchBar = ({ location }) => {
+const SearchBar = ({ hidden }) => {
   const [value, setValue] = useState('');
   const { searchText } = useContext(QueryContext);
 
@@ -12,15 +12,20 @@ const SearchBar = ({ location }) => {
   };
 
   return (
-    <form className="search-container" onSubmit={handleForm}>
-      <input
-        className="search-input"
-        placeholder="Buscar servicios"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      ></input>
-      <button className="search-button"></button>
-    </form>
+    <>
+      {!hidden ? (
+        <form className="search-container" onSubmit={handleForm}>
+          <input
+            className="search-input"
+            placeholder="Buscar servicios"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          ></input>
+
+          <button className="search-button"></button>
+        </form>
+      ) : null}
+    </>
   );
 };
 

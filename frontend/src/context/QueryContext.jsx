@@ -44,7 +44,14 @@ const QueryContextProviderComponent = ({ children }) => {
   };
   return (
     <QueryContext.Provider
-      value={{ searchText, orderBy, queryDirection, loading, error, result }}
+      value={{
+        searchText,
+        orderBy,
+        queryDirection,
+        loading,
+        error,
+        result,
+      }}
     >
       {children}
     </QueryContext.Provider>

@@ -11,16 +11,21 @@ import EditUserPage from './pages/EditUserPage';
 import MyDiverrsPage from './pages/MyDiverrsPage';
 import NewDiverrPage from './pages/NewDiverrPage';
 import OrderByMenu from './components/OrderByMenu';
+import { useState } from 'react';
 
 function App() {
+  const [hidden, setHidden] = useState(true);
   return (
     <main>
-      <Header />
-      <OrderByMenu />
+      <Header hideSearchBar={hidden} />
+      <OrderByMenu hidden={hidden} />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/" element={<HomePage hideItems={setHidden} />} />
+        <Route path="/login" element={<LoginPage hideItems={setHidden} />} />
+        <Route
+          path="/register"
+          element={<RegisterPage hideItems={setHidden} />}
+        />
         <Route path="/create/" element={<NewDiverrPage />} />
         <Route path="/diverr/:id" element={<DiverrPage />} />
         <Route path="/user/:id/diverr" element={<MyDiverrsPage />} />

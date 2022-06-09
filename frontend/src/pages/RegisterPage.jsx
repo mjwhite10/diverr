@@ -1,18 +1,22 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import InputFieldForm from "../components/InputFieldForm";
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import InputFieldForm from '../components/InputFieldForm';
 
-const RegisterPage = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [pass1, setPass1] = useState("");
-  const [pass2, setPass2] = useState("");
-  const [error, setError] = useState("");
-  const [errorUsername, setErrorUsername] = useState("");
-  const [errorMail, setErrorMail] = useState("");
-  const [errorPass, setErrorPass] = useState("");
+const RegisterPage = ({ hideItems }) => {
+  //Antes de renderizar ocultamos los componentes de búsqueda
+  useEffect(() => {
+    hideItems(true);
+  });
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [pass1, setPass1] = useState('');
+  const [pass2, setPass2] = useState('');
+  const [error, setError] = useState('');
+  const [errorUsername, setErrorUsername] = useState('');
+  const [errorMail, setErrorMail] = useState('');
+  const [errorPass, setErrorPass] = useState('');
 
-  const handleForm = async e => {
+  const handleForm = async (e) => {
     e.preventDefault();
 
     // Aquí petición
@@ -31,7 +35,7 @@ const RegisterPage = () => {
           name="username"
           required
           autofocus="autofocus"
-          onChange={e => setUsername(e.target.value)}
+          onChange={(e) => setUsername(e.target.value)}
         >
           {error ? <p>{errorUsername}</p> : null}
         </InputFieldForm>
@@ -45,7 +49,7 @@ const RegisterPage = () => {
           id="email"
           name="email"
           required
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         >
           {error ? <p>{errorMail}</p> : null}
         </InputFieldForm>
@@ -59,7 +63,7 @@ const RegisterPage = () => {
           id="password"
           name="password"
           required
-          onChange={e => setPass1(e.target.value)}
+          onChange={(e) => setPass1(e.target.value)}
         >
           {error ? <p>{errorPass}</p> : null}
         </InputFieldForm>
@@ -73,7 +77,7 @@ const RegisterPage = () => {
           id="pass2"
           name="pass2"
           required
-          onChange={e => setPass2(e.target.value)}
+          onChange={(e) => setPass2(e.target.value)}
         >
           <p>{errorPass}</p>
         </InputFieldForm>

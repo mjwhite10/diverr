@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Auth from './Auth';
 import SearchBar from './SearchBar';
 
-const Header = () => {
+const Header = ({ hideSearchBar }) => {
   return (
     <header className="header">
       <h1>
@@ -10,7 +10,7 @@ const Header = () => {
           <img src="/images/LOGO_DIVERR.svg" alt="Logo"></img>
         </Link>
       </h1>
-      <SearchBar />
+      <SearchBar hidden={hideSearchBar} />
       <nav>
         <Auth />
       </nav>
