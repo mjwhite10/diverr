@@ -47,6 +47,9 @@ html {
   width: 9rem;
   height: 2.5rem;
   font-weight: 600;
+  color: var(--background);
+  font-size: 1rem;
+  margin-left: 1rem;
 }
 .header-button:hover {
   cursor: pointer;
@@ -66,6 +69,8 @@ html {
   text-align: center;
   height: 100%;
   width: 100%;
+  margin-left: 1rem;
+  font-size: 1rem;
 }
 .search-button {
   background: url('../public/images/lupa.svg') no-repeat center center;
@@ -81,7 +86,7 @@ html {
   margin-left: 2rem;
   color: var(--background);
   font-weight: 300;
-  font-size: 1.5rem;
+  font-size: 1rem;
   /* position: absolute; */
   bottom: 0.5rem;
 }
@@ -96,7 +101,7 @@ html {
   display: flex;
   justify-content: center;
   align-content: center;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
 }
 .login-form {
   display: flex;
@@ -104,9 +109,11 @@ html {
   font-weight: 600;
   color: var(--background);
   margin-bottom: 2rem;
+  font-size: 1rem;
 }
 .login-form h1 {
   margin-bottom: 2rem;
+  font-size: 1.5rem;
 }
 .inputField {
   height: 2.2rem;
@@ -132,12 +139,13 @@ html {
   display: flex;
   justify-content: center;
   align-content: center;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   height: 85vh;
 }
 
 .register-form {
   font-weight: 600;
+  font-size: 1rem;
 }
 
 .register-input {
@@ -209,14 +217,6 @@ html {
   border: 3px solid var(--background);
 }
 
-@media (min-width: 700px) {
-  .search-button {
-  }
-
-  .search-container {
-  }
-}
-
 #order-list {
   text-align: center;
   background: var(--background);
@@ -232,9 +232,24 @@ html {
   margin-right: 2rem;
   font-weight: 600;
   font-size: 1rem;
+  border-radius: 6px;
+  /* height: 2.5rem; */
 }
 
 main {
   display: flex;
   flex-direction: column;
+}
+
+
+@media (max-width: 700px) {
+  .header-button.login {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  button.search-button {
+    display: none;
+  }
 }
