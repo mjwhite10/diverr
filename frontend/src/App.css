@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins';
+  font-family: "Poppins";
 }
 
 html {
@@ -68,7 +68,7 @@ html {
   width: 100%;
 }
 .search-button {
-  background: url('../public/images/lupa.svg') no-repeat center center;
+  background: url("../public/images/lupa.svg") no-repeat center center;
   width: 20px;
   height: 20px;
   border: none;
@@ -123,7 +123,8 @@ html {
 }
 
 /*REGISTER PAGE*/
-.register-page {
+.register-page,
+.newdiverr-page {
   color: var(--background);
   background-color: var(--bright);
   border-radius: 6px;
@@ -136,15 +137,18 @@ html {
   height: 85vh;
 }
 
-.register-form {
+.register-form,
+.newdiverr-form {
   font-weight: 600;
 }
 
-.register-input {
+.register-input,
+.newdiverr-input {
   height: 2.2rem;
 }
 
-.register-button {
+.register-button,
+.newdiverr-button {
   color: white;
   background-color: var(--background);
   border-radius: 6px;
@@ -161,6 +165,36 @@ html {
 
 .error {
   color: var(--error);
+}
+
+.image-upload::-webkit-file-upload-button,
+.file-upload::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.image-upload::before {
+  content: "Selecciona una imagen";
+  /* border: 1px solid #535353; */
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: underline;
+  /*Este color habrá que cambiarlo por uno más acorde a la página */
+  background-color: lightblue;
+}
+
+.file-upload::before {
+  content: "Selecciona un archivo";
+  border: 1px solid #535353;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: underline;
+  /*Este color habrá que cambiarlo por uno más acorde a la página */
+  background-color: lightblue;
+}
+
+.file-upload:hover::before,
+.image-upload:hover::before {
+  border: #535353;
 }
 
 .link {
@@ -226,7 +260,7 @@ html {
   -webkit-appearance: none;
   -moz-appearance: none;
   text-indent: 1px;
-  text-overflow: '';
+  text-overflow: "";
   width: 12rem;
   align-self: flex-end;
   margin-right: 2rem;
