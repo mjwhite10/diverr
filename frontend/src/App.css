@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Poppins;
+  font-family: 'Poppins';
 }
 
 html {
@@ -68,7 +68,7 @@ html {
   width: 100%;
 }
 .search-button {
-  background: url("../public/images/lupa.svg") no-repeat center center;
+  background: url('../public/images/lupa.svg') no-repeat center center;
   width: 20px;
   height: 20px;
   border: none;
@@ -89,18 +89,25 @@ html {
 .login {
   color: var(--background);
   background-color: var(--bright);
-  border-radius: 6px;
   border: none;
   box-shadow: none;
 }
-
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-size: 1.6rem;
+}
 .login-form {
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
   font-weight: 600;
   color: var(--background);
+  margin-bottom: 2rem;
 }
-
+.login-form h1 {
+  margin-bottom: 2rem;
+}
 .inputField {
   height: 2.2rem;
 }
@@ -162,13 +169,6 @@ html {
   color: inherit;
 }
 
-.login-page {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  font-size: 1.6rem;
-}
-
 .diverrList {
   list-style: none;
   width: 70%;
@@ -215,4 +215,26 @@ html {
 
   .search-container {
   }
+}
+
+#order-list {
+  text-align: center;
+  background: var(--background);
+  border: none;
+  color: #ffffff;
+  padding: 1rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+  width: 12rem;
+  align-self: flex-end;
+  margin-right: 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
 }
