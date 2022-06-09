@@ -8,29 +8,29 @@ const OrderByMenu = ({ hidden }) => {
     setValue(e.target.value);
     // e.preventDefault();
 
-    switch (e.target.value) {
-      case 'createdAsc':
-        orderBy('createdAt');
-        queryDirection('ASC');
-        break;
-      case 'createdDesc':
-        orderBy('createdAt');
-        queryDirection('DESC');
-        break;
-      case 'priceAsc':
-        orderBy('price');
-        queryDirection('ASC');
-        break;
-      case 'priceDesc':
-        orderBy('price');
-        queryDirection('DESC');
-        break;
+    // switch (e.target.value) {
+    //   case 'createdAsc':
+    //     orderBy('createdAt');
+    //     queryDirection('ASC');
+    //     break;
+    //   case 'createdDesc':
+    //     orderBy('createdAt');
+    //     queryDirection('DESC');
+    //     break;
+    //   case 'priceAsc':
+    //     orderBy('price');
+    //     queryDirection('ASC');
+    //     break;
+    //   case 'priceDesc':
+    //     orderBy('price');
+    //     queryDirection('DESC');
+    //     break;
 
-      default:
-        orderBy(e.target.value);
-        queryDirection('DESC');
-        break;
-    }
+    //   default:
+    //     orderBy(e.target.value);
+    //     queryDirection('DESC');
+    //     break;
+    // }
   };
   return (
     <>

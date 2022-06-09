@@ -4,7 +4,6 @@ import InputFieldForm from '../components/InputFieldForm';
 
 const LoginPage = ({ hideItems }) => {
   //Antes de renderizar ocultamos los componentes de búsqueda
-
   useEffect(() => {
     hideItems(true);
   });
