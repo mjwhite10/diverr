@@ -1,12 +1,16 @@
 .auth {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   list-style: none;
   grid-area: buttons;
 }
 .avatar {
   grid-area: buttons;
   text-align: end;
+  background-color: aqua;
+  width: 50%;
 }
 
 .auth li {
@@ -38,8 +42,7 @@
 }
 
 .avatar-image {
-  height: 30%;
-  width: 30%;
+  width: 35%;
   border-radius: 50%;
   margin-right: 1rem;
 }
@@ -52,18 +55,31 @@
   cursor: pointer;
 }
 .avatar-list-container {
-  margin-top: -0.5rem;
-  width: 8.5rem;
+  width: 7rem;
   position: absolute;
+  font-size: 0.7rem;
   border-radius: 6px;
   text-align: end;
   padding: 0.5rem 1rem;
 }
-
+.avatar-list-container::before {
+  top: -16px;
+  right: 9px;
+  left: auto;
+  border: 8px solid transparent;
+  border-bottom-color: transparent;
+  border-bottom-color: var(--background);
+  position: absolute;
+  display: inline-block;
+  content: '';
+}
 @media (min-width: 800px) {
   .auth-button {
     padding: 0.75rem;
     width: 9rem;
     font-size: 1rem;
+  }
+  .auth {
+    flex-direction: row;
   }
 }

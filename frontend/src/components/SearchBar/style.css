@@ -27,5 +27,6 @@
   .search-container {
     width: 45%;
     margin: 0;
+    margin-left: 1rem;
   }
 }

@@ -51,7 +51,7 @@ app.use('/uploads', express.static('./uploads'));
 
 //Users endpoints
 app.post('/users', newUser);
-app.get('/users/:idUser', isUser, getUser);
+app.get('/users', isUser, getUser);
 app.post('/users/login', loginUser);
 app.put('/users/:idUser', isUser, editUser);
 app.put('/users/:idUser/password', isUser, editUserPassword);

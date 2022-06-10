@@ -12,7 +12,6 @@ const httpGet = async (url, token = null) => {
         }
       : null
   );
-
   const json = await response.json();
   if (!response.ok) throw new Error(json.message);
 
@@ -37,7 +36,7 @@ const httpPost = async (url, data, token = null) => {
 
   if (!response.ok) throw new Error(json.message);
 
-  return json.data;
+  return json.message;
 };
 
 //Función que hace una petición httpPost cualquiera.
