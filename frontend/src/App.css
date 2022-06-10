@@ -14,6 +14,12 @@ html {
   --error: #c84d4d;
 }
 
+.primary-button {
+  color: white;
+  background-color: var(--background);
+  border-radius: 6px;
+}
+
 main {
   margin: 1rem;
   min-height: 100vh;
@@ -25,30 +31,34 @@ main {
   display: flex;
   justify-content: center;
   align-content: center;
-  font-size: 1.6rem;
 }
 .login-form {
   display: flex;
   flex-direction: column;
-  font-weight: 600;
+  align-items: flex-start;
   color: var(--background);
   margin-bottom: 2rem;
 }
+.login-form label {
+  align-self: flex-start;
+  font-weight: 600;
+}
 .login-form h1 {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  align-self: center;
 }
-.inputField {
-  height: 2.2rem;
+.login-form .link {
+  margin-top: 0.5rem;
+  text-decoration: underline;
+  align-self: center;
 }
-
 .login-button {
-  color: white;
-  background-color: var(--background);
-  border-radius: 6px;
-  height: 3rem;
-  display: block;
-  width: 16.4rem;
-  margin-top: 2rem;
+  padding: 1rem 0;
+  font-size: 1rem;
+  width: 100%;
+  border: none;
+  margin-left: 0.1rem;
 }
 
 /*REGISTER PAGE*/

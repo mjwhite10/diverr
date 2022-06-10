@@ -14,10 +14,7 @@ const loginUser = async (req, res, next) => {
     const user = await getUserByEmail(email);
 
     if (!user)
-      throw generateError(
-        `No existe ningún usuario con el email ${email}`,
-        404
-      );
+      throw generateError(`No existe ningún usuario con ese email`, 404);
     //Comparamos las passwords
     await checkPassword(password, user.password);
 

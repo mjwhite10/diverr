@@ -3,25 +3,31 @@ const InputFieldForm = ({
   id,
   placeholder,
   error,
+  setError,
   type,
-  className,
   autofocus = false,
   required = true,
+  setValue,
 }) => {
   return (
-    <>
+    <div className="input-field-form-container">
       <input
+        className="input-field-form"
         name={id}
         id={id}
         type={type}
         placeholder={placeholder}
         autoFocus={autofocus}
         required={required}
-        className={className}
+        onChange={(e) => {
+          setValue(e.target.value);
+          setError(false);
+        }}
       ></input>
       {error && <span>❌</span>}
-      {error && <p className="error">{error}</p>}
-    </>
+
+      {error && <p className="input-field-form-error">{error}</p>}
+    </div>
   );
 };
 

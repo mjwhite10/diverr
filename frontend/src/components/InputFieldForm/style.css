@@ -1,0 +1,21 @@
+.input-field-form {
+  height: 2.2rem;
+  padding: 0 0.5rem;
+}
+.input-field-form-container {
+  margin-bottom: 2rem;
+}
+
+.input-field-form-container p {
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+}
+.input-field-form-container span {
+  transform: translateX(-2rem) translateY(0.3rem);
+  position: absolute;
+}
+.input-field-form-error {
+  color: var(--error);
+  font-weight: 600;
+  margin-left: 0.3rem;
+}

@@ -1,32 +1,35 @@
-.order-list {
-  text-align: center;
-  border: none;
-  margin: 1rem 0;
+.order-list,
+.order-list-container {
   width: 8.3rem;
-  align-self: flex-start;
+  font-size: 0.7rem;
 }
 .order-list-button,
 .order-list-container {
   background: var(--background);
   color: #ffffff;
+  border-radius: 6px;
 }
+.order-list,
 .order-list-button {
   border: none;
+}
+.order-list {
+  text-align: center;
+  margin: 1rem 0;
+  align-self: flex-start;
+}
+
+.order-list-button {
   padding: 0.5rem 0;
   padding-left: 0.85rem;
   width: 100%;
   margin-bottom: 1px;
-  border-radius: 6px;
   font-weight: 600;
-  /* font-size: 1rem; */
   position: relative;
   text-align: center;
 }
 .order-list-container {
-  width: 8.3rem;
-  font-size: 0.65rem;
   position: absolute;
-  border-radius: 6px;
   text-align: start;
   padding: 0.5rem 1rem;
 }
@@ -34,7 +37,7 @@
   color: gray;
   cursor: pointer;
 }
-.icon {
+.order-list-button-icon {
   background: url('../../../public/images/icono-ordenar.svg') no-repeat center
     center;
   width: 30px;

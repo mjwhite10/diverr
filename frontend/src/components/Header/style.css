@@ -8,11 +8,12 @@
 }
 .header h1 {
   grid-area: logo;
-}
-.header h1 .link img {
-  width: 8rem;
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+.header h1 .link img {
+  width: 9rem;
 }
 .nav {
   align-items: center;

@@ -41,7 +41,7 @@ const OrderMenu = ({ hidden }) => {
             className="order-list-button"
             onClick={(e) => setHiddenMenu(!hiddenMenu)}
           >
-            <i className="icon" />
+            <i className="order-list-button-icon" />
             Ordenar
           </button>
 

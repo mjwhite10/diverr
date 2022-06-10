@@ -48,7 +48,7 @@ const getUserById = async (id) => {
 
     const [user] = await connection.query(
       `
-      SELECT id,email,password,name,bio,avatar,role,
+      SELECT id,email,name,bio,avatar,role,
       lastAuthUpdate,createdAt,modifiedAt
       FROM users
       WHERE id = ?`,

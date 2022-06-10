@@ -1,17 +1,39 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import InputFieldForm from '../components/InputFieldForm';
+import { loginUserService } from '../services/userService';
+import { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 
 const LoginPage = ({ hideItems }) => {
   //Antes de renderizar ocultamos los componentes de búsqueda
   useEffect(() => {
     hideItems(true);
   });
-  const [errorEmail, setErrorEmail] = useState('');
-  const [errorPass, setErrorPass] = useState('');
+  const [email, setEmail] = useState('');
+  const [errorEmail, setErrorEmail] = useState(false);
+  const [password, setPassword] = useState('');
+  const [errorPassword, setErrorPassword] = useState(false);
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleForm = async (e) => {
     e.preventDefault();
+    setErrorEmail(false);
+    setErrorEmail(false);
+    try {
+      const data = await loginUserService(email, password);
+      login(data);
+      navigate('/');
+    } catch (error) {
+      if (error.message.includes('email')) {
+        setErrorEmail(error.message);
+      }
+      if (error.message.includes('contraseña')) {
+        setErrorPassword(error.message);
+      }
+      console.log(error);
+    }
   };
   return (
     <section className="login-page">
@@ -23,17 +45,21 @@ const LoginPage = ({ hideItems }) => {
           id={'email'}
           placeholder={'email@email.com'}
           error={errorEmail}
+          setError={setErrorEmail}
           type={'text'}
+          setValue={setEmail}
         />
         <label htmlFor="password">Contraseña</label>
         <InputFieldForm
           className="inputField"
           id={'password'}
           placeholder={''}
-          error={errorPass}
+          error={errorPassword}
+          setError={setErrorPassword}
           type={'password'}
+          setValue={setPassword}
         />
-        <button className="login-button">Iniciar sesión</button>
+        <button className="login-button primary-button">Iniciar sesión</button>
         <Link className="link" to="/register">
           ¿No eres miembro? ¡Regístrate!
         </Link>
