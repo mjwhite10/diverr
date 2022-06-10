@@ -1,4 +1,5 @@
-import DiverrCard from './DiverrCard';
+import DiverrCard from '../DiverrCard';
+import './style.css';
 
 const DiverrsList = ({ diverrs }) => {
   return (

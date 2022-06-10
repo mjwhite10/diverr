@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
-import { QueryContext } from '../context/QueryContext';
+import { QueryContext } from '../../context/QueryContext';
+import './style.css';
 
 const SearchBar = ({ hidden }) => {
   const [value, setValue] = useState('');
@@ -17,7 +18,7 @@ const SearchBar = ({ hidden }) => {
         <form className="search-container" onSubmit={handleForm}>
           <input
             className="search-input"
-            placeholder="Buscar servicios"
+            placeholder="Buscar diverrs..."
             value={value}
             onChange={(e) => setValue(e.target.value)}
           ></input>

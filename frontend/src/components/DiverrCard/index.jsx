@@ -1,3 +1,4 @@
+import './style.css';
 const DiverrCard = ({ diverr }) => {
   return (
     <article className="diverrCard">

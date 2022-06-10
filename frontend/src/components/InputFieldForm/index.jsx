@@ -1,3 +1,4 @@
+import './style.css';
 const InputFieldForm = ({
   id,
   placeholder,
@@ -8,7 +9,7 @@ const InputFieldForm = ({
   required = true,
 }) => {
   return (
-    <section>
+    <>
       <input
         name={id}
         id={id}
@@ -20,7 +21,7 @@ const InputFieldForm = ({
       ></input>
       {error && <span>❌</span>}
       {error && <p className="error">{error}</p>}
-    </section>
+    </>
   );
 };
 

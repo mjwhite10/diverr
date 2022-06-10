@@ -1,5 +1,5 @@
 import ErrorMessage from '../components/ErrorMessage';
-import DiverrsList from '../components/DiverrsList';
+import DiverrsList from '../components/DiverrList';
 import { useContext, useEffect } from 'react';
 import { QueryContext } from '../context/QueryContext';
 

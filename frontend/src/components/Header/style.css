@@ -1,0 +1,27 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
+    'logo buttons'
+    'bar   bar';
+}
+.header h1 {
+  grid-area: logo;
+}
+.header h1 .link img {
+  width: 8rem;
+  display: flex;
+  align-items: center;
+}
+.nav {
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 800px) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

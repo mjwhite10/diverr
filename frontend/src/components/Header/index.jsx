@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import Auth from './Auth';
-import SearchBar from './SearchBar';
+import Auth from '../Auth';
+import SearchBar from '../SearchBar';
+import './style.css';
 
 const Header = ({ hideSearchBar }) => {
   return (

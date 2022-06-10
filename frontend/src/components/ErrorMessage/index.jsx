@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import './style.css';
 
 const ErrorMessage = ({ message }) => {
   return (
