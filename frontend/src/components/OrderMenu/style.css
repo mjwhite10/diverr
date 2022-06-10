@@ -2,7 +2,7 @@
   text-align: center;
   border: none;
   margin: 1rem 0;
-  width: 10rem;
+  width: 8.3rem;
   align-self: flex-start;
 }
 .order-list-button,
@@ -12,16 +12,19 @@
 }
 .order-list-button {
   border: none;
-  padding: 0.75rem;
+  padding: 0.5rem 0;
+  padding-left: 0.85rem;
   width: 100%;
   margin-bottom: 1px;
   border-radius: 6px;
   font-weight: 600;
-  font-size: 1rem;
+  /* font-size: 1rem; */
   position: relative;
+  text-align: center;
 }
 .order-list-container {
-  width: 10rem;
+  width: 8.3rem;
+  font-size: 0.65rem;
   position: absolute;
   border-radius: 6px;
   text-align: start;
@@ -32,13 +35,13 @@
   cursor: pointer;
 }
 .icon {
-  background: url('../../../public/images/directional-arrows.png') no-repeat
-    center center;
-  width: 24px;
-  height: 24px;
+  background: url('../../../public/images/icono-ordenar.svg') no-repeat center
+    center;
+  width: 30px;
+  height: 30px;
   position: absolute;
-  left: 1rem;
-  top: 0.6rem;
+  left: 0.75rem;
+  top: 0.4rem;
 }
 @media (min-width: 800px) {
 }

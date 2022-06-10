@@ -36,7 +36,7 @@ const OrderMenu = ({ hidden }) => {
   return (
     <>
       {!hidden ? (
-        <div className="order-list" onMouseLeave={(e) => setHiddenMenu(false)}>
+        <div className="order-list" onMouseLeave={(e) => setHiddenMenu(true)}>
           <button
             className="order-list-button"
             onClick={(e) => setHiddenMenu(!hiddenMenu)}
@@ -45,7 +45,7 @@ const OrderMenu = ({ hidden }) => {
             Ordenar
           </button>
 
-          {hiddenMenu ? (
+          {!hiddenMenu ? (
             <div className="order-list-container">
               <div id="createdAsc" onClick={handleSelect}>
                 Más reciente
