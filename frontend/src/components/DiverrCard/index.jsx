@@ -1,3 +1,4 @@
+import CardSticker from '../CardStiker';
 import './style.css';
 const DiverrCard = ({ diverr }) => {
   return (
@@ -6,10 +7,10 @@ const DiverrCard = ({ diverr }) => {
         src={`${process.env.REACT_APP_BACKEND}/uploads/covers/${diverr.picture}`}
         alt={diverr.title}
       ></img>
+      <CardSticker>{diverr.price} €</CardSticker>
       <p>{diverr.title}</p>
       <p>{diverr.category}</p>
       <p>{new Date(diverr.createdAt).toLocaleString()}</p>
-      <p>{diverr.price}</p>
     </article>
   );
 };
