@@ -133,7 +133,7 @@ main {
   color: inherit;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 800px) {
   main {
     margin: 2rem 4rem;
   }

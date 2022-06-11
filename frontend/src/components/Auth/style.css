@@ -1,16 +1,16 @@
 .auth {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   list-style: none;
   grid-area: buttons;
+  margin-right: 2rem;
 }
 .avatar {
   grid-area: buttons;
-  text-align: end;
-  background-color: aqua;
-  width: 50%;
+  display: flex;
+  flex-direction: column;
 }
 
 .auth li {
@@ -42,9 +42,10 @@
 }
 
 .avatar-image {
-  width: 35%;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
-  margin-right: 1rem;
+  align-self: flex-end;
 }
 .avatar-list-container {
   background: var(--background);
@@ -55,12 +56,15 @@
   cursor: pointer;
 }
 .avatar-list-container {
+  align-self: flex-end;
   width: 7rem;
+  top: 6rem;
+  right: 2.5rem;
   position: absolute;
   font-size: 0.7rem;
   border-radius: 6px;
   text-align: end;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.5rem;
 }
 .avatar-list-container::before {
   top: -16px;
@@ -79,7 +83,14 @@
     width: 9rem;
     font-size: 1rem;
   }
+  .avatar {
+    width: 10%;
+  }
   .auth {
     flex-direction: row;
+  }
+  .avatar-list-container {
+    top: 7rem;
+    right: 5.4rem;
   }
 }
