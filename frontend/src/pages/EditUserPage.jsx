@@ -1,3 +1,5 @@
+import LoadAvatar from "../components/LoadAvatar";
+
 const EditUserPage = () => {
   return (
     <section className="editUser-page">
@@ -33,6 +35,7 @@ const EditUserPage = () => {
         />
         <button type='submit'>Confirmar cambios</button>
       </form>
+      <LoadAvatar />
     </section>
   );
 };
