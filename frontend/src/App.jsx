@@ -26,8 +26,14 @@ function App() {
           path="/register"
           element={<RegisterPage hideItems={setHidden} />}
         />
-        <Route path="/create/" element={<NewDiverrPage />} />
-        <Route path="/diverr/:id" element={<DiverrPage />} />
+        <Route
+          path="/create/"
+          element={<NewDiverrPage hideItems={setHidden} />}
+        />
+        <Route
+          path="/diverr/:id"
+          element={<DiverrPage hideItems={setHidden} />}
+        />
         <Route
           path="/user/:id/diverr"
           element={<MyDiverrsPage hideItems={setHidden} />}
@@ -37,7 +43,7 @@ function App() {
           element={<EditUserPage hideItems={setHidden} />}
         />
 
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<NotFoundPage hideItems={setHidden} />} />
       </Routes>
       <Footer />
     </main>

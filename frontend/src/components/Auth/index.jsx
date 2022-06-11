@@ -20,10 +20,11 @@ const Auth = () => {
       ></img>
       {hiddenMenu ? (
         <div className="avatar-list-container">
-          <div onClick={(e) => navigate(`/user/${5}`)}>Mi cuenta</div>
-          <div>Mis diverrs</div>
+          <div onClick={(e) => navigate(`/user/${user.id}`)}>Mi cuenta</div>
+          <div onClick={(e) => navigate(`/user/${user.id}/diverr`)}>
+            Mis diverrs
+          </div>
           <div style={{ height: '6px' }}></div>
-
           <div onClick={(e) => logout()}>Cerrar sesión</div>
         </div>
       ) : null}
