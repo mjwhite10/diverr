@@ -8,7 +8,7 @@ let pool;
 const getConnection = async () => {
   if (!pool) {
     pool = mysql.createPool({
-      connectTimeout: 10,
+      connectTimeout: 100,
       host: MYSQL_HOST,
       user: MYSQL_USER,
       password: MYSQL_PASSWORD,
