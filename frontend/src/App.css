@@ -26,23 +26,19 @@ main {
   display: flex;
   flex-direction: column;
 }
-/*LOGIN PAGE*/
-.login-page {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-}
+
+/* FORM */
 .form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   color: var(--background);
-  margin-bottom: 2rem;
 }
 .form label {
   align-self: flex-start;
   font-weight: 600;
   font-size: 0.9rem;
+  padding: 0.2rem;
 }
 .form h1 {
   margin-bottom: 1rem;
@@ -62,6 +58,13 @@ main {
   margin-left: 0.1rem;
 }
 
+/*LOGIN PAGE*/
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
 /*REGISTER PAGE*/
 .register-page,
 .newdiverr-page {
@@ -73,7 +76,6 @@ main {
   display: flex;
   justify-content: center;
   align-content: center;
-  font-size: 1.6rem;
   height: 85vh;
 }
 
@@ -110,7 +112,7 @@ main {
   cursor: pointer;
   text-decoration: underline;
   /*Este color habrá que cambiarlo por uno más acorde a la página */
-  background-color: lightblue;
+  background-color: #A9FFFF;
 }
 
 .file-upload::before {
@@ -120,7 +122,7 @@ main {
   cursor: pointer;
   text-decoration: underline;
   /*Este color habrá que cambiarlo por uno más acorde a la página */
-  background-color: lightblue;
+  background-color: #A9FFFF;
 }
 
 .file-upload:hover::before,
@@ -129,7 +131,7 @@ main {
 }
 
 .link {
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-decoration: none;
   color: inherit;
 }
