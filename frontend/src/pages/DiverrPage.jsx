@@ -7,7 +7,6 @@ const DiverrPage = () => {
 //tendría que hacer un effect con useComments?
 //   const {comments,loading, error, addComment, removeComment}= useComments()
 
-
   return (<section>
      <DiverrCard/>
    {/* <CommentsList comments={comments} removeComment={removeComment} /> */}

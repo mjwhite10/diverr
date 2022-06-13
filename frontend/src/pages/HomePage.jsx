@@ -1,13 +1,9 @@
 import ErrorMessage from '../components/ErrorMessage';
 import DiverrsList from '../components/DiverrList';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { QueryContext } from '../context/QueryContext';
 
-const HomePage = ({ hideItems }) => {
-  //Antes de renderizar mostramos los componentes de búsqueda
-  useEffect(() => {
-    hideItems(false);
-  });
+const HomePage = () => {
   const { result, error, loading } = useContext(QueryContext);
   //Si sigue cargando devuelvo párrafo
   if (loading) return <p>cargando diverrs...</p>;

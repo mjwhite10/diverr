@@ -60,16 +60,19 @@ main {
   border: none;
   margin-left: 0.1rem;
 }
-
-/*LOGIN PAGE*/
-.login-page {
+.link {
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: inherit;
+}
+/*LOGIN && REGISTER PAGE*/
+.login-page,
+.register-page {
   display: flex;
   justify-content: center;
   align-content: center;
 }
 
-/*REGISTER PAGE*/
-.register-page,
 .newdiverr-page {
   color: var(--background);
   background-color: var(--bright);
@@ -82,7 +85,6 @@ main {
   height: 85vh;
 }
 
-.form,
 .newdiverr-form {
   font-weight: 600;
 }
@@ -92,7 +94,6 @@ main {
   height: 2.2rem;
 }
 
-.register-button,
 .newdiverr-button {
   color: white;
   background-color: var(--background);
@@ -115,7 +116,7 @@ main {
   cursor: pointer;
   text-decoration: underline;
   /*Este color habrá que cambiarlo por uno más acorde a la página */
-  background-color: #A9FFFF;
+  background-color: #a9ffff;
 }
 
 .file-upload::before {
@@ -125,7 +126,7 @@ main {
   cursor: pointer;
   text-decoration: underline;
   /*Este color habrá que cambiarlo por uno más acorde a la página */
-  background-color: #A9FFFF;
+  background-color: #a9ffff;
 }
 
 .file-upload:hover::before,
@@ -133,35 +134,20 @@ main {
   border: #535353;
 }
 
-.link {
-  font-size: 0.9rem;
-  text-decoration: none;
-  color: inherit;
+.order-filter-menu {
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 }
 
 @media (min-width: 800px) {
   main {
     margin: 2rem 4rem;
   }
-}
-:root {
-  --slider-padding: 5rem;
-}
-.mydiverrs-container {
-  display: flex;
-  justify-content: center;
-  margin: 2rem 0;
-}
-
-.mydiverrs-container-slider {
-  display: flex;
-  width: calc(100% - var(--slider-padding));
-  transform: translateX(-0%);
-}
-
-.mydiverrs-container-slider > img {
-  flex: 0 0 25%;
-  max-width: 25%;
-  aspect-ratio: 16/9;
-  padding: 0.25rem;
+  .order-filter-menu {
+    justify-content: flex-end;
+    margin: 1.5rem 2rem;
+  }
 }
