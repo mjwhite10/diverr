@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
+*::after,
+*::before {
+  box-sizing: border-box;
+}
 * {
   margin: 0;
   padding: 0;
@@ -26,39 +29,43 @@ main {
   display: flex;
   flex-direction: column;
 }
+
+/* FORM */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--background);
+}
+.form label {
+  align-self: flex-start;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.2rem;
+}
+.form h1 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  align-self: center;
+}
+.form .link {
+  margin-top: 0.5rem;
+  text-decoration: underline;
+  align-self: center;
+}
+.form-button {
+  padding: 0.7rem 0;
+  font-size: 0.9rem;
+  width: 100%;
+  border: none;
+  margin-left: 0.1rem;
+}
+
 /*LOGIN PAGE*/
 .login-page {
   display: flex;
   justify-content: center;
   align-content: center;
-}
-.login-form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  color: var(--background);
-  margin-bottom: 2rem;
-}
-.login-form label {
-  align-self: flex-start;
-  font-weight: 600;
-}
-.login-form h1 {
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  align-self: center;
-}
-.login-form .link {
-  margin-top: 0.5rem;
-  text-decoration: underline;
-  align-self: center;
-}
-.login-button {
-  padding: 1rem 0;
-  font-size: 1rem;
-  width: 100%;
-  border: none;
-  margin-left: 0.1rem;
 }
 
 /*REGISTER PAGE*/
@@ -72,11 +79,10 @@ main {
   display: flex;
   justify-content: center;
   align-content: center;
-  font-size: 1.6rem;
   height: 85vh;
 }
 
-.register-form,
+.form,
 .newdiverr-form {
   font-weight: 600;
 }
@@ -109,7 +115,7 @@ main {
   cursor: pointer;
   text-decoration: underline;
   /*Este color habrá que cambiarlo por uno más acorde a la página */
-  background-color: lightblue;
+  background-color: #A9FFFF;
 }
 
 .file-upload::before {
@@ -119,7 +125,7 @@ main {
   cursor: pointer;
   text-decoration: underline;
   /*Este color habrá que cambiarlo por uno más acorde a la página */
-  background-color: lightblue;
+  background-color: #A9FFFF;
 }
 
 .file-upload:hover::before,
@@ -128,13 +134,34 @@ main {
 }
 
 .link {
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-decoration: none;
   color: inherit;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 800px) {
   main {
     margin: 2rem 4rem;
   }
+}
+:root {
+  --slider-padding: 5rem;
+}
+.mydiverrs-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.mydiverrs-container-slider {
+  display: flex;
+  width: calc(100% - var(--slider-padding));
+  transform: translateX(-0%);
+}
+
+.mydiverrs-container-slider > img {
+  flex: 0 0 25%;
+  max-width: 25%;
+  aspect-ratio: 16/9;
+  padding: 0.25rem;
 }

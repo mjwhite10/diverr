@@ -12,9 +12,8 @@ const Header = ({ hideSearchBar }) => {
         </Link>
       </h1>
       <SearchBar hidden={hideSearchBar} />
-      <nav>
-        <Auth />
-      </nav>
+
+      <Auth />
     </header>
   );
 };

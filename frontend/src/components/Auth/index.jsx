@@ -20,31 +20,46 @@ const Auth = () => {
       ></img>
       {hiddenMenu ? (
         <div className="avatar-list-container">
-          <div onClick={(e) => navigate(`/user/${5}`)}>Mi cuenta</div>
-          <div>Mis diverrs</div>
-          <div onClick={(e) => logout()}>Cerrar sesión</div>
+          <div onClick={(e) => navigate(`/user/${user.id}`)}>Mi cuenta</div>
+          <div onClick={(e) => navigate(`/user/${user.id}/diverr`)}>
+            Mis diverrs
+          </div>
+          <div style={{ height: '6px' }}></div>
+
+          <div
+            className="logout-option"
+            onClick={(e) => {
+              logout();
+              navigate('/');
+            }}
+          >
+            Cerrar sesión
+          </div>
+          <div style={{ height: '6px' }}></div>
         </div>
       ) : null}
     </div>
   ) : (
-    <ul className="auth">
-      <li>
-        <button
-          onClick={(e) => navigate('/login')}
-          className="auth-button auth-login"
-        >
-          Inicia sesión
-        </button>
-      </li>
-      <li>
-        <button
-          onClick={(e) => navigate('/register')}
-          className="auth-button auth-register"
-        >
-          Únete
-        </button>
-      </li>
-    </ul>
+    <nav>
+      <ul className="auth">
+        <li>
+          <button
+            onClick={(e) => navigate('/login')}
+            className="auth-button auth-login"
+          >
+            Inicia sesión
+          </button>
+        </li>
+        <li>
+          <button
+            onClick={(e) => navigate('/register')}
+            className="auth-button auth-register"
+          >
+            Únete
+          </button>
+        </li>
+      </ul>
+    </nav>
   );
 };
 

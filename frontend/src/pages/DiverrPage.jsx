@@ -14,5 +14,6 @@ const DiverrPage = () => {
    {/* <NewComment addComment={addComment}/> */}
     </section>
    )
+
 };
 export default DiverrPage;

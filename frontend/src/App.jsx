@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
@@ -15,6 +15,8 @@ import { useState } from 'react';
 
 function App() {
   const [hidden, setHidden] = useState(true);
+  const location = useLocation();
+  console.log(location.pathname);
   return (
     <main>
       <Header hideSearchBar={hidden} />
@@ -26,8 +28,14 @@ function App() {
           path="/register"
           element={<RegisterPage hideItems={setHidden} />}
         />
-        <Route path="/create/" element={<NewDiverrPage />} />
-        <Route path="/diverr/:id" element={<DiverrPage />} />
+        <Route
+          path="/create/"
+          element={<NewDiverrPage hideItems={setHidden} />}
+        />
+        <Route
+          path="/diverr/:id"
+          element={<DiverrPage hideItems={setHidden} />}
+        />
         <Route
           path="/user/:id/diverr"
           element={<MyDiverrsPage hideItems={setHidden} />}
@@ -37,7 +45,7 @@ function App() {
           element={<EditUserPage hideItems={setHidden} />}
         />
 
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<NotFoundPage hideItems={setHidden} />} />
       </Routes>
       <Footer />
     </main>

@@ -1,24 +1,21 @@
 .header {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(2, 1fr);
   grid-template-areas:
     'logo buttons'
     'bar   bar';
+  gap: 1rem;
 }
 .header h1 {
   grid-area: logo;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 .header h1 .link img {
   width: 9rem;
 }
-.nav {
-  align-items: center;
-  justify-content: center;
-}
+
 @media (min-width: 800px) {
   .header {
     display: flex;
