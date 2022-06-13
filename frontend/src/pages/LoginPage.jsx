@@ -37,7 +37,7 @@ const LoginPage = ({ hideItems }) => {
   };
   return (
     <section className="login-page">
-      <form className="login-form" onSubmit={handleForm}>
+      <form className="form" onSubmit={handleForm}>
         <h1>Login</h1>
         <label htmlFor="email">Email</label>
         <InputFieldForm
@@ -59,7 +59,7 @@ const LoginPage = ({ hideItems }) => {
           type={'password'}
           setValue={setPassword}
         />
-        <button className="login-button primary-button">Iniciar sesión</button>
+        <button className="form-button primary-button">Iniciar sesión</button>
         <Link className="link" to="/register">
           ¿No eres miembro? ¡Regístrate!
         </Link>

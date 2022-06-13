@@ -23,8 +23,8 @@ const RegisterPage = ({ hideItems }) => {
   };
   return (
     <section className="register-page">
-      <form className="register-form" onSubmit={handleForm}>
-        <h1 className="h1-register">Registro</h1>
+      <form className="form" onSubmit={handleForm}>
+        <h1>Registro</h1>
         <label htmlFor="username">Nombre de usuario</label>
         <InputFieldForm
           className="register-input"
@@ -81,7 +81,7 @@ const RegisterPage = ({ hideItems }) => {
         >
           <p>{errorPass}</p>
         </InputFieldForm>
-        <button className="register-button">¡Únete!</button>
+        <button className="form-button primary-button">¡Únete!</button>
         <Link className="link" to="/login">
           ¿Ya eres miembro? Ingresa
         </Link>
