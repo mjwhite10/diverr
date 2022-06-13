@@ -6,3 +6,4 @@ export const getAllDiverrsService = async (queryParams) =>
 
   //funcion peticion enviar comentario
   //funcion peticion borrar comentario
+  //funcion peticion editar comentario

@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Auth from "../Auth";
 
-const Comment = ({ comment, removeComment }) => {
+const Comment = ({ comment, removeComment, correctComment }) => {
   const { user, token } = useContext(Auth);
   const [error, setError] = useState("");
 
@@ -15,6 +15,15 @@ const Comment = ({ comment, removeComment }) => {
       setError(error.message);
     }
   };
+
+  const editComment = async id =>{
+    try {
+      //await funcion editar comentario
+      correctComment(id)
+    } catch (error) {
+      setError(error.message)
+    }
+  }
 
   return (
     <article>
@@ -28,10 +37,17 @@ const Comment = ({ comment, removeComment }) => {
         <section>
           <button
             onClick={() => {
-              if (window.confirm("¿Estás seguro")) deleteComment(comment.id);
+              if (window.confirm("¿Estás seguro?")) deleteComment(comment.id);
             }}
           >
             Borrar comentario
+          </button>
+          <button
+            onClick={() => {
+              if (window.confirm("¿Estás seguro?")) editComment(comment.id);
+            }}
+          >
+            Editar comentario
           </button>
           {error ? <p>{error}</p> : null}
         </section>
