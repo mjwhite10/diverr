@@ -17,12 +17,13 @@
   text-decoration: none;
 }
 .auth-button {
-  padding: 0.5rem;
+  padding: 0.4rem;
   width: 6.5rem;
   font-weight: 600;
   border-radius: 6px;
-  font-size: 0.8rem;
   text-align: center;
+  color: var(--background);
+  font-size: 0.9rem;
 }
 .auth-button:hover {
   cursor: pointer;
@@ -79,9 +80,7 @@
 }
 @media (min-width: 800px) {
   .auth-button {
-    padding: 0.75rem;
     width: 9rem;
-    font-size: 1rem;
   }
   .avatar {
     width: 10%;
