@@ -7,6 +7,7 @@ const QueryContextProviderComponent = ({ children }) => {
   const [search, setSearch] = useState('');
   const [order, setOrder] = useState('');
   const [direction, setDirection] = useState('');
+  const [filter, setFilter] = useState('');
   const [result, setResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -18,6 +19,7 @@ const QueryContextProviderComponent = ({ children }) => {
         queryParam += search ? `${search}` : '';
         queryParam += order ? `${order}` : '';
         queryParam += direction ? `${direction}` : '';
+        queryParam += filter ? `${filter}` : '';
         if (queryParam !== '') {
           queryParam = '?' + queryParam;
           queryParam = queryParam.slice(0, -1);
@@ -42,12 +44,16 @@ const QueryContextProviderComponent = ({ children }) => {
   const queryDirection = (direction) => {
     direction ? setDirection(`direction=${direction}&`) : setDirection('');
   };
+  const filterCategory = (categories) => {
+    filter ? setFilter(`filter=${direction}&`) : setFilter('');
+  };
   return (
     <QueryContext.Provider
       value={{
         searchText,
         orderBy,
         queryDirection,
+        filterCategory,
         loading,
         error,
         result,

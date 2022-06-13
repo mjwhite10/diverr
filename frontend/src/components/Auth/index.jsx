@@ -14,7 +14,11 @@ const Auth = () => {
       onMouseLeave={(e) => setHiddenMenu(false)}
     >
       <img
-        src={`${process.env.REACT_APP_BACKEND}/uploads/avatar/${user.avatar}`}
+        src={
+          user.avatar
+            ? `${process.env.REACT_APP_BACKEND}/uploads/avatar/${user.avatar}`
+            : './favicon.png'
+        }
         alt="Logo"
         className="avatar-image"
       ></img>

@@ -7,15 +7,14 @@ const OrderMenu = ({ hidden }) => {
   const [hiddenMenu, setHiddenMenu] = useState(true);
 
   const handleSelect = (e) => {
-    setHiddenMenu(false);
     switch (e.target.id) {
       case 'createdAsc':
         orderBy('createdAt');
-        queryDirection('ASC');
+        queryDirection('DESC');
         break;
       case 'createdDesc':
         orderBy('createdAt');
-        queryDirection('DESC');
+        queryDirection('ASC');
         break;
       case 'priceAsc':
         orderBy('price');

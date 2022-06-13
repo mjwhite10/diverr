@@ -12,40 +12,35 @@ import MyDiverrsPage from './pages/MyDiverrsPage';
 import NewDiverrPage from './pages/NewDiverrPage';
 import OrderMenu from './components/OrderMenu';
 import { useState } from 'react';
+import FilterMenu from './components/FilterMenu';
+import { useEffect } from 'react';
 
 function App() {
   const [hidden, setHidden] = useState(true);
   const location = useLocation();
-  console.log(location.pathname);
+
+  useEffect(() => {
+    location.pathname === '/' ? setHidden(false) : setHidden(true);
+  }, [location.pathname]);
+
   return (
     <main>
       <Header hideSearchBar={hidden} />
-      <OrderMenu hidden={hidden} />
-      <Routes>
-        <Route path="/" element={<HomePage hideItems={setHidden} />} />
-        <Route path="/login" element={<LoginPage hideItems={setHidden} />} />
-        <Route
-          path="/register"
-          element={<RegisterPage hideItems={setHidden} />}
-        />
-        <Route
-          path="/create/"
-          element={<NewDiverrPage hideItems={setHidden} />}
-        />
-        <Route
-          path="/diverr/:id"
-          element={<DiverrPage hideItems={setHidden} />}
-        />
-        <Route
-          path="/user/:id/diverr"
-          element={<MyDiverrsPage hideItems={setHidden} />}
-        />
-        <Route
-          path="/user/:id"
-          element={<EditUserPage hideItems={setHidden} />}
-        />
+      <menu className="order-filter-menu">
+        <FilterMenu hidden={hidden} />
+        <OrderMenu hidden={hidden} />
+      </menu>
 
-        <Route path="*" element={<NotFoundPage hideItems={setHidden} />} />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/create/" element={<NewDiverrPage />} />
+        <Route path="/diverr/:id" element={<DiverrPage />} />
+        <Route path="/user/:id/diverr" element={<MyDiverrsPage />} />
+        <Route path="/user/:id" element={<EditUserPage />} />
+
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </main>

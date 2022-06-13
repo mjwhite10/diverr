@@ -1,11 +1,7 @@
-import { useEffect } from 'react';
 import { useState } from 'react';
 import InputFieldForm from '../components/InputFieldForm';
 
-const NewDiverrPage = ({ hideItems }) => {
-  useEffect(() => {
-    hideItems(true);
-  });
+const NewDiverrPage = () => {
   //Habría que  mostrar el avatar y esconder el inicio de sesión y el registro
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');

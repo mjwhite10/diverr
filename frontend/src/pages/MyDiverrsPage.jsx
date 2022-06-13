@@ -1,9 +1,4 @@
-import { useEffect } from 'react';
-
-const MyDiverrsPage = ({ hideItems }) => {
-  useEffect(() => {
-    hideItems(true);
-  });
+const MyDiverrsPage = () => {
   return (
     <div className="mydiverrs-container">
       <div className="mydiverrs-container-slider">
