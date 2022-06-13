@@ -9,7 +9,7 @@ const DiverrCard = ({ diverr }) => {
       ></img>
       <CardSticker>{diverr.price} €</CardSticker>
       <p>{diverr.title}</p>
-      <p>{diverr.category}</p>
+      <b>{diverr.category}</b>
       <p>{new Date(diverr.createdAt).toLocaleString()}</p>
     </article>
   );
