@@ -1,13 +1,12 @@
-import { useEffect } from "react";
-import Comments from "../components/Comments";
+import CommentsList from "../components/CommentsList";
 import DiverrCard from "../components/DiverrCard"
 
 const DiverrPage = () => {
 
 
   return (<section>
-     {/* <DiverrCard></DiverrCard> */}
-     <Comments></Comments>
+     <DiverrCard/>
+     <CommentsList></CommentsList>
     </section>
    )
 };

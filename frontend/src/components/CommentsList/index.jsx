@@ -1,11 +1,12 @@
+import Comment from "../Comment"
 import "./style.css"
 
-const Comments = ({comments, deleteComments}) =>{
+const CommentsList = ({comments, deleteComment, editComment}) =>{
     return comments.length ? (
         <ul>
             {comments.map(comment =>(
                 <li key={comment.id}>
-                   <p>Hola, soy un comentario</p> 
+                   <Comment></Comment>
                 </li>
             ))}
            
@@ -16,4 +17,4 @@ const Comments = ({comments, deleteComments}) =>{
 }
 
 
-export default Comments
+export default CommentsList
