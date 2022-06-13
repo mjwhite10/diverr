@@ -25,7 +25,9 @@ const Auth = () => {
             Mis diverrs
           </div>
           <div style={{ height: '6px' }}></div>
+
           <div
+            className="logout-option"
             onClick={(e) => {
               logout();
               navigate('/');
@@ -33,6 +35,7 @@ const Auth = () => {
           >
             Cerrar sesión
           </div>
+          <div style={{ height: '6px' }}></div>
         </div>
       ) : null}
     </div>

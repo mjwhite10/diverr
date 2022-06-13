@@ -58,11 +58,12 @@
 }
 .avatar-list-container {
   align-self: flex-end;
-  width: 7rem;
+  line-height: 1.75rem;
+  width: 8.5rem;
   top: 6rem;
   right: 2.5rem;
   position: absolute;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   border-radius: 6px;
   text-align: end;
   padding: 0.5rem 0.5rem;
@@ -77,6 +78,9 @@
   position: absolute;
   display: inline-block;
   content: '';
+}
+.logout-option {
+  border-top: 1px solid gray;
 }
 @media (min-width: 800px) {
   .auth-button {

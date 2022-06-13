@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
@@ -15,6 +15,8 @@ import { useState } from 'react';
 
 function App() {
   const [hidden, setHidden] = useState(true);
+  const location = useLocation();
+  console.log(location.pathname);
   return (
     <main>
       <Header hideSearchBar={hidden} />

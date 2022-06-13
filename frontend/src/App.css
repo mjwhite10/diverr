@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
+*::after,
+*::before {
+  box-sizing: border-box;
+}
 * {
   margin: 0;
   padding: 0;
@@ -137,4 +140,25 @@ main {
   main {
     margin: 2rem 4rem;
   }
+}
+:root {
+  --slider-padding: 5rem;
+}
+.mydiverrs-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.mydiverrs-container-slider {
+  display: flex;
+  width: calc(100% - var(--slider-padding));
+  transform: translateX(-0%);
+}
+
+.mydiverrs-container-slider > img {
+  flex: 0 0 25%;
+  max-width: 25%;
+  aspect-ratio: 16/9;
+  padding: 0.25rem;
 }
