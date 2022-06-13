@@ -8,6 +8,7 @@
   background: var(--background);
   color: #ffffff;
   border-radius: 6px;
+  font-size: 0.9rem;
 }
 .order-list,
 .order-list-button {
