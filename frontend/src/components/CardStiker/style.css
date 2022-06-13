@@ -1,12 +1,12 @@
-.cardStiker {
+#cardStiker {
   position: absolute;
   top: 1rem;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 1.5rem;
   transform: translate(-110%, 20%);
   transform-origin: top left;
-  background-color: green;
-  color: #fff;
+  background-color: #00FFFF;
+  color: var(--background);
   padding: 0 0.5rem;
   border-radius: 6px;
 }
