@@ -1,12 +1,12 @@
 import Comment from "../Comment"
 import "./style.css"
 
-const CommentsList = ({comments, deleteComment, editComment}) =>{
+const CommentsList = ({comments, removeComment, editComment}) =>{
     return comments.length ? (
         <ul>
             {comments.map(comment =>(
                 <li key={comment.id}>
-                   <Comment></Comment>
+                  <Comment comment={comment} removeComment={removeComment} />
                 </li>
             ))}
            

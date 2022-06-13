@@ -1,37 +1,42 @@
-import { useContext } from "react";
 import { useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Auth from "../Auth";
 
-const Comment = ({ comment, editComment, removeComment }) => {
+const Comment = ({ comment, removeComment }) => {
+  const { user, token } = useContext(Auth);
   const [error, setError] = useState("");
-  const [send, setSend] = useState(false);
-  const { token } = useContext(Auth);
 
-  const handleForm = async e => {
-    e.preventDefault();
+  const deleteComment = async id => {
     try {
-      setSend(true);
-
-      //const data?
-      //Aquí la petición del envío del comentario
+      // await funcion borrar comentario
+      removeComment(id);
     } catch (error) {
-    } finally {
-      setSend(false);
+      setError(error.message);
     }
   };
 
   return (
-    <form onSubmit={handleForm}>
-      <h1>Nuevo comentario</h1>
-      <fieldset>
-        <label htmlFor='text'>Texto</label>
-        <input type='text' id='text' name='text' required></input>
-      </fieldset>
-      <button>Publicar comentario</button>
-      {send ? <p>Publicando comentario</p> : null}
-      {error ? <p>{error}</p> : null}
-    </form>
+    <article>
+      <p>{comment.text}</p>
+      <p>
+        {" "}
+        <Link to={`/user/${user.id}`}>Por {comment.name}</Link> el{" "}
+        {new Date(comment.createdAt).toLocaleString()}
+      </p>
+      {user && user.id === comment.user_id ? (
+        <section>
+          <button
+            onClick={() => {
+              if (window.confirm("¿Estás seguro")) deleteComment(comment.id);
+            }}
+          >
+            Borrar comentario
+          </button>
+          {error ? <p>{error}</p> : null}
+        </section>
+      ) : null}
+    </article>
   );
 };
 
