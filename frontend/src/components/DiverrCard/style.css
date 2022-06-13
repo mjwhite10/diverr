@@ -12,6 +12,7 @@
 .diverrCard p {
   text-align: center;
   font-weight: 300;
+  font-size: 0.9rem;
 }
 
 .diverrCard > *:not(:last-child) {

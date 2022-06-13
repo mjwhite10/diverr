@@ -1,6 +1,6 @@
 import './style.css';
-const CardSticker = ({ className, children }) => {
-  return <>{<p className={`cardStiker`}>{children}</p>}</>;
+const CardSticker = ({ id, children }) => {
+  return <>{<p id={`cardStiker`}>{children}</p>}</>;
 };
 
 export default CardSticker;
