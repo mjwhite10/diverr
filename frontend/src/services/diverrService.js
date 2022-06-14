@@ -9,3 +9,4 @@ export const getAllDiverrComments = async (id) =>
   await httpGet(`/diverr/${id}/comments`);
 //funcion peticion enviar comentario
 //funcion peticion borrar comentario
+//funcion peticion editar comentario
