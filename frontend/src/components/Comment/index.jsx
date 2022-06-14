@@ -29,7 +29,6 @@ const Comment = ({ comment, removeComment, correctComment }) => {
     <article>
       <p>{comment.text}</p>
       <p>
-        {" "}
         <Link to={`/user/${user.id}`}>Por {comment.name}</Link> el{" "}
         {new Date(comment.createdAt).toLocaleString()}
       </p>
