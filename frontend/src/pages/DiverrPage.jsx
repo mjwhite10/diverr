@@ -1,16 +1,18 @@
-import { useContext } from "react";
-import { useParams } from "react-router-dom";
-import CommentsList from "../components/CommentsList";
-import DiverrCard from "../components/DiverrCard";
-import NewComment from "../components/NewComment";
-import { AuthContext } from "../context/AuthContext";
-import useComments from "../hooks/useComments";
+import { useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import CommentsList from '../components/CommentsList';
+import DiverrCard from '../components/DiverrCard';
+import NewComment from '../components/NewComment';
+import { AuthContext } from '../context/AuthContext';
+import useComments from '../hooks/useComments';
 
 const DiverrPage = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
 
-  const { comments, loading, error, addComment, removeComment } = useComments();
+  const { comments, loading, error, addComment, removeComment } = useComments({
+    id,
+  });
 
   if (loading) return <p>cargando comentarios...</p>;
   if (error) return <p>{error}</p>;

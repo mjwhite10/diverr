@@ -1,18 +1,17 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import { getAllDiverrComments } from "../services/diverrService";
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { getAllDiverrComments } from '../services/diverrService';
 
-const useComments = id => {
+const useComments = ({ id }) => {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const loadComments = async () => {
       try {
         setLoading(true);
-        // const data = id await funcion comentarios usuario con esa id : await getAllDiverrComments();
-        let data;
+        const data = await getAllDiverrComments(id);
         setComments(data);
       } catch (error) {
         setError(error.message);
@@ -23,12 +22,12 @@ const useComments = id => {
     loadComments();
   }, [id]);
 
-  const addComment = comment => {
+  const addComment = (comment) => {
     setComments([comment, ...comments]);
   };
 
-  const removeComment = id => {
-    setComments(comments.filter(comment => comment.id !== id));
+  const removeComment = (id) => {
+    setComments(comments.filter((comment) => comment.id !== id));
   };
 
   return { comments, loading, error, addComment, removeComment };
