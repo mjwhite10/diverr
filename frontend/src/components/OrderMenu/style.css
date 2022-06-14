@@ -16,7 +16,6 @@
 }
 .order-list {
   text-align: center;
-  margin: 1rem 0;
   align-self: flex-start;
 }
 
@@ -46,7 +45,7 @@
   height: 30px;
   position: absolute;
   left: 0.75rem;
-  top: 0.4rem;
+  top: 0.5rem;
 }
 @media (min-width: 800px) {
 }

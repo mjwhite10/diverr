@@ -1,0 +1,45 @@
+.custom-input-file {
+  background-color: var(--background);
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+  text-align: center;
+  width: 3rem;
+  margin: 0 auto;
+  border-radius: 6px;
+  border: none;
+  margin-top: -1rem;
+  padding: 0.25rem 0;
+  cursor: pointer;
+}
+.load-avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.custom-input-file .input-file {
+  border: 10px solid transparent;
+  cursor: pointer;
+  font-size: 10px;
+  margin: 0;
+  opacity: 0;
+  outline: 0 none;
+  padding: 0;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+}
+.edit-button {
+  background: url('../../../public/images/icono-camara.svg') no-repeat center
+    center;
+  width: 30px;
+  height: 30px;
+  padding: 12px;
+}
+
+.load-avatar-image {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+}

@@ -12,19 +12,19 @@
 
 html {
   --background: #535353;
+  --second-color: #a9ffff;
   --bright: #ffffff;
-  --action: #00acee;
   --error: #c84d4d;
 }
 
 .primary-button {
-  color: white;
+  color: var(--bright);
   background-color: var(--background);
   border-radius: 6px;
 }
 
 main {
-  margin: 1rem;
+  margin: 1rem 2rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -60,16 +60,42 @@ main {
   border: none;
   margin-left: 0.1rem;
 }
-
-/*LOGIN PAGE*/
-.login-page {
+.link {
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: inherit;
+}
+/*LOGIN && REGISTER PAGE*/
+.login-page,
+.register-page,
+.edit-user-page {
   display: flex;
   justify-content: center;
   align-content: center;
 }
-
-/*REGISTER PAGE*/
-.register-page,
+/*EDIT USER PAGE*/
+.edit-user-page {
+  flex-direction: column;
+}
+.legend1 {
+  grid-area: legend1;
+  align-self: center;
+}
+.legend2 {
+  grid-area: legend2;
+  align-self: center;
+}
+.form-edit h1 {
+  grid-area: title;
+  justify-self: center;
+}
+.form-edit button {
+  grid-area: button;
+  margin-top: 1rem;
+  align-self: center;
+  width: 55%;
+}
+/**/
 .newdiverr-page {
   color: var(--background);
   background-color: var(--bright);
@@ -82,7 +108,6 @@ main {
   height: 85vh;
 }
 
-.form,
 .newdiverr-form {
   font-weight: 600;
 }
@@ -92,7 +117,6 @@ main {
   height: 2.2rem;
 }
 
-.register-button,
 .newdiverr-button {
   color: white;
   background-color: var(--background);
@@ -115,17 +139,17 @@ main {
   cursor: pointer;
   text-decoration: underline;
   /*Este color habrá que cambiarlo por uno más acorde a la página */
-  background-color: #A9FFFF;
+  background-color: var(--second-color);
 }
 
 .file-upload::before {
   content: 'Selecciona un archivo';
-  border: 1px solid #535353;
+  border: 1px solid var(--background);
   border-radius: 6px;
   cursor: pointer;
   text-decoration: underline;
   /*Este color habrá que cambiarlo por uno más acorde a la página */
-  background-color: #A9FFFF;
+  background-color: var(--second-color);
 }
 
 .file-upload:hover::before,
@@ -133,35 +157,44 @@ main {
   border: #535353;
 }
 
-.link {
-  font-size: 0.9rem;
-  text-decoration: none;
-  color: inherit;
+.order-filter-menu {
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 }
 
 @media (min-width: 800px) {
   main {
     margin: 2rem 4rem;
   }
-}
-:root {
-  --slider-padding: 5rem;
-}
-.mydiverrs-container {
-  display: flex;
-  justify-content: center;
-  margin: 2rem 0;
-}
+  .order-filter-menu {
+    justify-content: flex-end;
+    margin: 1.5rem 2rem;
+  }
 
-.mydiverrs-container-slider {
-  display: flex;
-  width: calc(100% - var(--slider-padding));
-  transform: translateX(-0%);
-}
+  .form-edit {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 0.3fr 2.6fr 0.3fr;
+    grid-template-areas:
+      'title    title'
+      'legend1 legend2'
+      'button  button';
+    width: 50%;
+    margin: 0 auto;
+    gap: 1rem;
+  }
 
-.mydiverrs-container-slider > img {
-  flex: 0 0 25%;
-  max-width: 25%;
-  aspect-ratio: 16/9;
-  padding: 0.25rem;
+  .legend1,
+  .legend2 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .form-edit button {
+    width: 50%;
+    justify-self: center;
+  }
 }

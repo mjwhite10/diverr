@@ -1,17 +1,21 @@
 const { generateError } = require('../helpers');
 const { getConnection } = require('./getDB');
 
-const searchDiverrs = async (search, orderBy, orderDirection) => {
+const searchDiverrs = async (
+  search,
+  orderBy,
+  orderDirection,
+  filterCategory
+) => {
   let connection;
   try {
     connection = await getConnection();
     let queryResults;
-
-    //Si se pasa un filtro de búsqueda...
+    //Si se pasa una búsqueda de texto...
     if (search) {
       queryResults = await connection.query(
         `
-          SELECT D.id, D.idUser, U.name as user, D.title,D.picture,D.price, D.info, D.file, DC.description as category, DS.description as status, D.createdAt
+          SELECT D.id as id, D.idUser, U.name as user, D.title,D.picture,D.price, D.info, D.file, DC.description as category, DS.description as status, D.createdAt
           FROM diverrs AS D
           INNER JOIN diverrs_categories AS DC
           ON D.idCategory = DC.id
@@ -19,13 +23,14 @@ const searchDiverrs = async (search, orderBy, orderDirection) => {
           ON D.idStatus = DS.id
           INNER JOIN users AS U
           ON D.idUser = U.id
-          WHERE D.title LIKE '%${search}%' OR D.info LIKE '%${search}%'
+          WHERE (D.title LIKE '%${search}%' OR D.info LIKE '%${search}%')
+          ${filterCategory ? 'AND DC.id IN (' + filterCategory + ')' : ''}
           ORDER BY D.${orderBy} ${orderDirection}`
       );
     } else {
       queryResults = await connection.query(
         `
-          SELECT D.id, D.idUser, U.name as user, D.title,D.picture,D.price, D.info, D.file, DC.description as category, DS.description as status, D.createdAt
+        SELECT D.id as id, D.idUser, U.name as user, D.title,D.picture,D.price, D.info, D.file, DC.description as category, DS.description as status, D.createdAt
           FROM diverrs AS D
           INNER JOIN diverrs_categories AS DC
           ON D.idCategory = DC.id
@@ -33,6 +38,7 @@ const searchDiverrs = async (search, orderBy, orderDirection) => {
           ON D.idStatus = DS.id
           INNER JOIN users AS U
           ON D.idUser = U.id
+          ${filterCategory ? 'WHERE DC.id IN (' + filterCategory + ')' : ''}
           ORDER BY D.${orderBy} ${orderDirection}`
       );
     }

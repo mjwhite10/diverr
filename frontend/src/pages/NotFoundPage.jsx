@@ -1,10 +1,6 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const NotFoundPage = ({ hideItems }) => {
-  useEffect(() => {
-    hideItems(true);
-  });
+const NotFoundPage = () => {
   return (
     <section>
       <h1>Not Found</h1>

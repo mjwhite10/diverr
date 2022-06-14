@@ -6,11 +6,11 @@ const listDiverrs = async (req, res, next) => {
     //  search: para listar solo las entradas que contengan su valor en place o description
     //  order: para ordernar el listado por title, status, category o createdAt
     //  direction: para la dirección de la ordenación desc o asc
-    const { search, order, direction } = req.query;
+    const { search, order, direction, filter } = req.query;
 
     //Procesamos la direccion de la query
     const orderDirection =
-      (direction && direction.toLowerCase()) === 'desc' ? 'DESC' : 'ASC';
+      (direction && direction.toLowerCase()) === 'asc' ? 'ASC' : 'DESC';
 
     //Procesamos el campo de orden
     let orderBy;
@@ -32,7 +32,7 @@ const listDiverrs = async (req, res, next) => {
         break;
     }
     //Recogemos el resultado de la query
-    const data = await searchDiverrs(search, orderBy, orderDirection);
+    const data = await searchDiverrs(search, orderBy, orderDirection, filter);
     res.send({
       status: 'Ok',
       message: data,

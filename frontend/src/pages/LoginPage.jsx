@@ -1,15 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import InputFieldForm from '../components/InputFieldForm';
 import { loginUserService } from '../services/userService';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 
-const LoginPage = ({ hideItems }) => {
-  //Antes de renderizar ocultamos los componentes de búsqueda
-  useEffect(() => {
-    hideItems(true);
-  });
+const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [errorEmail, setErrorEmail] = useState(false);
   const [password, setPassword] = useState('');
@@ -41,17 +37,16 @@ const LoginPage = ({ hideItems }) => {
         <h1>Login</h1>
         <label htmlFor="email">Email</label>
         <InputFieldForm
-          className="inputField"
           id={'email'}
           placeholder={'email@email.com'}
           error={errorEmail}
           setError={setErrorEmail}
           type={'text'}
           setValue={setEmail}
+          autofocus={true}
         />
         <label htmlFor="password">Contraseña</label>
         <InputFieldForm
-          className="inputField"
           id={'password'}
           placeholder={''}
           error={errorPassword}
