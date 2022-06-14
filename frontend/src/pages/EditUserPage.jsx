@@ -21,9 +21,13 @@ const EditUserPage = () => {
   const [errorPassword, setErrorPassword] = useState(false);
   const { user } = useContext(AuthContext);
 
+  const handleFormEdit = async (e) => {
+    e.preventDefault();
+  };
+
   return (
     <section className="edit-user-page">
-      <form className="form form-edit">
+      <form className="form form-edit" onSubmit={handleFormEdit}>
         <h2>Editar usuario</h2>
         <div className="col col1">
           <label htmlFor="email">Email</label>
