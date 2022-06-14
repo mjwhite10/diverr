@@ -48,7 +48,7 @@ const getUserById = async (id) => {
 
     const [user] = await connection.query(
       `
-      SELECT id,email,name,bio,avatar,role,
+      SELECT id,email,name,info,avatar,role,
       lastAuthUpdate,createdAt,modifiedAt
       FROM users
       WHERE id = ?`,
@@ -64,7 +64,7 @@ const getUserById = async (id) => {
   }
 };
 
-const editUserById = async (email, name, bio, avatar, id) => {
+const editUserById = async (email, name, info, avatar, id) => {
   let connection;
   try {
     connection = await getConnection();
@@ -72,9 +72,9 @@ const editUserById = async (email, name, bio, avatar, id) => {
     await connection.query(
       `
     UPDATE users
-    SET email = ?, name = ?, bio = ?, avatar = ?, modifiedAt = UTC_TIMESTAMP
+    SET email = ?, name = ?, info = ?, avatar = ?, modifiedAt = UTC_TIMESTAMP
     WHERE id = ?`,
-      [email, name, bio, avatar, id]
+      [email, name, info, avatar, id]
     );
   } finally {
     if (connection) connection.release();

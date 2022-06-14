@@ -38,7 +38,7 @@ async function main() {
             password TINYTEXT NOT NULL,
             role ENUM("normal", "admin") DEFAULT "normal" NOT NULL,
             name TINYTEXT NOT NULL,
-            bio VARCHAR(500),
+            info VARCHAR(150),
             avatar TINYTEXT,
             createdAt DATETIME NOT NULL,
             modifiedAt DATETIME,
@@ -131,21 +131,21 @@ async function main() {
 
     await connection.query(
       `
-      INSERT INTO users (email,password,name,bio,role,lastAuthUpdate,avatar,modifiedAt,createdAt)
+      INSERT INTO users (email,password,name,info,role,lastAuthUpdate,avatar,modifiedAt,createdAt)
       VALUES('luna@hackaboss.com', ?, 'Luna', 'Lorem fistrum','admin',UTC_TIMESTAMP,?,UTC_TIMESTAMP,UTC_TIMESTAMP)
     `,
       [await bcrypt.hash(process.env.DEFAULT_ADMIN_PASSWORD, 8), fileAdmin1]
     );
     await connection.query(
       `
-      INSERT INTO users (email,password,name,bio,role,lastAuthUpdate,avatar,modifiedAt,createdAt)
+      INSERT INTO users (email,password,name,info,role,lastAuthUpdate,avatar,modifiedAt,createdAt)
       VALUES('manu@hackaboss.com', ?, 'Manu', 'Lorem fistrum','admin',UTC_TIMESTAMP,?,UTC_TIMESTAMP,UTC_TIMESTAMP)
     `,
       [await bcrypt.hash(process.env.DEFAULT_ADMIN_PASSWORD, 8), fileAdmin2]
     );
     await connection.query(
       `
-      INSERT INTO users (email,password,name,bio,role,lastAuthUpdate,avatar,modifiedAt,createdAt)
+      INSERT INTO users (email,password,name,info,role,lastAuthUpdate,avatar,modifiedAt,createdAt)
       VALUES('javi@hackaboss.com', ?, 'Javier', 'Lorem fistrum','admin',UTC_TIMESTAMP,?,UTC_TIMESTAMP,UTC_TIMESTAMP)
     `,
       [await bcrypt.hash(process.env.DEFAULT_ADMIN_PASSWORD, 8), fileAdmin3]
@@ -158,14 +158,14 @@ async function main() {
       const email = faker.internet.email();
       const password = await bcrypt.hash(process.env.DEFAULT_USER_PASSWORD, 8);
       const name = faker.name.findName();
-      const bio = faker.lorem.sentences();
+      const info = faker.lorem.sentence();
       const avatar = await getRandomAvatar();
       const file = await processAndSaveImage(avatar, uploadAvatarPath);
       await connection.query(
         `
-        INSERT INTO users (email,password,name,bio,lastAuthUpdate,avatar,modifiedAt,createdAt)
+        INSERT INTO users (email,password,name,info,lastAuthUpdate,avatar,modifiedAt,createdAt)
         VALUES (?,?,?,?,UTC_TIMESTAMP,?,UTC_TIMESTAMP,UTC_TIMESTAMP)`,
-        [email, password, name, bio, file]
+        [email, password, name, info, file]
       );
     }
 

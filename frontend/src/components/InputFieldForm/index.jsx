@@ -8,6 +8,7 @@ const InputFieldForm = ({
   autofocus = false,
   required = true,
   setValue,
+  value,
 }) => {
   return (
     <div className="input-field-form-container">
@@ -23,6 +24,7 @@ const InputFieldForm = ({
           setValue(e.target.value);
           setError(false);
         }}
+        value={value}
       ></input>
       {error && <span>❌</span>}
 
