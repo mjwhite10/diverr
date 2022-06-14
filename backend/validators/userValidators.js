@@ -50,13 +50,10 @@ const editUserSchema = Joi.object().keys({
     .error(
       generateError('El campo name no puede exceder los 100 caracteres', 400)
     ),
-  bio: Joi.string()
-    .max(500)
+  info: Joi.string()
+    .max(150)
     .error(
-      generateError(
-        'El campo biografía no puede exceder los 500 caracteres',
-        400
-      )
+      generateError('El campo info no puede exceder los 150 caracteres', 400)
     ),
 });
 

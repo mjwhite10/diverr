@@ -43,9 +43,10 @@ main {
   font-size: 0.9rem;
   padding: 0.2rem;
 }
-.form h1 {
+.form h1,
+.form h2 {
   margin-bottom: 1rem;
-  font-size: 2rem;
+  text-align: center;
   align-self: center;
 }
 .form .link {
@@ -55,7 +56,7 @@ main {
 }
 .form-button {
   padding: 0.7rem 0;
-  font-size: 0.9rem;
+  font-size: 1rem;
   width: 100%;
   border: none;
   margin-left: 0.1rem;
@@ -71,21 +72,26 @@ main {
 .edit-user-page {
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
 }
 /*EDIT USER PAGE*/
 .edit-user-page {
   flex-direction: column;
 }
-.legend1 {
-  grid-area: legend1;
+.form-edit h2,
+.form-change-password h2 {
+  border-bottom: 1px solid var(--background);
+}
+.col1 {
+  grid-area: col1;
+}
+.col2 {
+  grid-area: col2;
+}
+.col {
   align-self: center;
 }
-.legend2 {
-  grid-area: legend2;
-  align-self: center;
-}
-.form-edit h1 {
+.form-edit h2 {
   grid-area: title;
   justify-self: center;
 }
@@ -93,7 +99,11 @@ main {
   grid-area: button;
   margin-top: 1rem;
   align-self: center;
-  width: 55%;
+  width: 65%;
+}
+
+.form-change-password {
+  margin-top: 4rem;
 }
 /**/
 .newdiverr-page {
@@ -180,15 +190,13 @@ main {
     grid-template-rows: 0.3fr 2.6fr 0.3fr;
     grid-template-areas:
       'title    title'
-      'legend1 legend2'
-      'button  button';
-    width: 50%;
+      'col1     col2'
+      'button   button';
     margin: 0 auto;
     gap: 1rem;
   }
-
-  .legend1,
-  .legend2 {
+  .col1,
+  .col2 {
     display: flex;
     flex-direction: column;
     width: 100%;

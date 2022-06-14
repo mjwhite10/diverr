@@ -14,7 +14,7 @@ const {
 const editUser = async (req, res, next) => {
   try {
     const { idUser } = req.params;
-    const { email, name, bio } = req.body;
+    const { email, name, info } = req.body;
 
     //Validamos los parámetros
     await idUserSchema.validateAsync(req.params);
@@ -68,7 +68,7 @@ const editUser = async (req, res, next) => {
     }
 
     //Modificamos los datos del usuario
-    await editUserById(email, name, bio, avatarFileName, idUser);
+    await editUserById(email, name, info, avatarFileName, idUser);
 
     res.send({
       status: 'Ok',

@@ -44,6 +44,7 @@ const LoginPage = () => {
           type={'text'}
           setValue={setEmail}
           autofocus={true}
+          value={email}
         />
         <label htmlFor="password">Contraseña</label>
         <InputFieldForm
@@ -53,6 +54,7 @@ const LoginPage = () => {
           setError={setErrorPassword}
           type={'password'}
           setValue={setPassword}
+          value={password}
         />
         <button className="form-button primary-button">Iniciar sesión</button>
         <Link className="link" to="/register">
