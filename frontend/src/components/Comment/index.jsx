@@ -1,29 +1,37 @@
 import { useState } from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
-import Auth from "../Auth";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 const Comment = ({ comment, removeComment, correctComment }) => {
-  const { user, token } = useContext(Auth);
+  const navigate = useNavigate();
+  const { user, token } = useContext(AuthContext);
   const [error, setError] = useState("");
+
+  console.log(user);
+  console.log(comment);
 
   const deleteComment = async id => {
     try {
-      // await funcion borrar comentario
-      removeComment(id);
+      // await funcion borrar comentario ({id, token})
+      // if (removeComment) {
+      //   removeComment(id);
+      // } else {
+      //   navigate("/diverr/:id");
+      // }
     } catch (error) {
       setError(error.message);
     }
   };
 
-  const editComment = async id =>{
+  const editComment = async id => {
     try {
       //await funcion editar comentario
-      correctComment(id)
+      correctComment(id);
     } catch (error) {
-      setError(error.message)
+      setError(error.message);
     }
-  }
+  };
 
   return (
     <article>
@@ -35,6 +43,7 @@ const Comment = ({ comment, removeComment, correctComment }) => {
       {user && user.id === comment.user_id ? (
         <section>
           <button
+            className='primary-button'
             onClick={() => {
               if (window.confirm("¿Estás seguro?")) deleteComment(comment.id);
             }}
@@ -42,6 +51,7 @@ const Comment = ({ comment, removeComment, correctComment }) => {
             Borrar comentario
           </button>
           <button
+            className='primary-button'
             onClick={() => {
               if (window.confirm("¿Estás seguro?")) editComment(comment.id);
             }}
