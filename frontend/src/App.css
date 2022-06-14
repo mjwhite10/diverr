@@ -24,7 +24,7 @@ html {
 }
 
 main {
-  margin: 1rem;
+  margin: 1rem 2rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -67,12 +67,35 @@ main {
 }
 /*LOGIN && REGISTER PAGE*/
 .login-page,
-.register-page {
+.register-page,
+.edit-user-page {
   display: flex;
   justify-content: center;
   align-content: center;
 }
-
+/*EDIT USER PAGE*/
+.edit-user-page {
+  flex-direction: column;
+}
+.legend1 {
+  grid-area: legend1;
+  align-self: center;
+}
+.legend2 {
+  grid-area: legend2;
+  align-self: center;
+}
+.form-edit h1 {
+  grid-area: title;
+  justify-self: center;
+}
+.form-edit button {
+  grid-area: button;
+  margin-top: 1rem;
+  align-self: center;
+  width: 55%;
+}
+/**/
 .newdiverr-page {
   color: var(--background);
   background-color: var(--bright);
@@ -149,5 +172,29 @@ main {
   .order-filter-menu {
     justify-content: flex-end;
     margin: 1.5rem 2rem;
+  }
+
+  .form-edit {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 0.3fr 2.6fr 0.3fr;
+    grid-template-areas:
+      'title    title'
+      'legend1 legend2'
+      'button  button';
+    width: 50%;
+    margin: 0 auto;
+    gap: 1rem;
+  }
+
+  .legend1,
+  .legend2 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .form-edit button {
+    width: 50%;
+    justify-self: center;
   }
 }
