@@ -11,7 +11,7 @@ const LoadAvatar = () => {
       ? URL.createObjectURL(image)
       : user?.avatar
       ? `${process.env.REACT_APP_BACKEND}/uploads/avatar/${user.avatar}`
-      : '../../../public/images/logo-diverr2.svg';
+      : '../../../images/logo-diverr2.svg';
   };
   return (
     <div className="load-avatar">
