@@ -54,7 +54,6 @@ const httpPut = async (url, data, token = null) => {
   } else {
     header = { 'Content-Type': 'application/json' };
   }
-  console.log(header);
 
   const response = await fetch(`${process.env.REACT_APP_BACKEND}${url}`, {
     method: 'PUT',

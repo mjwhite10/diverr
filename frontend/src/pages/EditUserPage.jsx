@@ -35,7 +35,7 @@ const EditUserPage = () => {
       setSector(userdata.info);
     };
     loadUserInfo();
-  });
+  }, [token]);
 
   const handleFormEdit = async (e) => {
     e.preventDefault();
