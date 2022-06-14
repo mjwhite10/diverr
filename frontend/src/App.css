@@ -12,13 +12,13 @@
 
 html {
   --background: #535353;
+  --second-color: #a9ffff;
   --bright: #ffffff;
-  --action: #00acee;
   --error: #c84d4d;
 }
 
 .primary-button {
-  color: white;
+  color: var(--bright);
   background-color: var(--background);
   border-radius: 6px;
 }
@@ -139,17 +139,17 @@ main {
   cursor: pointer;
   text-decoration: underline;
   /*Este color habrá que cambiarlo por uno más acorde a la página */
-  background-color: #a9ffff;
+  background-color: var(--second-color);
 }
 
 .file-upload::before {
   content: 'Selecciona un archivo';
-  border: 1px solid #535353;
+  border: 1px solid var(--background);
   border-radius: 6px;
   cursor: pointer;
   text-decoration: underline;
   /*Este color habrá que cambiarlo por uno más acorde a la página */
-  background-color: #a9ffff;
+  background-color: var(--second-color);
 }
 
 .file-upload:hover::before,

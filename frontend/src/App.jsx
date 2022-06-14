@@ -1,5 +1,7 @@
 import './App.css';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
@@ -11,9 +13,7 @@ import EditUserPage from './pages/EditUserPage';
 import MyDiverrsPage from './pages/MyDiverrsPage';
 import NewDiverrPage from './pages/NewDiverrPage';
 import OrderMenu from './components/OrderMenu';
-import { useState } from 'react';
 import FilterMenu from './components/FilterMenu';
-import { useEffect } from 'react';
 
 function App() {
   const [hidden, setHidden] = useState(true);
