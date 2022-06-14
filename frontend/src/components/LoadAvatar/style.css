@@ -37,7 +37,14 @@
 }
 
 .load-avatar-image {
-  width: 15rem;
-  height: 15rem;
+  width: 10rem;
+  height: 10rem;
   border-radius: 50%;
+}
+@media (min-width: 800px) {
+  .load-avatar-image {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+  }
 }

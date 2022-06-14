@@ -41,7 +41,7 @@ const getUserByEmail = async (email) => {
   }
 };
 
-const getUserById = async (id) => {
+const getUserById = async (id, passIncluded = false) => {
   let connection;
   try {
     connection = await getConnection();
@@ -49,7 +49,7 @@ const getUserById = async (id) => {
     const [user] = await connection.query(
       `
       SELECT id,email,name,info,avatar,role,
-      lastAuthUpdate,createdAt,modifiedAt
+      lastAuthUpdate,createdAt,modifiedAt${passIncluded ? ',password' : ''}
       FROM users
       WHERE id = ?`,
       [id]

@@ -2,8 +2,7 @@ import { useContext } from 'react';
 import { useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import './style.css';
-const LoadAvatar = () => {
-  const [image, setImage] = useState('');
+const LoadAvatar = ({ image, setImage }) => {
   const { user } = useContext(AuthContext);
 
   const getImage = () => {
@@ -22,8 +21,8 @@ const LoadAvatar = () => {
         <input
           className="input-file"
           type="file"
-          id="image"
-          name="image"
+          id="avatar"
+          name="avatar"
           accept="image/*"
           onChange={(e) => setImage(e.target.files[0])}
           value=""

@@ -53,8 +53,8 @@ app.use('/uploads', express.static('./uploads'));
 app.post('/users', newUser);
 app.get('/users', isUser, getUser);
 app.post('/users/login', loginUser);
-app.put('/users/:idUser', isUser, editUser);
-app.put('/users/:idUser/password', isUser, editUserPassword);
+app.put('/users/', isUser, editUser);
+app.put('/users/password', isUser, editUserPassword);
 app.delete('/users/:idUser', isUser, isAdmin, deleteUser);
 
 //Diverrs endpoints//

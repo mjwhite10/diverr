@@ -9,7 +9,7 @@ const newUserSchema = Joi.object().keys({
       generateError('El campo email debe existir y ser un email válido', 400)
     ),
   password: Joi.string()
-    .min(4)
+    .min(3)
     .required()
     .error(
       generateError(
@@ -31,7 +31,7 @@ const loginUserSchema = Joi.object().keys({
       generateError('El campo email debe existir y ser un email válido', 400)
     ),
   password: Joi.string()
-    .min(4)
+    .min(3)
     .required()
     .error(
       generateError(
@@ -59,21 +59,20 @@ const editUserSchema = Joi.object().keys({
 
 const editUserPasswordSchema = Joi.object().keys({
   oldPassword: Joi.string()
-    .min(4)
+    .min(3)
     .required()
     .error(
       generateError(
-        'El campo oldPassword debe existir y ser mayor de 4 caracteres',
+        'El campo oldPassword debe existir y ser mayor de 3 caracteres',
         400
       )
     ),
   newPassword: Joi.string()
-    .min(4)
+    .min(3)
     .required()
-    .invalid(Joi.ref('oldPassword'))
     .error(
       generateError(
-        'El campo newPassword debe existir, ser diferente a oldPassword y ser mayor de 4 caracteres',
+        'El campo newPassword debe existir, ser diferente a oldPassword y ser mayor de 3caracteres',
         400
       )
     ),

@@ -66,7 +66,7 @@ main {
   text-decoration: none;
   color: inherit;
 }
-/*LOGIN && REGISTER PAGE*/
+/*COMMON FORM PAGES*/
 .login-page,
 .register-page,
 .edit-user-page {
@@ -81,6 +81,7 @@ main {
 .form-edit h2,
 .form-change-password h2 {
   border-bottom: 1px solid var(--background);
+  /* margin-top: 0rem; */
 }
 .col1 {
   grid-area: col1;
@@ -90,6 +91,7 @@ main {
 }
 .col {
   align-self: center;
+  justify-content: center;
 }
 .form-edit h2 {
   grid-area: title;
@@ -101,10 +103,16 @@ main {
   align-self: center;
   width: 65%;
 }
-
-.form-change-password {
-  margin-top: 4rem;
+.form-edit {
+  flex-grow: 2;
+  justify-items: center;
 }
+.form-change-password {
+  flex-grow: 1;
+  margin-top: 4rem;
+  align-items: center;
+}
+
 /**/
 .newdiverr-page {
   color: var(--background);
@@ -183,7 +191,9 @@ main {
     justify-content: flex-end;
     margin: 1.5rem 2rem;
   }
-
+  .edit-user-page {
+    flex-direction: row;
+  }
   .form-edit {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -192,17 +202,21 @@ main {
       'title    title'
       'col1     col2'
       'button   button';
-    margin: 0 auto;
     gap: 1rem;
   }
   .col1,
   .col2 {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    justify-self: center;
+  }
+  .form-change-password {
+    margin-top: 0rem;
+  }
+  .form-change-password button {
+    width: 50%;
   }
   .form-edit button {
-    width: 50%;
-    justify-self: center;
+    width: 25%;
   }
 }

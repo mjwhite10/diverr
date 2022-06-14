@@ -6,28 +6,15 @@ const {
   processAndSaveImage,
   deleteFile,
 } = require('../../helpers');
-const {
-  editUserSchema,
-  idUserSchema,
-} = require('../../validators/userValidators');
+const { editUserSchema } = require('../../validators/userValidators');
 
 const editUser = async (req, res, next) => {
   try {
-    const { idUser } = req.params;
+    const idUser = req.auth.id;
     const { email, name, info } = req.body;
 
-    //Validamos los parámetros
-    await idUserSchema.validateAsync(req.params);
     //Validamos el body
     await editUserSchema.validateAsync(req.body);
-
-    //Comprobamos que el id del usuario que queremos modificar es
-    // el mismo que firma la petición o bien es un admin
-    if (req.auth.id !== Number(idUser) && req.auth.role !== 'admin')
-      throw generateError(
-        'No estas autorizado para modificar este usuario',
-        403
-      );
 
     //Comprobamos que el usuario existe
     const user = await getUserById(idUser);

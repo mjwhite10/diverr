@@ -4,25 +4,76 @@ import { useEffect } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import {
+  editUserDataService,
+  editUserPasswordService,
+  getUserDataService,
+} from '../services/userService';
 const EditUserPage = () => {
-  useEffect(() => {
-    setEmail(user.email);
-    setName(user.name);
-    setSector(user.info ? user.info : '');
-    console.log(user);
-  }, []);
+  const { token, logout } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [errorEmail, setErrorEmail] = useState(false);
   const [name, setName] = useState('');
   const [errorName, setErrorName] = useState(false);
   const [sector, setSector] = useState('');
   const [errorSector, setErrorSector] = useState(false);
-  const [password, setPassword] = useState('');
-  const [errorPassword, setErrorPassword] = useState(false);
-  const { user } = useContext(AuthContext);
+  const [oldPassword, setOldPasswod] = useState('');
+  const [errorOldPassword, setErrorOldPassword] = useState(false);
+  const [newPassword, setNewPassword] = useState('');
+  const [errorNewPassword, setErrorNewPassword] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [image, setImage] = useState('');
+  const navigate = useNavigate();
+
+  //Antes de renderizar consultamos la info del user a la API
+  useEffect(() => {
+    const loadUserInfo = async () => {
+      const userdata = await getUserDataService(token);
+      setEmail(userdata.email);
+      setName(userdata.name);
+      setSector(userdata.info);
+    };
+    loadUserInfo();
+  }, []);
 
   const handleFormEdit = async (e) => {
     e.preventDefault();
+    try {
+      setSending(true);
+      const data = new FormData(e.target);
+      if (image !== '') data.append('avatar', image);
+      await editUserDataService(data, token);
+      //Forzamos una recarga de la página para que actualice el resto de componentes
+      window.location.reload(false);
+    } catch (error) {
+      console.log(error.message);
+      if (error.message.includes('email')) {
+        setErrorEmail(error.message);
+      }
+      if (error.message.includes('nombre')) {
+        setErrorName(error.message);
+      }
+      if (error.message.includes('info')) {
+        setErrorSector(error.message);
+      }
+    } finally {
+      setSending(false);
+    }
+  };
+  const handleFormPassword = async (e) => {
+    e.preventDefault();
+    setErrorNewPassword(false);
+    setErrorOldPassword(false);
+    //Verificamos que las passwords sean iguales
+
+    try {
+      await editUserPasswordService({ oldPassword, newPassword }, token);
+      logout();
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -32,16 +83,17 @@ const EditUserPage = () => {
         <div className="col col1">
           <label htmlFor="email">Email</label>
           <InputFieldForm
+            className="algo"
             id={'email'}
-            type={'text'}
+            type={'email'}
             error={errorEmail}
             setError={setErrorEmail}
             setValue={setEmail}
             value={email}
           />
-          <label htmlFor="nombre">Nombre</label>
+          <label htmlFor="name">Nombre</label>
           <InputFieldForm
-            id={'nombre'}
+            id={'name'}
             type={'text'}
             error={errorName}
             setError={setErrorName}
@@ -50,7 +102,7 @@ const EditUserPage = () => {
           />
           <label htmlFor="Sector">Sector</label>
           <InputFieldForm
-            id={'sector'}
+            id={'info'}
             type={'text'}
             error={errorSector}
             setError={setErrorSector}
@@ -59,21 +111,35 @@ const EditUserPage = () => {
           />
         </div>
         <div className="col col2">
-          <LoadAvatar />
+          <LoadAvatar image={image} setImage={setImage} />
         </div>
 
         <button className="form-button primary-button" type="submit">
-          Confirmar cambio
+          {sending ? 'Enviando...' : 'Confirmar cambio'}
         </button>
       </form>
 
-      <form className="form form-change-password">
+      <form className="form form-change-password" onSubmit={handleFormPassword}>
         <h2>Cambiar Contraseña</h2>
         <div className="col">
-          <label htmlFor="password1">Introduce la nueva contraseña</label>
-          <InputFieldForm id={'password1'} type={'password'} />
-          <label htmlFor="password1">Repite la nueva contraseña</label>
-          <InputFieldForm id={'password1'} type={'password'} />
+          <label htmlFor="password1">Introduce contraseña actual</label>
+          <InputFieldForm
+            id={'password1'}
+            type={'password'}
+            error={errorOldPassword}
+            setError={setErrorOldPassword}
+            setValue={setOldPasswod}
+            value={oldPassword}
+          />
+          <label htmlFor="password2">Introduce la nueva contraseña</label>
+          <InputFieldForm
+            id={'password2'}
+            type={'password'}
+            error={errorNewPassword}
+            setError={setErrorNewPassword}
+            setValue={setNewPassword}
+            value={newPassword}
+          />
         </div>
         <button className="form-button primary-button" type="submit">
           Cambiar contraseña
