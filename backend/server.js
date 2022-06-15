@@ -31,6 +31,8 @@ const {
   deleteDiverrComment,
   listDiverrCategories,
   listDiverrStatus,
+  listDiverrsByUser,
+  listDiverrSolutionsByUser,
 } = require('./controllers/diverrs');
 
 //Middlewares
@@ -56,6 +58,8 @@ app.post('/users/login', loginUser);
 app.put('/users/', isUser, editUser);
 app.put('/users/password', isUser, editUserPassword);
 app.delete('/users/:idUser', isUser, isAdmin, deleteUser);
+app.get('/users/diverr', isUser, listDiverrsByUser);
+app.get('/users/solution', isUser, listDiverrSolutionsByUser);
 
 //Diverrs endpoints//
 //Diverrs
@@ -69,7 +73,7 @@ app.get('/diverr/:idDiverr/solution', isUser, getDiverrSolution);
 app.post('/diverr/:idDiverr/solution', isUser, newDiverrSolution);
 app.put('/diverr/:idDiverr/solution', isUser, editDiverrSolution);
 app.delete('/diverr/:idDiverr/solution', isUser, deleteDiverrSolution);
-//Services comments
+//Diverrss comments
 app.get('/diverr/:idDiverr/comments', listDiverrComments);
 app.get('/diverr/:idDiverr/comments/:idComment', getDiverrComment);
 app.post('/diverr/:idDiverr/comments', isUser, newDiverrComment);
@@ -79,9 +83,9 @@ app.delete(
   isUser,
   deleteDiverrComment
 );
-//Services categories
+//Diverrss categories
 app.get('/categories', listDiverrCategories);
-//Services status
+//Diverrss status
 app.get('/status', listDiverrStatus);
 //Not found Middleware
 app.use((req, res) => {

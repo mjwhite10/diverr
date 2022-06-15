@@ -13,7 +13,7 @@ const getDiverr = async (req, res, next) => {
     //Devolvemos la información
     res.send({
       status: 'ok',
-      data: diverr,
+      message: diverr,
     });
   } catch (error) {
     next(error);
