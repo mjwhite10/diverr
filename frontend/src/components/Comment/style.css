@@ -9,3 +9,13 @@
 .comment-data{
   font-style: italic;
 }
+
+
+@media(max-width:345px){
+  .delete-comment-button{
+    margin-right: 0rem;
+  }
+  .edit-comment-button{
+    margin-left: 0rem;
+  }
+}
