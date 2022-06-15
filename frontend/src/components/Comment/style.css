@@ -1,21 +1,30 @@
 .edit-comment-button {
-  margin-left: 1rem;
+  margin-left: 0.5rem;
+  padding: 1rem;
+  background-image: url(../../../public/images/icono-lapiz.svg);
+  background-size: 120%;
+  background-repeat: no-repeat;
 }
 
 .delete-comment-button {
-  margin-right: 1rem;
+  padding: 1rem;
+  background-image: url(../../../public/images/icono-papelera.svg);
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 1rem;
 }
 
 .comment-data{
   font-style: italic;
+  margin-bottom: 1rem;
 }
 
-
-@media(max-width:345px){
+/* @media(max-width:345px){
   .delete-comment-button{
     margin-right: 0rem;
   }
   .edit-comment-button{
     margin-left: 0rem;
   }
-}
+} */

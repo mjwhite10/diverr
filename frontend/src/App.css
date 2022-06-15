@@ -30,6 +30,10 @@ main {
   flex-direction: column;
 }
 
+h1 {
+  color: var(--background);
+}
+
 /*FORMS*/
 .form {
   display: flex;
