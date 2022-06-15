@@ -46,7 +46,6 @@ const Comment = ({ comment, removeComment, correctComment }) => {
               if (window.confirm('¿Estás seguro?')) deleteComment(comment.id);
             }}
           >
-            Borrar comentario
           </button>
           <button
             className="primary-button edit-comment-button"
@@ -54,7 +53,6 @@ const Comment = ({ comment, removeComment, correctComment }) => {
               if (window.confirm('¿Estás seguro?')) editComment(comment.id);
             }}
           >
-            Editar comentario
           </button>
           {error ? <p>{error}</p> : null}
         </section>
