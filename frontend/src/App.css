@@ -183,6 +183,22 @@ main {
   gap: 2rem;
 }
 
+.home-page ul {
+  width: 70%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
+  gap: 3rem;
+  margin-top: 1rem;
+}
+.mydiverrs-page ul {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.mydiverrs-page ul li {
+  width: 20rem;
+}
 @media (min-width: 800px) {
   main {
     margin: 2rem 4rem;

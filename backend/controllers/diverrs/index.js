@@ -14,6 +14,8 @@ const { editDiverrComment } = require('./editDiverrComment');
 const { deleteDiverrComment } = require('./deleteDiverrComment');
 const { listDiverrCategories } = require('./listDiverrCategories');
 const { listDiverrStatus } = require('./listDiverrStatus');
+const { listDiverrsByUser } = require('./listDiverrsByUser');
+const { listDiverrSolutionsByUser } = require('./listSolutionsByUser');
 module.exports = {
   listDiverrs,
   getDiverr,
@@ -31,4 +33,6 @@ module.exports = {
   deleteDiverrComment,
   listDiverrCategories,
   listDiverrStatus,
+  listDiverrsByUser,
+  listDiverrSolutionsByUser,
 };

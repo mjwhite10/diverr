@@ -1,7 +1,8 @@
 import ErrorMessage from '../components/ErrorMessage';
-import DiverrsList from '../components/DiverrList';
+import List from '../components/List';
 import { useContext } from 'react';
 import { QueryContext } from '../context/QueryContext';
+import DiverrCard from '../components/DiverrCard';
 
 const HomePage = () => {
   const { result, error, loading } = useContext(QueryContext);
@@ -12,8 +13,17 @@ const HomePage = () => {
   //Si se cargaron los diverrs cargo la lista de tweets
 
   return (
-    <section>
-      <DiverrsList diverrs={result} />
+    <section className="home-page">
+      <List
+        data={result}
+        render={(d) => {
+          return (
+            <li key={d.id}>
+              <DiverrCard diverr={d} />
+            </li>
+          );
+        }}
+      />
     </section>
   );
 };

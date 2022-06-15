@@ -14,3 +14,9 @@ export const editUserDataService = async (data, token) =>
 
 export const editUserPasswordService = async (data, token) =>
   await httpPut(`/users/password`, data, token);
+
+export const listUserDiverrsService = async (token) =>
+  await httpGet('/users/diverr', token);
+
+export const listUserDiverrsSolutionService = async (token) =>
+  await httpGet('/users/solution', token);

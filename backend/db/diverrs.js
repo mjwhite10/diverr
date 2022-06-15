@@ -395,6 +395,53 @@ const getDiverrsStatus = async () => {
     if (connection) connection.release();
   }
 };
+const getDiverrsByUserId = async (id) => {
+  let connection;
+  try {
+    connection = await getConnection();
+    const [result] = await connection.query(
+      `
+        SELECT D.id, D.idUser, U.name as user,D.picture,D.price, D.title, D.info, D.file, DC.description as category, DS.description as status, D.createdAt
+        FROM diverrs AS D
+        INNER JOIN diverrs_categories AS DC
+        ON D.idCategory = DC.id
+        INNER JOIN diverrs_status AS DS
+        ON D.idStatus = DS.id
+        INNER JOIN users AS U
+        ON D.idUser = U.id
+        WHERE D.idUser = ?`,
+      [id]
+    );
+
+    return result;
+  } finally {
+    if (connection) connection.release();
+  }
+};
+const getDiverrSolutionsByUserId = async (id) => {
+  let connection;
+  try {
+    connection = await getConnection();
+    const [result] = await connection.query(
+      `
+      SELECT D.id, D.idUser, U.name as user,D.picture,D.price, D.title, D.info, D.file, DC.description as category, DS.description as status, D.createdAt
+      FROM diverrs AS D
+      INNER JOIN diverrs_categories AS DC
+      ON D.idCategory = DC.id
+      INNER JOIN diverrs_status AS DS
+      ON D.idStatus = DS.id
+      INNER JOIN users AS U
+      ON D.idUser = U.id
+      INNER JOIN diverrs_solution AS DSS
+      ON D.id = DSS.idDiverr
+      WHERE DSS.idUser = ?`,
+      [id]
+    );
+    return result;
+  } finally {
+    if (connection) connection.release();
+  }
+};
 module.exports = {
   searchDiverrs,
   getDiverrSolutionById,
@@ -413,4 +460,6 @@ module.exports = {
   editDiverrCommentById,
   getDiverrsCategories,
   getDiverrsStatus,
+  getDiverrSolutionsByUserId,
+  getDiverrsByUserId,
 };
