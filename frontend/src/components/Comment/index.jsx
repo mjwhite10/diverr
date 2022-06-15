@@ -34,10 +34,10 @@ const Comment = ({ comment, removeComment, correctComment }) => {
 
   return (
     <article>
-      <p>{comment.content}</p>
       <p className='comment-data'>
         Por {comment.user} el {new Date(comment.createdAt).toLocaleString()}
       </p>
+      <p className='comment-content'>{comment.content}</p>
       {comment.user && user?.id === comment.idUser ? (
         <section>
           <button
