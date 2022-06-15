@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useContext } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+import "./style.css"
 
 const Comment = ({ comment, removeComment, correctComment }) => {
   const navigate = useNavigate();
@@ -34,13 +35,13 @@ const Comment = ({ comment, removeComment, correctComment }) => {
   return (
     <article>
       <p>{comment.content}</p>
-      <p>
-        Por {comment.user} {new Date(comment.createdAt).toLocaleString()}
+      <p className='comment-data'>
+        Por {comment.user} el {new Date(comment.createdAt).toLocaleString()}
       </p>
       {comment.user && user?.id === comment.idUser ? (
         <section>
           <button
-            className="primary-button"
+            className="primary-button delete-comment-button"
             onClick={() => {
               if (window.confirm('¿Estás seguro?')) deleteComment(comment.id);
             }}
@@ -48,7 +49,7 @@ const Comment = ({ comment, removeComment, correctComment }) => {
             Borrar comentario
           </button>
           <button
-            className="primary-button"
+            className="primary-button edit-comment-button"
             onClick={() => {
               if (window.confirm('¿Estás seguro?')) editComment(comment.id);
             }}

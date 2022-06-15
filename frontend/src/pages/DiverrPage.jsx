@@ -20,14 +20,14 @@ const DiverrPage = () => {
   console.log(comments);
 
   return (
-    <section>
-      {/* <DiverrCard diverr={result} /> */}
-      {user ? <NewComment /> : null}
+    <section className='diverr-page'>
+      {/* <DiverrCard /> */}
       <CommentsList
         comments={comments}
         addComment={addComment}
         removeComment={removeComment}
-      />
+        />
+        {user ? <NewComment /> : null}
     </section>
   );
 };

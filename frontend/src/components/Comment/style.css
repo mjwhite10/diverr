@@ -1,0 +1,11 @@
+.edit-comment-button {
+  margin-left: 1rem;
+}
+
+.delete-comment-button {
+  margin-right: 1rem;
+}
+
+.comment-data{
+  font-style: italic;
+}

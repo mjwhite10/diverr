@@ -23,12 +23,9 @@ setSending(true)
 
 
     return(
-        <form onSubmit={handleForm} >
-            <h1>Nuevo comentario</h1>
-            <fieldset>
-                <label htmlFor="text" >Texto</label>
-                <input type="text" id="text" name="text" required ></input>
-            </fieldset>
+        <form onSubmit={handleForm} className="form" >
+                <label htmlFor="text" >Nuevo comentario</label>
+                <textarea className="textarea-comment" type="text" id="text" name="comment" required ></textarea>
             <button className="primary-button">Publicar</button>
             {error ? <p>{error}</p> : null}
         </form>
