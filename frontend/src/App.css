@@ -194,6 +194,9 @@ main {
   .edit-user-page {
     flex-direction: row;
   }
+  .col {
+    justify-content: flex-start;
+  }
   .form-edit {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -208,15 +211,23 @@ main {
   .col2 {
     display: flex;
     flex-direction: column;
-    justify-self: center;
+  }
+  .col1 {
+    justify-self: flex-end;
+  }
+  .col2 {
+    justify-self: flex-start;
   }
   .form-change-password {
     margin-top: 0rem;
   }
+  .form-change-password .col,
+  .form-change-password h2,
   .form-change-password button {
-    width: 50%;
+    align-self: flex-start;
   }
+  .form-change-password button,
   .form-edit button {
-    width: 25%;
+    width: 17.5rem;
   }
 }

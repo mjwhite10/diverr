@@ -3,6 +3,7 @@
   height: 100px;
   border-radius: 6px;
   border: 2px solid var(--background);
+  background-color: gainsboro;
 }
 
 #create-diverr-card-icon {
