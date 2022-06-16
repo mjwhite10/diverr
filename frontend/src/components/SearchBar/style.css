@@ -24,6 +24,7 @@
   cursor: pointer;
   transform: translateX(-2rem);
 }
+
 @media (min-width: 800px) {
   .search-container {
     width: 45%;
