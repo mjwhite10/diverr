@@ -318,7 +318,7 @@ const getDiverrCommentById = async (idComment, idDiverr) => {
     connection = await getConnection();
     const [comment] = await connection.query(
       `
-      SELECT DC.id, DC.content, U.name as user, DC.idUser, DC.idDiverr, DC.createdAt, DC.modifiedAt
+      SELECT DC.id, DC.content, U.name as user,U.avatar, DC.idUser, DC.idDiverr, DC.createdAt, DC.modifiedAt
       FROM diverrs_comments AS DC
       INNER JOIN users AS U
       ON U.id = DC.idUser
@@ -355,7 +355,7 @@ const getDiverrComments = async (idDiverr) => {
     connection = await getConnection();
     const [result] = await connection.query(
       `
-      SELECT DC.id, DC.content, U.name as user, DC.idUser, DC.idDiverr, DC.createdAt, DC.modifiedAt
+      SELECT DC.id, DC.content, U.name as user, U.avatar, DC.idUser, DC.idDiverr, DC.createdAt, DC.modifiedAt
       FROM diverrs_comments AS DC
       INNER JOIN users AS U
       ON U.id = DC.idUser

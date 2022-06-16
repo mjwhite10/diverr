@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import CardSticker from '../CardStiker';
 import './style.css';
-const DiverrCard = ({ diverr }) => {
+const DiverrCard = ({ diverr, showPrice = true }) => {
   const navigate = useNavigate();
   return (
     <article
@@ -12,7 +12,7 @@ const DiverrCard = ({ diverr }) => {
         src={`${process.env.REACT_APP_BACKEND}/uploads/covers/${diverr.picture}`}
         alt={diverr.title}
       ></img>
-      <CardSticker>{diverr.price} €</CardSticker>
+      {showPrice ? <CardSticker>{diverr.price} €</CardSticker> : null}
       <p>{diverr.title}</p>
       {/* <p>
         <b>{diverr.category}</b>

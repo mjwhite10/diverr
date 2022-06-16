@@ -72,7 +72,11 @@ const EditUserPage = () => {
       logout();
       navigate('/');
     } catch (error) {
-      console.log(error);
+      if (error.message === 'La contraseña no es válida') {
+        setErrorOldPassword(error.message);
+      } else {
+        setErrorNewPassword(error.message);
+      }
     }
   };
 

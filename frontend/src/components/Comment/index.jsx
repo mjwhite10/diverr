@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import "./style.css"
+import './style.css';
 
 const Comment = ({ comment, removeComment, correctComment }) => {
   const navigate = useNavigate();
   const [error, setError] = useState('');
   const { user } = useContext(AuthContext);
-  console.log(comment.user);
+  console.log(comment);
 
   const deleteComment = async (id) => {
     try {
@@ -33,31 +33,43 @@ const Comment = ({ comment, removeComment, correctComment }) => {
   };
 
   return (
-    <article>
-      <p className='comment-data'>
-        Por {comment.user} el {new Date(comment.createdAt).toLocaleString()}
-      </p>
-      <p className='comment-content'>{comment.content}</p>
+    <section className="comment">
+      <figure>
+        <img
+          src={
+            comment.avatar
+              ? `${process.env.REACT_APP_BACKEND}/uploads/avatar/${comment.avatar}`
+              : '../../favicon.png'
+          }
+          alt="User"
+          className="comment-header-avatar"
+        />
+      </figure>
+      <article className="comment-text">
+        <h3>{comment.user}</h3>
+        <p className="comment-content">{comment.content}</p>
+        <p className="comment-date">
+          {new Date(comment.createdAt).toLocaleString()}
+        </p>
+      </article>
       {comment.user && user?.id === comment.idUser ? (
-        <section>
+        <aside className="comment-buttons">
           <button
             className="primary-button delete-comment-button"
             onClick={() => {
               if (window.confirm('¿Estás seguro?')) deleteComment(comment.id);
             }}
-          >
-          </button>
+          ></button>
           <button
             className="primary-button edit-comment-button"
             onClick={() => {
               if (window.confirm('¿Estás seguro?')) editComment(comment.id);
             }}
-          >
-          </button>
+          ></button>
           {error ? <p>{error}</p> : null}
-        </section>
+        </aside>
       ) : null}
-    </article>
+    </section>
   );
 };
 

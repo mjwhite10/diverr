@@ -1,10 +1,10 @@
-import { useContext } from "react";
-import { useParams } from "react-router-dom";
-import CommentsList from "../components/CommentsList";
-import DiverrCard from "../components/DiverrCard";
-import NewComment from "../components/NewComment";
-import { AuthContext } from "../context/AuthContext";
-import useComments from "../hooks/useComments";
+import { useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import List from '../components/List';
+import Comment from '../components/Comment';
+import NewComment from '../components/NewComment';
+import { AuthContext } from '../context/AuthContext';
+import useComments from '../hooks/useComments';
 
 const DiverrPage = () => {
   const { id } = useParams();
@@ -20,14 +20,24 @@ const DiverrPage = () => {
   console.log(comments);
 
   return (
-    <section className='diverr-page'>
+    <section className="diverr-page">
       {/*Sería DiverrGrid */}
       {/* <DiverrCard diverr={id} /> */}
-      <CommentsList
+      <List
+        data={comments}
+        render={(comment) => {
+          return (
+            <li key={comment.id}>
+              <Comment comment={comment} removeComment={removeComment} />
+            </li>
+          );
+        }}
+      />
+      {/* <CommentsList
         comments={comments}
         addComment={addComment}
         removeComment={removeComment}
-      />
+      /> */}
       {user ? <NewComment /> : null}
     </section>
   );

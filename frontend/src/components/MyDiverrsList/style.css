@@ -1,0 +1,8 @@
+.create-diverr-card {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+.create-diverr-card:hover {
+  background-color: var(--second-color);
+  cursor: pointer;
+}

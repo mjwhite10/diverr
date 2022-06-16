@@ -1,32 +1,64 @@
-section{
-  margin-top: -1rem;
+.comment {
+  border: 1px solid var(--background);
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  color: var(--background);
 }
-
-
-
+.comment-text {
+  flex-grow: 2;
+  padding-left: 1rem;
+}
+.comment-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1rem;
+}
+.comment-header-avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+}
+.edit-comment-button,
+.delete-comment-button {
+  border: none;
+  cursor: pointer;
+}
+.edit-comment-button:hover,
+.delete-comment-button:hover {
+  border: 1px solid var(--bright);
+}
 .edit-comment-button {
-  margin-left: 0.5rem;
   padding: 1rem;
   background-image: url(../../../public/images/icono-lapiz.svg);
   background-size: 120%;
-  background-repeat: no-repeat;
+  background-position: center 0px;
 }
 
 .delete-comment-button {
   padding: 1rem;
   background-image: url(../../../public/images/icono-papelera.svg);
-  background-size: 90%;
+  background-size: 80%;
   background-repeat: no-repeat;
-  background-position: center;
-  margin-bottom: 1rem;
+  background-position: center 4px;
+  background-color: var(--error);
 }
 
-.comment-data{
+.comment-date {
   font-style: italic;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.comment-date:hover {
+  color: gray;
 }
 
-.comment-content{
-  margin-bottom: 1rem;
+.comment-content {
+  margin-bottom: 0.5rem;
 }
 
 /* @media(max-width:345px){

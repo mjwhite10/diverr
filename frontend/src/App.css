@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 *::after,
 *::before {
   box-sizing: border-box;
@@ -7,7 +7,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins";
+  font-family: 'Poppins';
 }
 
 html {
@@ -157,7 +157,7 @@ h1 {
 }
 
 .image-upload::before {
-  content: "Selecciona una imagen";
+  content: 'Selecciona una imagen';
   /* border: 1px solid #535353; */
   border-radius: 6px;
   cursor: pointer;
@@ -167,7 +167,7 @@ h1 {
 }
 
 .file-upload::before {
-  content: "Selecciona un archivo";
+  content: 'Selecciona un archivo';
   border: 1px solid var(--background);
   border-radius: 6px;
   cursor: pointer;
@@ -189,6 +189,7 @@ h1 {
   gap: 2rem;
 }
 
+/*HOME PAGE*/
 .home-page ul {
   width: 70%;
   margin: 0 auto;
@@ -197,13 +198,17 @@ h1 {
   gap: 3rem;
   margin-top: 1rem;
 }
+/*MY DIVERRS PAGE*/
 .mydiverrs-page ul {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+  justify-items: center;
 }
 .mydiverrs-page ul li {
-  width: 20rem;
+  width: 15rem;
+  padding: 0 1rem;
+  margin: 0 auto;
 }
 @media (min-width: 800px) {
   main {
@@ -224,9 +229,9 @@ h1 {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 0.3fr 2.6fr 0.3fr;
     grid-template-areas:
-      "title    title"
-      "col1     col2"
-      "button   button";
+      'title    title'
+      'col1     col2'
+      'button   button';
     gap: 1rem;
   }
   .col1,
@@ -251,5 +256,8 @@ h1 {
   .form-change-password button,
   .form-edit button {
     width: 17.5rem;
+  }
+  .mydiverrs-page ul li {
+    margin: 0;
   }
 }

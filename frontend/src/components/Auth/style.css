@@ -98,4 +98,12 @@
     top: 7rem;
     right: 5.4rem;
   }
+  .avatar-image {
+    width: 7rem;
+    height: 7rem;
+  }
+  .avatar-list-container {
+    top: 9rem;
+    right: 6rem;
+  }
 }
