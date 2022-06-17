@@ -22,7 +22,7 @@ const useDiverrSolution = ({ id }) => {
       }
     };
     loadData();
-  }, [id, token]);
+  }, []);
 
   return { solution, loading, error };
 };

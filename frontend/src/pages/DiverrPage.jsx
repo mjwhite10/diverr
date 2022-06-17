@@ -18,11 +18,6 @@ const DiverrPage = () => {
     loading: loadingDiverrData,
     error: errorDiverrData,
   } = useDiverr({ id });
-  const {
-    solution,
-    loading: loadingDiverrSolution,
-    error: errorDiverrSolution,
-  } = useDiverrSolution({ id });
 
   const { comments, loading, error, addComment, removeComment } = useComments({
     id,

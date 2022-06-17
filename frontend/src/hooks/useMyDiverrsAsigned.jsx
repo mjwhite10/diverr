@@ -22,7 +22,7 @@ const useMyDiverrsAsigned = () => {
       }
     };
     loadDivers();
-  }, [token]);
+  }, []);
 
   return { myAssignedDiverrs };
 };

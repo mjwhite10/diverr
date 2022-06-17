@@ -25,28 +25,42 @@ const BusinessPanel = ({ diverr }) => {
     //   throw new Error("El usuario que creó el diverr no puede resolverlo")
     // }
   };
-
+  console.log(user);
   const handleFile = (e) => {};
-  if (true || (assigned && user.id === diverr.idUser)) {
-    return (
-      <section className="business-panel">
-        <article>
-          <a href="">Descargar fichero</a>
-        </article>
-      </section>
-    );
-  }
-
-  if (!assigned)
-    return (
-      <section className="business-panel">
+  return (
+    <section className="business-panel">
+      <h4>Control panel</h4>
+      {!solution && (
+        //Si no esta asignado
         <article>
           <p className="price-text">{diverr.price}€</p>
-
           <button className="accept-button primary-button ">Aceptar</button>
         </article>
-      </section>
-    );
+      )}
+      {solution && user?.id === solution.idUser && (
+        <form className="form-upload-solution">
+          <label className="custom-file-upload">
+            <input type="file" />
+            Subir archivo
+          </label>
+
+          {solution.file && (
+            <button className="primary-button">Marcar como finalizado</button>
+          )}
+        </form>
+      )}
+      {solution && user?.id === diverr.idUser && (
+        <article className="user-validation">
+          <a
+            href={`${process.env.REACT_APP_BACKEND}/uploads/solutions/${solution.file}`}
+          >
+            Descargar fichero
+          </a>
+          {solution.file && <button className="primary-button">Validar</button>}
+        </article>
+      )}
+    </section>
+  );
 };
 
 export default BusinessPanel;

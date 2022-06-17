@@ -19,7 +19,7 @@ const useDiverr = ({ id }) => {
       }
     };
     loadData();
-  }, [id]);
+  }, []);
 
   return { diverr, loading, error };
 };

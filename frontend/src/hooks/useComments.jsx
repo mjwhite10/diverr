@@ -20,7 +20,7 @@ const useComments = ({ id }) => {
       }
     };
     loadComments();
-  }, [id]);
+  }, []);
 
   const addComment = (comment) => {
     // setComments([comment, ...comments]);
