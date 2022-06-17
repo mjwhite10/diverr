@@ -17,7 +17,7 @@ const Auth = () => {
         src={
           user.avatar
             ? `${process.env.REACT_APP_BACKEND}/uploads/avatar/${user.avatar}`
-            : '../../favicon.png'
+            : '../../../images/logo-diverr2.svg'
         }
         alt="Logo"
         className="avatar-image"

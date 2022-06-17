@@ -22,6 +22,10 @@ html {
   background-color: var(--background);
   border-radius: 6px;
 }
+.primary-button:hover {
+  color: gainsboro;
+  cursor: pointer;
+}
 
 main {
   margin: 1rem 2rem;
@@ -31,7 +35,8 @@ main {
   margin-bottom: 6rem;
 }
 
-h1, h2 {
+h1,
+h2 {
   color: var(--background);
 }
 
@@ -71,6 +76,7 @@ h1, h2 {
   text-decoration: none;
   color: inherit;
 }
+
 /*COMMON FORM PAGES*/
 .login-page,
 .register-page,
