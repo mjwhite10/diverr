@@ -27,7 +27,7 @@ const RegisterPage = () => {
       await registerUserService(email, password1, name);
       navigate('/login');
     } catch (error) {
-      if (error.message.includes('npmbre')) {
+      if (error.message.includes('nombre')) {
         setErrorName(error.message);
       }
       if (error.message.includes('email')) {

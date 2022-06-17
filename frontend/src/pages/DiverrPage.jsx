@@ -5,8 +5,9 @@ import Comment from '../components/Comment';
 import NewComment from '../components/NewComment';
 import { AuthContext } from '../context/AuthContext';
 import useComments from '../hooks/useComments';
+import BusinessPanel from '../components/BusinessPanel';
 
-const DiverrPage = () => {
+const DiverrPage = ({diverr}) => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
 
@@ -22,7 +23,7 @@ const DiverrPage = () => {
   return (
     <section className="diverr-page">
       {/*Sería DiverrGrid */}
-      {/* <DiverrCard diverr={id} /> */}
+      <BusinessPanel diverr={diverr}/>
       <List
         data={comments}
         render={(comment) => {
@@ -33,11 +34,7 @@ const DiverrPage = () => {
           );
         }}
       />
-      {/* <CommentsList
-        comments={comments}
-        addComment={addComment}
-        removeComment={removeComment}
-      /> */}
+     
       {user ? <NewComment /> : null}
     </section>
   );
