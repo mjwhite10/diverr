@@ -39,7 +39,7 @@ const Comment = ({ comment, removeComment, correctComment }) => {
           src={
             comment.avatar
               ? `${process.env.REACT_APP_BACKEND}/uploads/avatar/${comment.avatar}`
-              : '../../favicon.png'
+              : '../../images/logo-diverr2.svg'
           }
           alt="User"
           className="comment-header-avatar"
