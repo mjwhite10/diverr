@@ -1,52 +1,52 @@
-import "./style.css";
-import { useState } from "react";
-import InputFieldForm from "../InputFieldForm";
+import './style.css';
+import { useState } from 'react';
+import InputFieldForm from '../InputFieldForm';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import { useParams } from 'react-router-dom';
+import useDiverrSolution from '../../hooks/useDiverrSolution';
 
-const BusinessPanel = () => {
-  const [accepted, setAccepted] = useState(false);
-  const [file, setFile] = useState("");
+const BusinessPanel = ({ diverr }) => {
+  const [assigned, setAssigned] = useState(false);
+  const { user, token } = useContext(AuthContext);
+  const [file, setFile] = useState('');
+  const { id } = useParams();
 
-  const handleOnClick = e => {
+  const {
+    solution,
+    loading: loadingDiverrSolution,
+    error: errorDiverrSolution,
+  } = useDiverrSolution({ id });
+
+  const handleOnClick = (e) => {
     e.preventDefault();
-    setAccepted(true);
 
-// if (user.id === diverr.userId){
-//   throw new Error("El usuario que creó el diverr no puede resolverlo")
-// }
-
+    // if (user.id === diverr.userId){
+    //   throw new Error("El usuario que creó el diverr no puede resolverlo")
+    // }
   };
 
-  const handleFile = e => {
-    setFile(e.target.files[0]);
-  };
+  const handleFile = (e) => {};
+  if (true || (assigned && user.id === diverr.idUser)) {
+    return (
+      <section className="business-panel">
+        <article>
+          <a href="">Descargar fichero</a>
+        </article>
+      </section>
+    );
+  }
 
-  return (
-    <article>
-      <p>700 €</p>
-      {accepted === false ? <p>Sin asignar</p> : <p>Aceptada</p>}
-      {accepted === false ? (
-        <button className='' type='submit' onClick={handleOnClick}>
-          Aceptar
-        </button>
-      ) : accepted === true && !file ? (
-        <InputFieldForm
-          className='input-field-form'
-          type={"file"}
-          id={"file"}
-          name={"file"}
-          onChange={handleFile}
-        />
-      ) : (
-        <p>Descargar fichero</p>
-      )}
-      {accepted === false ? null : accepted === true ? (
-        <p>Trabajo finalizado</p>
-      ) : (
-        //aquí no sé como decirle que si hay file que pinte validar
-        accepted === true && file(<button>Validar</button>)
-      )}
-    </article>
-  );
+  if (!assigned)
+    return (
+      <section className="business-panel">
+        <article>
+          <p className="price-text">{diverr.price}€</p>
+
+          <button className="accept-button primary-button ">Aceptar</button>
+        </article>
+      </section>
+    );
 };
 
 export default BusinessPanel;

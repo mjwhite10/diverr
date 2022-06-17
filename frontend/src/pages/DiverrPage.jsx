@@ -6,10 +6,23 @@ import NewComment from '../components/NewComment';
 import { AuthContext } from '../context/AuthContext';
 import useComments from '../hooks/useComments';
 import BusinessPanel from '../components/BusinessPanel';
+import DiverrGrid from '../components/DiverrGrid';
+import useDiverr from '../hooks/useDiverr';
+import useDiverrSolution from '../hooks/useDiverrSolution';
 
-const DiverrPage = ({diverr}) => {
+const DiverrPage = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
+  const {
+    diverr: diverrData,
+    loading: loadingDiverrData,
+    error: errorDiverrData,
+  } = useDiverr({ id });
+  const {
+    solution,
+    loading: loadingDiverrSolution,
+    error: errorDiverrSolution,
+  } = useDiverrSolution({ id });
 
   const { comments, loading, error, addComment, removeComment } = useComments({
     id,
@@ -17,13 +30,11 @@ const DiverrPage = ({diverr}) => {
 
   if (loading) return <p>cargando comentarios...</p>;
   if (error) return <p>{error}</p>;
-
-  console.log(comments);
-
   return (
     <section className="diverr-page">
-      {/*Sería DiverrGrid */}
-      <BusinessPanel diverr={diverr}/>
+      <DiverrGrid diverr={diverrData} />
+      <BusinessPanel diverr={diverrData} />
+      {user ? <NewComment /> : null}
       <List
         data={comments}
         render={(comment) => {
@@ -34,8 +45,6 @@ const DiverrPage = ({diverr}) => {
           );
         }}
       />
-     
-      {user ? <NewComment /> : null}
     </section>
   );
 };

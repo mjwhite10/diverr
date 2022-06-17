@@ -8,7 +8,7 @@ const Comment = ({ comment, removeComment, correctComment }) => {
   const navigate = useNavigate();
   const [error, setError] = useState('');
   const { user } = useContext(AuthContext);
-  console.log(comment);
+  const [edit, setEdit] = useState(false);
 
   const deleteComment = async (id) => {
     try {
@@ -26,12 +26,15 @@ const Comment = ({ comment, removeComment, correctComment }) => {
   const editComment = async (id) => {
     try {
       //await funcion editar comentario
-      correctComment(id);
     } catch (error) {
       setError(error.message);
     }
   };
 
+  const onSubmitEditForm = async (e) => {
+    e.preventDefault();
+    setEdit(false);
+  };
   return (
     <section className="comment">
       <figure>
@@ -45,14 +48,42 @@ const Comment = ({ comment, removeComment, correctComment }) => {
           className="comment-header-avatar"
         />
       </figure>
-      <article className="comment-text">
-        <h3>{comment.user}</h3>
-        <p className="comment-content">{comment.content}</p>
-        <p className="comment-date">
-          {new Date(comment.createdAt).toLocaleString()}
-        </p>
-      </article>
-      {comment.user && user?.id === comment.idUser ? (
+      {!edit ? (
+        <article className="comment-text">
+          <h3>{comment.user}</h3>
+          <p className="comment-content">{comment.content}</p>
+          <p className="comment-date">
+            {new Date(comment.createdAt).toLocaleString()}
+          </p>
+        </article>
+      ) : (
+        <form className="comment-text">
+          <h3>{comment.user}</h3>
+          <textarea type="text" id="text" name="comment" required></textarea>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-around',
+              alignItems: 'center',
+            }}
+          >
+            <button
+              className="form-button primary-button"
+              onClick={onSubmitEditForm}
+            >
+              Editar
+            </button>
+            <button
+              className="form-button primary-button"
+              onClick={(e) => setEdit(false)}
+            >
+              {' '}
+              ❌
+            </button>
+          </div>
+        </form>
+      )}
+      {!edit && comment.user && user?.id === comment.idUser ? (
         <aside className="comment-buttons">
           <button
             className="primary-button delete-comment-button"
@@ -63,7 +94,7 @@ const Comment = ({ comment, removeComment, correctComment }) => {
           <button
             className="primary-button edit-comment-button"
             onClick={() => {
-              if (window.confirm('¿Estás seguro?')) editComment(comment.id);
+              setEdit(true);
             }}
           ></button>
           {error ? <p>{error}</p> : null}

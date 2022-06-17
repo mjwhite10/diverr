@@ -1,0 +1,34 @@
+.business-panel {
+  padding: 1rem;
+  border: 1px solid var(--background);
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+.business-panel article {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.business-panel article .price-text {
+  background-color: #00ffff;
+  padding: 0.5rem;
+  border-radius: 6px;
+  color: var(--background);
+  font-weight: 600;
+  font-size: 1.25rem;
+  width: 100%;
+  text-align: center;
+}
+.business-panel article .accept-button {
+  width: 100%;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.price-text:hover {
+  cursor: default;
+}
