@@ -55,7 +55,7 @@ const getDiverrById = async (id) => {
     connection = await getConnection();
     const [diverr] = await connection.query(
       `
-        SELECT D.id, D.idUser, U.name as user, D.title, D.info, D.file, DC.description as category, DS.description as status, D.createdAt
+        SELECT D.id, D.idUser, U.name as user,D.price, D.title, D.info, D.file,D.picture, DC.description as category, DS.description as status, D.createdAt
         FROM diverrs AS D
         INNER JOIN diverrs_categories AS DC
         ON D.idCategory = DC.id
@@ -155,7 +155,7 @@ const getDiverrSolutionById = async (idDiverr) => {
     connection = await getConnection();
     const [solution] = await connection.query(
       `
-      SELECT DS.id, DS.idUser, U.name as user, DS.file, DS.startedAt, DS.finishedAt, DS.markAsFinished
+      SELECT DS.id, DS.idUser,DS.idDiverr, U.name as user, DS.file, DS.startedAt, DS.finishedAt, DS.markAsFinished
       FROM diverrs_solution AS DS
       INNER JOIN users AS U
       ON DS.idUser = U.id

@@ -1,11 +1,24 @@
-.textarea-comment{
-    width: 18rem;
-    height: 10rem;
-    margin-bottom: 1rem;
+.new-comment-form {
+  border: 1px solid var(--background);
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  margin-bottom: 1rem;
 }
-
-@media (min-width: 600px){
-    .textarea-comment{
-        width: 36rem;
-    }
+.new-comment-form label {
+  color: var(--background);
+  font-weight: 600;
+}
+.new-comment-form button {
+  width: 50%;
+  align-self: center;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+.textarea-comment {
+  margin-top: 0.5rem;
+  height: 6rem;
+}
+@media (min-width: 600px) {
 }

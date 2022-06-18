@@ -80,15 +80,13 @@ h2 {
 /*COMMON FORM PAGES*/
 .login-page,
 .register-page,
-.edit-user-page,
-.diverr-page {
+.edit-user-page {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 /*EDIT USER PAGE, DIVERR-PAGE*/
-.edit-user-page,
-.diverr-page {
+.edit-user-page {
   flex-direction: column;
 }
 .form-edit h2,

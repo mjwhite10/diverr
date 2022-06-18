@@ -1,51 +1,65 @@
-import "./style.css";
-import { useState } from "react";
-import InputFieldForm from "../InputFieldForm";
+import './style.css';
+import { useState } from 'react';
+import InputFieldForm from '../InputFieldForm';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import { useParams } from 'react-router-dom';
+import useDiverrSolution from '../../hooks/useDiverrSolution';
 
-const BusinessPanel = () => {
-  const [accepted, setAccepted] = useState(false);
-  const [file, setFile] = useState("");
+const BusinessPanel = ({ diverr }) => {
+  const [assigned, setAssigned] = useState(false);
+  const { user, token } = useContext(AuthContext);
+  const [file, setFile] = useState('');
+  const { id } = useParams();
 
-  const handleOnClick = e => {
+  const {
+    solution,
+    loading: loadingDiverrSolution,
+    error: errorDiverrSolution,
+  } = useDiverrSolution({ id });
+
+  const handleOnClick = (e) => {
     e.preventDefault();
-    setAccepted(true);
 
-// if (user.id === diverr.userId){
-//   throw new Error("El usuario que creó el diverr no puede resolverlo")
-// }
-
+    // if (user.id === diverr.userId){
+    //   throw new Error("El usuario que creó el diverr no puede resolverlo")
+    // }
   };
-
-  const handleFile = e => {
-    setFile(e.target.files[0]);
-  };
-
+  console.log(user);
+  const handleFile = (e) => {};
   return (
-    <article>
-      <p>700 €</p>
-      {accepted === false ? <p>Sin asignar</p> : <p>Aceptada</p>}
-      {accepted === false ? (
-        <button className='' type='submit' onClick={handleOnClick}>
-          Aceptar
-        </button>
-      ) : accepted === true && !file ? (
-        <InputFieldForm
-          className='input-field-form'
-          type={"file"}
-          id={"file"}
-          name={"file"}
-          onChange={handleFile}
-        />
-      ) : (
-        <p>Descargar fichero</p>
+    <section className="business-panel">
+      <h4>Control panel</h4>
+      {!solution && (
+        //Si no esta asignado
+        <article>
+          <p className="price-text">{diverr.price}€</p>
+          <button className="accept-button primary-button ">Aceptar</button>
+        </article>
       )}
-      {accepted === false ? null : accepted === true ? (
-        <p>Trabajo finalizado</p>
-      ) : (
-        //aquí no sé como decirle que si hay file que pinte validar
-        accepted === true && file(<button>Validar</button>)
+      {solution && user?.id === solution.idUser && (
+        <form className="form-upload-solution">
+          <label className="custom-file-upload">
+            <input type="file" />
+            Subir archivo
+          </label>
+
+          {solution.file && (
+            <button className="primary-button">Marcar como finalizado</button>
+          )}
+        </form>
       )}
-    </article>
+      {solution && user?.id === diverr.idUser && (
+        <article className="user-validation">
+          <a
+            href={`${process.env.REACT_APP_BACKEND}/uploads/solutions/${solution.file}`}
+          >
+            Descargar fichero
+          </a>
+          {solution.file && <button className="primary-button">Validar</button>}
+        </article>
+      )}
+    </section>
   );
 };
 

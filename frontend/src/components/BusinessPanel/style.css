@@ -1,0 +1,65 @@
+.business-panel {
+  padding: 1rem;
+  border: 1px solid var(--background);
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+.business-panel article {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.business-panel h4 {
+  margin-bottom: 0.5rem;
+  color: var(--background);
+}
+
+.business-panel article .price-text {
+  background-color: #00ffff;
+  padding: 0.5rem;
+  border-radius: 6px;
+  color: var(--background);
+  font-weight: 600;
+  font-size: 1.25rem;
+  width: 100%;
+  text-align: center;
+}
+.business-panel article .accept-button {
+  width: 100%;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.price-text:hover {
+  cursor: default;
+}
+.form-upload-solution {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.custom-file-upload {
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  align-self: center;
+}
+.custom-file-upload input[type='file'] {
+  display: none;
+}
+.custom-file-upload:hover {
+  text-decoration: underline;
+}
+.validate-button {
+  padding: 0.5rem;
+}
+.form-upload-solution button,
+.user-validation button {
+  border: none;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}

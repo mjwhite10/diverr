@@ -2,29 +2,29 @@ import { useEffect } from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { listUserDiverrsService } from '../services/userService';
-const useMyDiverrs = () => {
-  const [myDiverrs, setMyDiverrs] = useState([]);
+import { getDiverrSolutionService } from '../services/diverrService';
+const useDiverrSolution = ({ id }) => {
+  const { token } = useContext(AuthContext);
+  const [solution, setSolution] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const { token } = useContext(AuthContext);
 
   useEffect(() => {
-    const loadDivers = async () => {
+    const loadData = async () => {
       try {
         setLoading(true);
-        const data = await listUserDiverrsService(token);
-        setMyDiverrs(data);
+        const data = await getDiverrSolutionService(id, token);
+        setSolution(data);
       } catch (error) {
         setError(error.message);
       } finally {
         setLoading(false);
       }
     };
-    loadDivers();
+    loadData();
   }, []);
 
-  return { myDiverrs, loading, error };
+  return { solution, loading, error };
 };
 
-export default useMyDiverrs;
+export default useDiverrSolution;

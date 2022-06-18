@@ -20,17 +20,19 @@ const useComments = ({ id }) => {
       }
     };
     loadComments();
-  }, [id]);
+  }, []);
 
   const addComment = (comment) => {
-    setComments([comment, ...comments]);
+    // setComments([comment, ...comments]);
   };
-
+  const editComment = (comment) => {
+    // setComments([comment, ...comments]);
+  };
   const removeComment = (id) => {
-    setComments(comments.filter((comment) => comment.id !== id));
+    // setComments(comments.filter((comment) => comment.id !== id));
   };
 
-  return { comments, loading, error, addComment, removeComment };
+  return { comments, loading, error, addComment, removeComment, editComment };
 };
 
 export default useComments;
