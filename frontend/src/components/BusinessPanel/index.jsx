@@ -1,6 +1,5 @@
 import './style.css';
 import { useState } from 'react';
-import InputFieldForm from '../InputFieldForm';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { useParams } from 'react-router-dom';
