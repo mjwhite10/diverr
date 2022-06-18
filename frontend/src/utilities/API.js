@@ -66,7 +66,7 @@ const httpPut = async (url, data, token = null) => {
   console.log(json);
   if (!response.ok) throw new Error(json.message);
 
-  return json.data;
+  return json.message;
 };
 
 //Función que hace una petición httpDelete cualquiera.

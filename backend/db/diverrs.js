@@ -25,6 +25,7 @@ const searchDiverrs = async (
           ON D.idUser = U.id
           WHERE (D.title LIKE '%${search}%' OR D.info LIKE '%${search}%')
           ${filterCategory ? 'AND DC.id IN (' + filterCategory + ')' : ''}
+          AND WHERE DS.id = 1
           ORDER BY D.${orderBy} ${orderDirection}`
       );
     } else {
@@ -38,7 +39,8 @@ const searchDiverrs = async (
           ON D.idStatus = DS.id
           INNER JOIN users AS U
           ON D.idUser = U.id
-          ${filterCategory ? 'WHERE DC.id IN (' + filterCategory + ')' : ''}
+          WHERE DS.id = 1
+          ${filterCategory ? 'AND WHERE DC.id IN (' + filterCategory + ')' : ''}
           ORDER BY D.${orderBy} ${orderDirection}`
       );
     }
@@ -359,7 +361,8 @@ const getDiverrComments = async (idDiverr) => {
       FROM diverrs_comments AS DC
       INNER JOIN users AS U
       ON U.id = DC.idUser
-      WHERE DC.idDiverr = ?`,
+      WHERE DC.idDiverr = ?
+      ORDER BY DC.createdAt DESC`,
       [idDiverr]
     );
     return result;

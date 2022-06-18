@@ -5,11 +5,6 @@ import { AuthContext } from '../../context/AuthContext';
 import './style.css';
 
 const DiverrGrid = ({ diverr }) => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [error, setError] = useState('');
-  const { user } = useContext(AuthContext);
-
   return (
     <div className="diverr-grid">
       <section className="diver-grid-image">
@@ -17,7 +12,7 @@ const DiverrGrid = ({ diverr }) => {
         <img
           src={`${process.env.REACT_APP_BACKEND}/uploads/covers/${diverr.picture}`}
           alt={diverr.title}
-          style={{ width: '20rem', borderRadius: '6px' }}
+          style={{ objectFit: 'cover', width: '16rem', borderRadius: '6px' }}
         ></img>
         <p>{diverr.info}</p>
       </section>

@@ -205,9 +205,9 @@ async function main() {
       );
     }
 
-    const diverrs = 50;
+    let diverrs = 50;
 
-    console.log('Creando diverrs...');
+    console.log('Creando diverrs con solucion...');
     for (let i = 0; i < diverrs; i++) {
       //SERVICIOS
       const [users] = await connection.query('SELECT COUNT(*) FROM users');
@@ -277,7 +277,52 @@ async function main() {
         ]
       );
     }
+    diverrs = 30;
+    console.log('Creando diverrs sin solucion...');
+    for (let i = 0; i < diverrs; i++) {
+      //SERVICIOS
+      const [users] = await connection.query('SELECT COUNT(*) FROM users');
+      const [categories] = await connection.query(
+        'SELECT COUNT(*) FROM diverrs_categories'
+      );
 
+      const idUser = Math.floor(1 + Math.random() * users[0]['COUNT(*)']);
+      const title = faker.lorem.sentence();
+      const info = faker.lorem.sentence();
+      const diverr = await getRandomFile();
+      //Generamos el nombre único con el que se guardará el archivo
+      const diverName = `${uuid.v4()}${path.extname(diverr)}`;
+      //Copiamos y renombramos el archivo con el uuid
+      await fs.copyFile(diverr, path.join(uploadDiverrsPath, diverName));
+      const idCategory = Math.floor(
+        1 + Math.random() * categories[0]['COUNT(*)']
+      );
+      const price = Math.floor(1 + Math.random() * 1000);
+      const picture = await getRandomCover();
+      const coverImage = await processAndSaveImage(picture, uploadCoverPath);
+      const [result] = await connection.query(
+        `
+        INSERT INTO diverrs (idUser,title,info,file,idStatus,idCategory,createdAt,picture,price)
+        VALUES (?,?,?,?,1,?,UTC_TIMESTAMP,?,?)`,
+        [idUser, title, info, diverName, idCategory, coverImage, price]
+      );
+
+      //COMENTARIOS
+      for (let comment = 0; comment < 15; comment++) {
+        const idUserComment = Math.floor(
+          1 + Math.random() * users[0]['COUNT(*)']
+        );
+        const content = faker.lorem.sentence();
+
+        await connection.query(
+          `
+        INSERT INTO diverrs_comments(idUser,idDiverr,content,createdAt)
+        VALUES(?,?,?,UTC_TIMESTAMP)
+        `,
+          [idUserComment, result.insertId, content]
+        );
+      }
+    }
     console.log('Fin del script');
   } catch (error) {
     console.log('Error inesperado al crear la BBDD', error);

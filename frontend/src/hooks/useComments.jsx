@@ -20,19 +20,27 @@ const useComments = ({ id }) => {
       }
     };
     loadComments();
-  }, []);
+  }, [id]);
 
   const addComment = (comment) => {
-    // setComments([comment, ...comments]);
+    setComments([comment, ...comments]);
   };
   const editComment = (comment) => {
-    // setComments([comment, ...comments]);
+    setComments(
+      comments.map((c) => {
+        if (c.id === comment.id) {
+          return comment;
+        } else {
+          return c;
+        }
+      })
+    );
   };
   const removeComment = (id) => {
-    // setComments(comments.filter((comment) => comment.id !== id));
+    setComments(comments.filter((c) => c.id !== id));
   };
 
-  return { comments, loading, error, addComment, removeComment, editComment };
+  return { comments, loading, error, addComment, editComment, removeComment };
 };
 
 export default useComments;

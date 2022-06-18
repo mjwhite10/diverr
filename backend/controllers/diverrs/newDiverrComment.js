@@ -1,4 +1,8 @@
-const { getDiverrById, createServiceComment } = require('../../db/diverrs');
+const {
+  getDiverrById,
+  createServiceComment,
+  getDiverrCommentById,
+} = require('../../db/diverrs');
 const { generateError } = require('../../helpers');
 const {
   idDiverrSchema,
@@ -26,10 +30,11 @@ const newDiverrComment = async (req, res, next) => {
       );
     //Generamos el comentario
     const id = await createServiceComment(req.auth.id, idDiverr, content);
-
+    console.log(id);
+    const comment = await getDiverrCommentById(id, idDiverr);
     res.send({
       status: 'Ok',
-      message: `Creado el comentario con id ${id}`,
+      message: comment,
     });
   } catch (error) {
     next(error);

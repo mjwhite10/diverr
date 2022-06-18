@@ -6,32 +6,13 @@ import { AuthContext } from '../../context/AuthContext';
 import { useParams } from 'react-router-dom';
 import useDiverrSolution from '../../hooks/useDiverrSolution';
 
-const BusinessPanel = ({ diverr }) => {
-  const [assigned, setAssigned] = useState(false);
-  const { user, token } = useContext(AuthContext);
-  const [file, setFile] = useState('');
-  const { id } = useParams();
+const BusinessPanel = ({ diverr, solution }) => {
+  const { user } = useContext(AuthContext);
 
-  const {
-    solution,
-    loading: loadingDiverrSolution,
-    error: errorDiverrSolution,
-  } = useDiverrSolution({ id });
-
-  const handleOnClick = (e) => {
-    e.preventDefault();
-
-    // if (user.id === diverr.userId){
-    //   throw new Error("El usuario que creó el diverr no puede resolverlo")
-    // }
-  };
-  console.log(user);
-  const handleFile = (e) => {};
-  return (
+  return user ? (
     <section className="business-panel">
       <h4>Control panel</h4>
-      {!solution && (
-        //Si no esta asignado
+      {solution.length === 0 && (
         <article>
           <p className="price-text">{diverr.price}€</p>
           <button className="accept-button primary-button ">Aceptar</button>
@@ -60,7 +41,7 @@ const BusinessPanel = ({ diverr }) => {
         </article>
       )}
     </section>
-  );
+  ) : null;
 };
 
 export default BusinessPanel;

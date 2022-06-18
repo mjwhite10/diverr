@@ -80,7 +80,8 @@ h2 {
 /*COMMON FORM PAGES*/
 .login-page,
 .register-page,
-.edit-user-page {
+.edit-user-page,
+.diverr-page {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -214,6 +215,13 @@ h2 {
   width: 15rem;
   padding: 0 1rem;
   margin: 0 auto;
+}
+/*DIVERR PAGE*/
+.diverr-page {
+  flex-direction: column;
+}
+.diverr-page ul {
+  width: 100%;
 }
 @media (min-width: 800px) {
   main {

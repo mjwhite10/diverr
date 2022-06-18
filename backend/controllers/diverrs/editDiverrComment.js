@@ -1,4 +1,8 @@
-const { getDiverrById, editDiverrCommentById } = require('../../db/diverrs');
+const {
+  getDiverrById,
+  editDiverrCommentById,
+  getDiverrCommentById,
+} = require('../../db/diverrs');
 const { generateError } = require('../../helpers');
 const {
   newDiverrCommentSchema,
@@ -26,9 +30,11 @@ const editDiverrComment = async (req, res, next) => {
 
     //Editamos el comentario
     await editDiverrCommentById(idDiverr, idComment, content);
+
+    const comment = await getDiverrCommentById(idComment, idDiverr);
     res.send({
       status: 'Ok',
-      message: 'Se editó el comentario',
+      message: comment,
     });
   } catch (error) {
     next(error);
