@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 *::after,
 *::before {
   box-sizing: border-box;
@@ -7,7 +7,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins';
+  font-family: "Poppins";
 }
 
 html {
@@ -152,39 +152,28 @@ h2 {
   background-color: var(--background);
   border-radius: 6px;
   height: 3rem;
-  width: 16.4rem;
+  width: 17.3rem;
   display: block;
   margin-top: 2rem;
 }
 
-.image-upload::-webkit-file-upload-button,
-.file-upload::-webkit-file-upload-button {
-  visibility: hidden;
+.file-upload input[type="file"],
+.image-upload input[type="file"] {
+  display: none;
 }
 
-.image-upload::before {
-  content: 'Selecciona una imagen';
-  /* border: 1px solid #535353; */
-  border-radius: 6px;
+.file-upload,
+.image-upload {
   cursor: pointer;
-  text-decoration: underline;
-  /*Este color habrá que cambiarlo por uno más acorde a la página */
-  background-color: var(--second-color);
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.file-upload::before {
-  content: 'Selecciona un archivo';
-  border: 1px solid var(--background);
-  border-radius: 6px;
-  cursor: pointer;
+.file-upload:hover,
+.image-upload:hover {
   text-decoration: underline;
-  /*Este color habrá que cambiarlo por uno más acorde a la página */
-  background-color: var(--second-color);
-}
-
-.file-upload:hover::before,
-.image-upload:hover::before {
-  border: #535353;
 }
 
 .order-filter-menu {
@@ -242,9 +231,9 @@ h2 {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 0.3fr 2.6fr 0.3fr;
     grid-template-areas:
-      'title    title'
-      'col1     col2'
-      'button   button';
+      "title    title"
+      "col1     col2"
+      "button   button";
     gap: 1rem;
   }
   .col1,
