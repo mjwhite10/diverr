@@ -1,31 +1,24 @@
 import { useState } from 'react';
 import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+import {
+  deleteDiverrCommentService,
+  editDiverrCommentService,
+} from '../../services/diverrService';
 import './style.css';
 
 const Comment = ({ comment, removeComment, correctComment }) => {
   const navigate = useNavigate();
   const [error, setError] = useState('');
-  const { user } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
+  const { id } = useParams();
   const [edit, setEdit] = useState(false);
 
-  const deleteComment = async (id) => {
+  const deleteComment = async () => {
     try {
-      // await funcion borrar comentario ({id, token})
-      // if (removeComment) {
-      //   removeComment(id);
-      // } else {
-      //   navigate("/diverr/:id");
-      // }
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  const editComment = async (id) => {
-    try {
-      //await funcion editar comentario
+      await deleteDiverrCommentService(id, comment.id, token);
+      removeComment(comment.id);
     } catch (error) {
       setError(error.message);
     }
@@ -33,7 +26,21 @@ const Comment = ({ comment, removeComment, correctComment }) => {
 
   const onSubmitEditForm = async (e) => {
     e.preventDefault();
-    setEdit(false);
+    try {
+      setEdit(false);
+
+      const data = new FormData(e.target);
+      const returnedComment = await editDiverrCommentService(
+        id,
+        comment.id,
+        data,
+        token
+      );
+      correctComment(returnedComment);
+      console.log(returnedComment);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <section className="comment">
@@ -55,11 +62,16 @@ const Comment = ({ comment, removeComment, correctComment }) => {
           <p className="comment-date">
             {new Date(comment.createdAt).toLocaleString()}
           </p>
+          {comment.modifiedAt && (
+            <p className="comment-date modified-date">
+              (Modificado el {new Date(comment.modifiedAt).toLocaleString()})
+            </p>
+          )}
         </article>
       ) : (
-        <form className="comment-text">
+        <form className="comment-text" onSubmit={onSubmitEditForm}>
           <h3>{comment.user}</h3>
-          <textarea type="text" id="text" name="comment" required></textarea>
+          <textarea type="text" id="content" name="content" required></textarea>
           <div
             style={{
               display: 'flex',
@@ -67,10 +79,7 @@ const Comment = ({ comment, removeComment, correctComment }) => {
               alignItems: 'center',
             }}
           >
-            <button
-              className="form-button primary-button"
-              onClick={onSubmitEditForm}
-            >
+            <button className="form-button primary-button" type="submit">
               Editar
             </button>
             <button
@@ -88,7 +97,7 @@ const Comment = ({ comment, removeComment, correctComment }) => {
           <button
             className="primary-button delete-comment-button"
             onClick={() => {
-              if (window.confirm('¿Estás seguro?')) deleteComment(comment.id);
+              if (window.confirm('¿Estás seguro?')) deleteComment();
             }}
           ></button>
           <button

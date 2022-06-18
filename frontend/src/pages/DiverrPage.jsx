@@ -13,29 +13,41 @@ import useDiverrSolution from '../hooks/useDiverrSolution';
 const DiverrPage = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
+
   const {
     diverr: diverrData,
     loading: loadingDiverrData,
     error: errorDiverrData,
   } = useDiverr({ id });
 
-  const { comments, loading, error, addComment, removeComment } = useComments({
-    id,
-  });
+  const {
+    solution,
+    loading: loadingDiverrSolution,
+    error: errorDiverrSolution,
+  } = useDiverrSolution({ id });
+
+  const { comments, loading, error, addComment, editComment, removeComment } =
+    useComments({
+      id,
+    });
 
   if (loading) return <p>cargando comentarios...</p>;
-  if (error) return <p>{error}</p>;
+  if (errorDiverrData) return <p>{errorDiverrData}</p>;
   return (
     <section className="diverr-page">
       <DiverrGrid diverr={diverrData} />
-      <BusinessPanel diverr={diverrData} />
-      {user ? <NewComment /> : null}
+      <BusinessPanel diverr={diverrData} solution={solution} />
+      {user ? <NewComment addCommentToList={addComment} id={id} /> : null}
       <List
         data={comments}
         render={(comment) => {
           return (
             <li key={comment.id}>
-              <Comment comment={comment} removeComment={removeComment} />
+              <Comment
+                comment={comment}
+                correctComment={editComment}
+                removeComment={removeComment}
+              />
             </li>
           );
         }}

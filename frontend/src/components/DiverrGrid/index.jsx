@@ -5,24 +5,16 @@ import { AuthContext } from '../../context/AuthContext';
 import './style.css';
 
 const DiverrGrid = ({ diverr }) => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [error, setError] = useState('');
-  const { user } = useContext(AuthContext);
-
   return (
     <div className="diverr-grid">
       <section className="diver-grid-image">
-        <h1>Lorem ipsum</h1>
+        <h1>{diverr.title}</h1>
         <img
           src={`${process.env.REACT_APP_BACKEND}/uploads/covers/${diverr.picture}`}
           alt={diverr.title}
-          style={{ width: '260px' }}
+          style={{ objectFit: 'cover', width: '16rem', borderRadius: '6px' }}
         ></img>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-          voluptate sit quod non.
-        </p>
+        <p>{diverr.info}</p>
       </section>
       {/* <section className="diverr-grid-comment">
         <figure>

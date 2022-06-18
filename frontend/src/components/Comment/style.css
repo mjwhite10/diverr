@@ -60,6 +60,11 @@
   font-style: italic;
   text-decoration: underline;
   cursor: pointer;
+  margin-top: 0.5rem;
+}
+.modified-date {
+  font-size: 0.85rem;
+  font-weight: bold;
 }
 .comment-date:hover {
   color: gray;

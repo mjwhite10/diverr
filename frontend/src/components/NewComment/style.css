@@ -5,6 +5,7 @@
   flex-direction: column;
   border-radius: 6px;
   margin-bottom: 1rem;
+  width: 100%;
 }
 .new-comment-form label {
   color: var(--background);
@@ -15,6 +16,7 @@
   align-self: center;
   padding: 0.5rem;
   margin-top: 1rem;
+  border: none;
 }
 .textarea-comment {
   margin-top: 0.5rem;

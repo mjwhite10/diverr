@@ -1,8 +1,10 @@
 .diverr-grid {
-    border: 1px solid var(--background);
-    border-radius: 6px;
-    padding: 1rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+  border: 1px solid var(--background);
+  border-radius: 6px;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  width: 100%;
 }
