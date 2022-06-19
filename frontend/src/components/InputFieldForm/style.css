@@ -20,3 +20,7 @@
   font-weight: 600;
   margin-left: 0.3rem;
 }
+
+.input-field-form-container span:hover {
+  cursor: pointer;
+}

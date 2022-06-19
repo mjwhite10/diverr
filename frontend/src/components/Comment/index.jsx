@@ -8,12 +8,12 @@ import {
 } from '../../services/diverrService';
 import './style.css';
 
-const Comment = ({ comment, removeComment, correctComment }) => {
-  const navigate = useNavigate();
+const Comment = ({ comment, removeComment, correctComment, allowComments }) => {
   const [error, setError] = useState('');
   const { user, token } = useContext(AuthContext);
   const { id } = useParams();
   const [edit, setEdit] = useState(false);
+  const [textValue, setTextValue] = useState(comment.content);
 
   const deleteComment = async () => {
     try {
@@ -37,7 +37,6 @@ const Comment = ({ comment, removeComment, correctComment }) => {
         token
       );
       correctComment(returnedComment);
-      console.log(returnedComment);
     } catch (error) {
       console.log(error);
     }
@@ -58,7 +57,7 @@ const Comment = ({ comment, removeComment, correctComment }) => {
       {!edit ? (
         <article className="comment-text">
           <h3>{comment.user}</h3>
-          <p className="comment-content">{comment.content}</p>
+          <p className="comment-content">{textValue}</p>
           <p className="comment-date">
             {new Date(comment.createdAt).toLocaleString()}
           </p>
@@ -71,13 +70,23 @@ const Comment = ({ comment, removeComment, correctComment }) => {
       ) : (
         <form className="comment-text" onSubmit={onSubmitEditForm}>
           <h3>{comment.user}</h3>
-          <textarea type="text" id="content" name="content" required></textarea>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-around',
-              alignItems: 'center',
+          <textarea
+            type="text"
+            id="content"
+            name="content"
+            required
+            value={textValue}
+            onChange={(e) => {
+              setTextValue(e.target.value);
             }}
+          ></textarea>
+          <div
+            className="edit-comment-button-container"
+            // style={{
+            //   display: 'flex',
+            //   justifyContent: 'space-around',
+            //   alignItems: 'center',
+            // }}
           >
             <button className="form-button primary-button" type="submit">
               Editar
@@ -92,7 +101,7 @@ const Comment = ({ comment, removeComment, correctComment }) => {
           </div>
         </form>
       )}
-      {!edit && comment.user && user?.id === comment.idUser ? (
+      {!edit && comment.user && user?.id === comment.idUser && allowComments ? (
         <aside className="comment-buttons">
           <button
             className="primary-button delete-comment-button"

@@ -2,22 +2,37 @@ import './style.css';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
-import { useParams } from 'react-router-dom';
-import useDiverrSolution from '../../hooks/useDiverrSolution';
 
 const BusinessPanel = ({ diverr, solution }) => {
   const { user } = useContext(AuthContext);
 
-  return user ? (
-    <section className="business-panel">
-      <h4>Control panel</h4>
-      {solution.length === 0 && (
+  //Si el usuario que visualiza la pantalla no inició sesión...
+  if (!user) return null;
+
+  //Si no hay solución y el usuario que visualiza la pantalla
+  //es el mismo que publica el diver
+  if (solution.length === 0 && user.id === diverr.idUser) {
+    return null;
+  }
+
+  //Si no hay solución y el usuario que visualiza la pantalla
+  // NO es el mismo que publica el diver
+  if (solution.length === 0 && user.id !== diverr.idUser)
+    return (
+      <section className="business-panel">
+        <h3>Control panel</h3>
         <article>
           <p className="price-text">{diverr.price}€</p>
-          <button className="accept-button primary-button ">Aceptar</button>
+          <button className="primary-button ">Aceptar</button>
         </article>
-      )}
-      {solution && user?.id === solution.idUser && (
+      </section>
+    );
+  //Si hay solución y el usuario que visualiza la pantalla
+  //es el que acepta solucionar la necesidad
+  if (solution && user.id === solution.idUser)
+    return (
+      <section className="business-panel">
+        <h3>Control panel</h3>
         <form className="form-upload-solution">
           <label className="custom-file-upload">
             <input type="file" />
@@ -25,11 +40,20 @@ const BusinessPanel = ({ diverr, solution }) => {
           </label>
 
           {solution.file && (
-            <button className="primary-button">Marcar como finalizado</button>
+            <button type="submit" className="primary-button">
+              Marcar como finalizado
+            </button>
           )}
+          <button className="primary-button">Cancelar solución</button>
         </form>
-      )}
-      {solution && user?.id === diverr.idUser && (
+      </section>
+    );
+  //Si hay solución y el usuario que visualiza la pantalla
+  //es el que publica el diver
+  if (solution && user.id === diverr.idUser)
+    return (
+      <section className="business-panel">
+        <h3>Control panel</h3>
         <article className="user-validation">
           <a
             href={`${process.env.REACT_APP_BACKEND}/uploads/solutions/${solution.file}`}
@@ -38,9 +62,8 @@ const BusinessPanel = ({ diverr, solution }) => {
           </a>
           {solution.file && <button className="primary-button">Validar</button>}
         </article>
-      )}
-    </section>
-  ) : null;
+      </section>
+    );
 };
 
 export default BusinessPanel;

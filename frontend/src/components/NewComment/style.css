@@ -4,8 +4,8 @@
   display: flex;
   flex-direction: column;
   border-radius: 6px;
-  margin-bottom: 1rem;
   width: 100%;
+  height: 100%;
 }
 .new-comment-form label {
   color: var(--background);

@@ -27,7 +27,7 @@ const OrderMenu = ({ hidden }) => {
 
       default:
         orderBy(e.target.id);
-        queryDirection('DESC');
+        queryDirection('ASC');
         break;
     }
   };
@@ -55,7 +55,7 @@ const OrderMenu = ({ hidden }) => {
               <div id="category" onClick={handleSelect}>
                 Categoria
               </div>
-              <div is="title" onClick={handleSelect}>
+              <div id="title" onClick={handleSelect}>
                 Titulo
               </div>
               <div id="priceAsc" onClick={handleSelect}>

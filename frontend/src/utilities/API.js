@@ -63,7 +63,6 @@ const httpPut = async (url, data, token = null) => {
   });
 
   const json = await response.json();
-  console.log(json);
   if (!response.ok) throw new Error(json.message);
 
   return json.message;

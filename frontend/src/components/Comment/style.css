@@ -74,5 +74,14 @@
   margin-bottom: 0.5rem;
 }
 
+.edit-comment-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.edit-comment-button-container button {
+  width: 50%;
+}
 @media (max-width: 800px) {
 }
