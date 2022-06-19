@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 *::after,
 *::before {
   box-sizing: border-box;
@@ -7,7 +7,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins";
+  font-family: 'Poppins';
 }
 
 html {
@@ -72,11 +72,11 @@ h2 {
   margin-left: 0.1rem;
 }
 .link {
-  font-size: 0.9rem;
-  text-decoration: none;
-  color: inherit;
+  color: var(--background);
 }
-
+.link:hover {
+  color: gray;
+}
 /*COMMON FORM PAGES*/
 .login-page,
 .register-page,
@@ -158,8 +158,8 @@ h2 {
   margin-top: 2rem;
 }
 
-.file-upload input[type="file"],
-.image-upload input[type="file"] {
+.file-upload input[type='file'],
+.image-upload input[type='file'] {
   display: none;
 }
 
@@ -238,7 +238,9 @@ h2 {
 }
 
 .error-page-gif {
-padding: 2rem;
+  padding: 2rem;
+  width: 30%;
+  margin: 0 auto;
 }
 
 @media (min-width: 800px) {
@@ -269,9 +271,9 @@ padding: 2rem;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 0.3fr 2.6fr 0.3fr;
     grid-template-areas:
-      "title    title"
-      "col1     col2"
-      "button   button";
+      'title    title'
+      'col1     col2'
+      'button   button';
     gap: 1rem;
   }
   .col1,
