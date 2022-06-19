@@ -218,12 +218,36 @@ h2 {
 }
 /*DIVERR PAGE*/
 .diverr-page {
+  margin: 0 auto;
   flex-direction: column;
-}
-.diverr-page ul {
+  gap: 1rem;
   width: 100%;
 }
+.diverr-page .business-panel {
+  grid-area: right-panel;
+}
+.diverr-page .diverr-grid {
+  grid-area: left-panel;
+}
+/*comment list*/
+.diverr-page ul {
+  width: 100%;
+  grid-area: comments;
+}
+.new-comment-form {
+  grid-area: new-comment;
+}
+
 @media (min-width: 800px) {
+  .diverr-page {
+    display: grid;
+    grid-template-columns: 1.5fr 0.5fr;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+      'left-panel    right-panel'
+      'new-comment   new-comment'
+      'comments     comments';
+  }
   main {
     margin: 2rem 4rem;
   }
@@ -272,5 +296,9 @@ h2 {
   }
   .mydiverrs-page ul li {
     margin: 0;
+  }
+  .diverr-page {
+    margin: 0 auto;
+    width: 40%;
   }
 }

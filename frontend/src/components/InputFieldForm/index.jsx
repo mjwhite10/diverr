@@ -26,7 +26,15 @@ const InputFieldForm = ({
         }}
         value={value}
       ></input>
-      {error && <span>❌</span>}
+      {error && (
+        <span
+          onClick={(e) => {
+            setValue('');
+          }}
+        >
+          ❌
+        </span>
+      )}
 
       {error && <p className="input-field-form-error">{error}</p>}
     </div>

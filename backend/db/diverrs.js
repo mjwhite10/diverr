@@ -24,8 +24,8 @@ const searchDiverrs = async (
           INNER JOIN users AS U
           ON D.idUser = U.id
           WHERE (D.title LIKE '%${search}%' OR D.info LIKE '%${search}%')
+          AND DS.id = 1
           ${filterCategory ? 'AND DC.id IN (' + filterCategory + ')' : ''}
-          AND WHERE DS.id = 1
           ORDER BY D.${orderBy} ${orderDirection}`
       );
     } else {

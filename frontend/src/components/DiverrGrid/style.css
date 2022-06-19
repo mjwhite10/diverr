@@ -2,9 +2,28 @@
   border: 1px solid var(--background);
   border-radius: 6px;
   padding: 1rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 1rem;
+  display: flex;
   width: 100%;
+  height: 100%;
+}
+.diverr-grid article {
+  display: flex;
+  flex-direction: column;
+  grid-row: 2;
+}
+
+.diverr-grid figure {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.diverr-grid figure img {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+}
+.diverr-grid figure h3 {
+  color: var(--background);
+  text-align: center;
 }
