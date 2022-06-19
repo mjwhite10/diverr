@@ -2,23 +2,20 @@ import { useState } from "react";
 import InputFieldForm from "../components/InputFieldForm";
 
 const NewDiverrPage = () => {
-  //Habría que  mostrar el avatar y esconder el inicio de sesión y el registro
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [info, setInfo] = useState("");
   const [file, setFile] = useState("");
-  const [fileSelected, setFileselected] = useState(false);
   const [image, setImage] = useState("");
-  const [imageSelected, setImageselected] = useState(false);
 
   const handleFile = e => {
-    setFile(e.target.file);
-    setFileselected(true);
+    setFile(e.target.files[0]);
+    setFile(true);
   };
 
   const handleImage = e => {
-    setImage(e.target.image);
-    setImageselected(true);
+    setImage(e.target.files[0]);
+    setImage(true);
   };
 
   const handleForm = async e => {
@@ -29,7 +26,6 @@ const NewDiverrPage = () => {
 
   return (
     <section className='newdiverr-page'>
-      {/* <SearchBar></SearchBar> */}
       <form className='newdiverr-form' onSubmit={handleForm}>
         <h1 className='h1-newdiverr'>Crear diverr</h1>
         <label htmlFor='title'>Título *</label>
@@ -67,15 +63,35 @@ const NewDiverrPage = () => {
             name={"file"}
             onChange={handleFile}
           ></InputFieldForm>
+          {file ? (
+            <figure>
+              <img
+                src={URL.createObjectURL(file)}
+                alt='Previsualización'
+                style={{ width: "100px" }}
+              />{" "}
+              Archivo seleccionado
+            </figure>
+          ) : null}
           Subir archivo
         </label>
-        <label className="image-upload">
+        <label className='image-upload'>
           <InputFieldForm
-            id={'image'}
+            id={"image"}
             type={"file"}
             name={"image"}
             onChange={handleImage}
           ></InputFieldForm>
+          {image ? (
+            <figure>
+              <img
+                src={URL.createObjectURL(image)}
+                alt='Previsualización'
+                style={{ width: "100px" }}
+              />{" "}
+              Imagen seleccionada
+            </figure>
+          ) : null}
           Subir imagen
         </label>
 
