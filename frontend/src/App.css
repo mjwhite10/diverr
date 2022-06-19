@@ -36,7 +36,8 @@ main {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   color: var(--background);
 }
 
@@ -253,9 +254,12 @@ h2 {
       'new-comment   new-comment'
       'comments     comments';
   }
-  main {
-    /* margin: 2rem 4rem; */
-  }
+
+
+  /* main {
+    margin: 2rem 4rem;
+  } */
+  
   .order-filter-menu {
     justify-content: flex-end;
     margin: 1.5rem 2rem;
@@ -304,6 +308,6 @@ h2 {
   }
   .diverr-page {
     margin: 0 auto;
-    width: 40%;
+    width: 80%;
   }
 }

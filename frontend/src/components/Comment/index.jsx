@@ -56,7 +56,7 @@ const Comment = ({ comment, removeComment, correctComment, allowComments }) => {
       </figure>
       {!edit ? (
         <article className="comment-text">
-          <h3>{comment.user}</h3>
+          <h1>{comment.user}</h1>
           <p className="comment-content">{textValue}</p>
           <p className="comment-date">
             {new Date(comment.createdAt).toLocaleString()}
