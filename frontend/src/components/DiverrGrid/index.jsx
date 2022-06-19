@@ -7,7 +7,7 @@ const DiverrGrid = ({ diverr }) => {
   return (
     <section className="diverr-grid">
       <article>
-        <h1>{diverr.title}</h1>
+        <h3>{diverr.title}</h3>
         <img
           src={`${process.env.REACT_APP_BACKEND}/uploads/covers/${diverr.picture}`}
           alt={diverr.title}

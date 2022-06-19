@@ -32,7 +32,7 @@ const BusinessPanel = ({ diverr, solution }) => {
   if (solution && user.id === solution.idUser)
     return (
       <section className="business-panel">
-        <h3>Control panel</h3>
+        <h3>Panel de control</h3>
         <form className="form-upload-solution">
           <label className="custom-file-upload">
             <input type="file" />
@@ -53,7 +53,7 @@ const BusinessPanel = ({ diverr, solution }) => {
   if (solution && user.id === diverr.idUser)
     return (
       <section className="business-panel">
-        <h3>Control panel</h3>
+        <h3>Panel de control</h3>
         <article className="user-validation">
           <a
             href={`${process.env.REACT_APP_BACKEND}/uploads/solutions/${solution.file}`}
