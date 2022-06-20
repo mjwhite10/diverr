@@ -4,27 +4,21 @@ import { useEffect } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import {
   editUserDataService,
-  editUserPasswordService,
   getUserDataService,
 } from '../services/userService';
 const EditUserPage = () => {
-  const { token, logout, updateUserData } = useContext(AuthContext);
+  const { token, updateUserData } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [errorEmail, setErrorEmail] = useState(false);
   const [name, setName] = useState('');
   const [errorName, setErrorName] = useState(false);
   const [sector, setSector] = useState('');
   const [errorSector, setErrorSector] = useState(false);
-  const [oldPassword, setOldPasswod] = useState('');
-  const [errorOldPassword, setErrorOldPassword] = useState(false);
-  const [newPassword, setNewPassword] = useState('');
-  const [errorNewPassword, setErrorNewPassword] = useState(false);
+
   const [sending, setSending] = useState(false);
   const [image, setImage] = useState('');
-  const navigate = useNavigate();
 
   //Antes de renderizar consultamos la info del user a la API
   useEffect(() => {
@@ -35,7 +29,7 @@ const EditUserPage = () => {
       setSector(userdata.info);
     };
     loadUserInfo();
-  }, []);
+  }, [token]);
 
   const handleFormEdit = async (e) => {
     e.preventDefault();
@@ -61,92 +55,45 @@ const EditUserPage = () => {
       setSending(false);
     }
   };
-  const handleFormPassword = async (e) => {
-    e.preventDefault();
-    setErrorNewPassword(false);
-    setErrorOldPassword(false);
-    //Verificamos que las passwords sean iguales
-
-    try {
-      await editUserPasswordService({ oldPassword, newPassword }, token);
-      logout();
-      navigate('/');
-    } catch (error) {
-      if (error.message === 'La contraseña no es válida') {
-        setErrorOldPassword(error.message);
-      } else {
-        setErrorNewPassword(error.message);
-      }
-    }
-  };
 
   return (
     <section className="edit-user-page">
       <form className="form form-edit" onSubmit={handleFormEdit}>
-        <h2>Editar usuario</h2>
-        <div className="col col1">
-          <label htmlFor="email">Email</label>
-          <InputFieldForm
-            className="algo"
-            id={'email'}
-            type={'email'}
-            error={errorEmail}
-            setError={setErrorEmail}
-            setValue={setEmail}
-            value={email}
-          />
-          <label htmlFor="name">Nombre</label>
-          <InputFieldForm
-            id={'name'}
-            type={'text'}
-            error={errorName}
-            setError={setErrorName}
-            setValue={setName}
-            value={name}
-          />
-          <label htmlFor="Sector">Sector</label>
-          <InputFieldForm
-            id={'info'}
-            type={'text'}
-            error={errorSector}
-            setError={setErrorSector}
-            setValue={setSector}
-            value={sector}
-          />
-        </div>
-        <div className="col col2">
-          <LoadAvatar image={image} setImage={setImage} />
-        </div>
+        <h2 style={{ marginBottom: '2rem' }}>Editar usuario</h2>
+        <LoadAvatar className="edit-avatar" image={image} setImage={setImage} />
+        <label htmlFor="email" style={{ marginTop: '2rem' }}>
+          Email
+        </label>
+        <InputFieldForm
+          className="algo"
+          id={'email'}
+          type={'email'}
+          error={errorEmail}
+          setError={setErrorEmail}
+          setValue={setEmail}
+          value={email}
+        />
+        <label htmlFor="name">Nombre</label>
+        <InputFieldForm
+          id={'name'}
+          type={'text'}
+          error={errorName}
+          setError={setErrorName}
+          setValue={setName}
+          value={name}
+        />
+        <label htmlFor="Sector">Sector</label>
+        <InputFieldForm
+          id={'info'}
+          type={'text'}
+          error={errorSector}
+          setError={setErrorSector}
+          setValue={setSector}
+          value={sector}
+        />
 
         <button className="form-button primary-button" type="submit">
           {sending ? 'Enviando...' : 'Confirmar cambio'}
-        </button>
-      </form>
-
-      <form className="form form-change-password" onSubmit={handleFormPassword}>
-        <h2>Cambiar Contraseña</h2>
-        <div className="col">
-          <label htmlFor="password1">Introduce contraseña actual</label>
-          <InputFieldForm
-            id={'password1'}
-            type={'password'}
-            error={errorOldPassword}
-            setError={setErrorOldPassword}
-            setValue={setOldPasswod}
-            value={oldPassword}
-          />
-          <label htmlFor="password2">Introduce la nueva contraseña</label>
-          <InputFieldForm
-            id={'password2'}
-            type={'password'}
-            error={errorNewPassword}
-            setError={setErrorNewPassword}
-            setValue={setNewPassword}
-            value={newPassword}
-          />
-        </div>
-        <button className="form-button primary-button" type="submit">
-          Cambiar contraseña
         </button>
       </form>
     </section>

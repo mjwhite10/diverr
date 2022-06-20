@@ -50,6 +50,7 @@ h3 {
 }
 .form label {
   align-self: flex-start;
+  width: 100%;
   font-weight: 600;
   font-size: 0.9rem;
   padding: 0.2rem;
@@ -80,90 +81,47 @@ h3 {
 }
 /*COMMON FORM PAGES*/
 .login-page,
+.security-page,
 .register-page,
 .edit-user-page,
-.diverr-page {
+.diverr-page,
+.newdiverr-page {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 /*EDIT USER PAGE, DIVERR-PAGE*/
-.edit-user-page {
-  flex-direction: column;
-}
+
 .form-edit h2,
 .form-change-password h2 {
   border-bottom: 1px solid var(--background);
   /* margin-top: 0rem; */
 }
-.col1 {
-  grid-area: col1;
-}
-.col2 {
-  grid-area: col2;
-}
-.col {
+
+.edit-user-page .form-edit .edit-avatar label {
   align-self: center;
-  justify-content: center;
-}
-.form-edit h2 {
-  grid-area: title;
-  justify-self: center;
-}
-.form-edit button {
-  grid-area: button;
-  margin-top: 1rem;
-  align-self: center;
-  width: 65%;
-}
-.form-edit {
-  flex-grow: 2;
-  justify-items: center;
-}
-.form-change-password {
-  flex-grow: 1;
-  margin-top: 4rem;
-  align-items: center;
 }
 
 /*NEW DIVERSS PAGE*/
-.newdiverr-page {
-  color: var(--background);
-  background-color: var(--bright);
-  border-radius: 6px;
-  /* border: 1px solid var(--background); */
-  box-shadow: none;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  height: 85vh;
-}
-
-.newdiverr-form {
-  font-weight: 600;
-}
-
 .register-input,
 .newdiverr-input {
   height: 2.2rem;
-}
-
-.newdiverr-button {
-  color: white;
-  background-color: var(--background);
-  border-radius: 6px;
-  height: 3rem;
-  width: 17.3rem;
-  display: block;
-  margin-top: 2rem;
 }
 
 .file-upload input[type='file'],
 .image-upload input[type='file'] {
   display: none;
 }
-
+.newdiverr-form select {
+  height: 2.2rem;
+  background-color: var(--bright);
+  border: 1px solid var(--background);
+  width: 100%;
+  color: var(--background);
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
 .file-upload,
 .image-upload {
   cursor: pointer;
@@ -243,7 +201,9 @@ h3 {
   width: 80%;
   margin: 0 auto;
 }
-
+.form-change-password h2 {
+  margin-bottom: 1rem;
+}
 @media (min-width: 800px) {
   .error-page-gif {
     width: 40%;
@@ -266,45 +226,14 @@ h3 {
     justify-content: flex-end;
     margin: 1.5rem 2rem;
   }
-  .edit-user-page {
-    flex-direction: row;
-  }
-  .col {
-    justify-content: flex-start;
-  }
-  .form-edit {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 0.3fr 2.6fr 0.3fr;
-    grid-template-areas:
-      'title    title'
-      'col1     col2'
-      'button   button';
-    gap: 1rem;
-  }
-  .col1,
-  .col2 {
-    display: flex;
-    flex-direction: column;
-  }
-  .col1 {
-    justify-self: flex-end;
-  }
-  .col2 {
-    justify-self: flex-start;
-  }
   .form-change-password {
     margin-top: 0rem;
   }
-  .form-change-password .col,
-  .form-change-password h2,
-  .form-change-password button {
-    align-self: flex-start;
-  }
-  .form-change-password button,
+
   .form-edit button {
     width: 17.5rem;
   }
+
   .mydiverrs-page ul li {
     margin: 0;
   }

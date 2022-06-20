@@ -14,6 +14,7 @@ import MyDiverrsPage from './pages/MyDiverrsPage';
 import NewDiverrPage from './pages/NewDiverrPage';
 import OrderMenu from './components/OrderMenu';
 import FilterMenu from './components/FilterMenu';
+import SecurityPage from './pages/SecurityPage';
 
 function App() {
   const [hidden, setHidden] = useState(true);
@@ -41,7 +42,7 @@ function App() {
         <Route path="/diverr/:id" element={<DiverrPage />} />
         <Route path="/user/:id/diverr" element={<MyDiverrsPage />} />
         <Route path="/user/:id" element={<EditUserPage />} />
-
+        <Route path="/user/:id/security" element={<SecurityPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
