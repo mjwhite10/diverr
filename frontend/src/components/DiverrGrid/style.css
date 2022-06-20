@@ -11,7 +11,7 @@
 }
 
 .diverr-grid img {
-  width: 100%;
+  width: 15rem;
   height: 15rem;
   object-fit: cover;
   border-radius: 6px;
@@ -39,4 +39,17 @@
 .diverr-grid figure h3 {
   color: var(--background);
   text-align: center;
+}
+.diverr-grid .category-sticker {
+  background-color: green;
+  padding: 0.5rem;
+  color: var(--bright);
+  border-radius: 6px;
+  width: fit-content;
+}
+@media (min-width: 800px) {
+  .diverr-grid img {
+    width: 35rem;
+    height: 15rem;
+  }
 }

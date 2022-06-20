@@ -17,19 +17,21 @@ const idDiverrSchema = Joi.object().keys({
 const diverrSchema = Joi.object().keys({
   title: Joi.string()
     .max(100)
+    .min(5)
     .required()
     .error(
       generateError(
-        'El campo title debería existir y no exceder los 100 caracteres',
+        'El campo title debe tener una longitud de entre 5 y 100 caracteres',
         400
       )
     ),
   info: Joi.string()
     .max(500)
+    .min(5)
     .required()
     .error(
       generateError(
-        'El campo info debería existir y no exceder los 500 caracteres',
+        'El campo info debe tener una longitud de entre 5 y 500 caracteres',
         400
       )
     ),
@@ -38,7 +40,7 @@ const diverrSchema = Joi.object().keys({
     .required()
     .error(
       generateError(
-        'El campo category debería existir y no exceder los 100 caracteres',
+        'El campo category debe existir y no exceder los 100 caracteres',
         400
       )
     ),
@@ -47,7 +49,7 @@ const diverrSchema = Joi.object().keys({
     .required()
     .error(
       generateError(
-        'El campo price debería existir y no exceder el valor de 10000',
+        'El campo price debe ser un valor entero y no exceder el valor de 10000',
         400
       )
     ),

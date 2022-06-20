@@ -8,6 +8,7 @@ const QueryContextProviderComponent = ({ children }) => {
   const [order, setOrder] = useState('');
   const [direction, setDirection] = useState('');
   const [filter, setFilter] = useState(false);
+  const [filterArray, setFilterArray] = useState([]);
   const [result, setResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -24,17 +25,6 @@ const QueryContextProviderComponent = ({ children }) => {
           queryParam = queryParam.slice(0, -1);
         }
         const data = await getAllDiverrsService(queryParam);
-        // if (filter) {
-        //   setResult(
-        //     data.filter((diverr) => {
-        //       if (filter.includes(diverr.category)) {
-        //         return diverr;
-        //       }
-        //     })
-        //   );
-        // } else {
-        //   setResult(data);
-        // }
 
         setResult(data);
       } catch (error) {
@@ -44,7 +34,7 @@ const QueryContextProviderComponent = ({ children }) => {
       }
     };
     loadData();
-  }, [search, order, direction, filter]);
+  }, [search, order, direction]);
 
   const searchText = (text) => {
     text ? setSearch(`search=${text}&`) : setSearch('');
@@ -94,6 +84,14 @@ const QueryContextProviderComponent = ({ children }) => {
         error,
         result,
         updateData,
+        setFilterArray,
+        filterArray,
+        filteredResults:
+          filterArray.length > 0
+            ? result.filter((diverr) => {
+                return filterArray.includes(diverr.category);
+              })
+            : result,
       }}
     >
       {children}

@@ -26,10 +26,12 @@ function App() {
   return (
     <main>
       <Header hideSearchBar={hidden} />
-      <menu className="order-filter-menu">
-        <FilterMenu hidden={hidden} />
-        <OrderMenu hidden={hidden} />
-      </menu>
+      {!hidden && (
+        <menu className="order-filter-menu">
+          <FilterMenu />
+          <OrderMenu />
+        </menu>
+      )}
 
       <Routes>
         <Route path="/" element={<HomePage />} />

@@ -9,16 +9,15 @@ const DiverrCard = ({ diverr, showPrice = true }) => {
       onClick={(e) => navigate(`/diverr/${diverr.id}`)}
     >
       <img
-        src={`${process.env.REACT_APP_BACKEND}/uploads/covers/${diverr.picture}`}
+        src={
+          diverr.picture
+            ? `${process.env.REACT_APP_BACKEND}/uploads/covers/${diverr.picture}`
+            : '../../../images/logo-diverr2.svg'
+        }
         alt={diverr?.title}
       ></img>
       {showPrice ? <CardSticker>{diverr.price} €</CardSticker> : null}
       <p>{diverr.title}</p>
-      <p>
-        <b>{diverr.category}</b>
-      </p>
-
-      {/* <p>{new Date(diverr.createdAt).toLocaleString()}</p> */}
     </article>
   );
 };

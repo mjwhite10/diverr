@@ -5,7 +5,7 @@ import { QueryContext } from '../context/QueryContext';
 import DiverrCard from '../components/DiverrCard';
 
 const HomePage = () => {
-  const { result, error, loading } = useContext(QueryContext);
+  const { filteredResults, error, loading } = useContext(QueryContext);
   //Si sigue cargando devuelvo párrafo
   if (loading) return <p>cargando diverrs...</p>;
   //Si hay error devuelvo mensaje
@@ -15,7 +15,7 @@ const HomePage = () => {
   return (
     <section className="home-page">
       <List
-        data={result}
+        data={filteredResults}
         render={(d) => {
           return (
             <li key={d.id}>

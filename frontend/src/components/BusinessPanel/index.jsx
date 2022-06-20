@@ -4,10 +4,11 @@ import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import {
   createDiverrSolutionService,
+  deleteDiverrService,
   deleteDiverrSolutionService,
   updateDiverrSolutionService,
 } from '../../services/diverrService';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { QueryContext } from '../../context/QueryContext';
 
 const BusinessPanel = ({ diverr, solution, loadDiverrSolution }) => {
@@ -17,6 +18,7 @@ const BusinessPanel = ({ diverr, solution, loadDiverrSolution }) => {
   const [error, setError] = useState('');
   const [sending, setSending] = useState('');
   const [solutionFile, setSolutionFile] = useState('');
+  const navigate = useNavigate();
 
   /**Función para aceptar un diverr y crear una solucion */
   const onAcceptDiverrClick = async (e) => {
@@ -79,15 +81,38 @@ const BusinessPanel = ({ diverr, solution, loadDiverrSolution }) => {
     }
   };
 
-  if (sending) return <p>Enviando petición</p>;
+  const onDeleteDiverrClick = async (e) => {
+    try {
+      setSending(true);
+      await deleteDiverrService(id, token);
+      await updateData();
+      navigate('/');
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setSending(false);
+    }
+  };
 
+  // if (sending) return <p>Enviando petición</p>;
+  console.log(solution);
   //Si el usuario que visualiza la pantalla no inició sesión...
   if (!user) return null;
 
   //Si no hay solución y el usuario que visualiza la pantalla
   //es el mismo que publica el diver
   if (!solution && user.id === diverr.idUser) {
-    return null;
+    return (
+      <section className="business-panel">
+        <h3>Control panel</h3>
+        <article>
+          <button className="primary-button" onClick={onDeleteDiverrClick}>
+            Eliminar diverr
+          </button>
+        </article>
+        {error && <p>❌{error}</p>}
+      </section>
+    );
   }
 
   //Si no hay solución y el usuario que visualiza la pantalla
@@ -116,7 +141,17 @@ const BusinessPanel = ({ diverr, solution, loadDiverrSolution }) => {
           className="form-upload-solution"
           onSubmit={onHandleFormUploadSolutionFile}
         >
-
+          {diverr.file && (
+            <>
+              <label className="label-title">Archivo original:</label>
+              <a
+                href={`${process.env.REACT_APP_BACKEND}/uploads/diverrs/${diverr.file}`}
+              >
+                {diverr.file}
+              </a>
+            </>
+          )}
+          <label className="label-title"> Solución propuesta:</label>
           <label className="custom-file-upload">
             <input
               type="file"

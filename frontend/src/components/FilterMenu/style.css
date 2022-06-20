@@ -46,5 +46,14 @@
   left: 1.5rem;
   top: 0.8rem;
 }
+
+.secondary-button {
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--bright);
+  border: 1px solid var(--bright);
+  border-radius: 6px;
+  color: var(--background);
+}
 @media (min-width: 800px) {
 }

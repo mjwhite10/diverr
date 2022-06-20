@@ -9,19 +9,7 @@ const useDiverrSolution = ({ id }) => {
   const { token } = useContext(AuthContext);
 
   useEffect(() => {
-    const loadData = async () => {
-      try {
-        setLoading(true);
-        const data = await getDiverrSolutionService(id, token);
-        setSolution(data);
-      } catch (error) {
-        console.log(error.message);
-        setSolution(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-    loadData();
+    updateSolution({ id });
   }, []);
 
   const updateSolution = async ({ id }) => {

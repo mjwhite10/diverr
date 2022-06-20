@@ -82,7 +82,8 @@ h3 {
 .login-page,
 .register-page,
 .edit-user-page,
-.diverr-page {
+.diverr-page,
+.newdiverr-page {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -128,35 +129,21 @@ h3 {
 }
 
 /*NEW DIVERSS PAGE*/
-.newdiverr-page {
-  color: var(--background);
-  background-color: var(--bright);
-  border-radius: 6px;
-  /* border: 1px solid var(--background); */
-  box-shadow: none;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  height: 85vh;
-}
-
-.newdiverr-form {
-  font-weight: 600;
-}
 
 .register-input,
-.newdiverr-input {
+.newdiverr-input,
+.newdiverr-page form select {
   height: 2.2rem;
 }
 
-.newdiverr-button {
-  color: white;
-  background-color: var(--background);
+.newdiverr-page form select {
+  background-color: var(--bright);
+  border: 2px solid var(--background);
+  color: var(--background);
+  padding: 0 0.5rem;
   border-radius: 6px;
-  height: 3rem;
-  width: 17.3rem;
-  display: block;
-  margin-top: 2rem;
+  width: 100%;
+  margin-bottom: 2rem;
 }
 
 .file-upload input[type='file'],
@@ -167,7 +154,6 @@ h3 {
 .file-upload,
 .image-upload {
   cursor: pointer;
-  font-size: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -176,6 +162,12 @@ h3 {
 .file-upload:hover,
 .image-upload:hover {
   text-decoration: underline;
+}
+
+.newdiverr-page form .image-upload,
+.newdiverr-page form .file-upload {
+  align-self: center;
+  margin-bottom: 2rem;
 }
 
 .order-filter-menu {
@@ -208,7 +200,14 @@ h3 {
   padding: 0 1rem;
   margin: 0 auto;
 }
-
+.mydiverrs-page h2 {
+  margin-bottom: 1rem;
+}
+.mydiverrs-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
 /*DIVERR PAGE*/
 .diverr-page {
   margin: 0 auto;
@@ -250,7 +249,7 @@ h3 {
   }
   .diverr-page {
     display: grid;
-    grid-template-columns: 1.5fr 0.5fr;
+    grid-template-columns: repeat(2, auto);
     grid-template-rows: repeat(3, auto);
     grid-template-areas:
       'left-panel    right-panel'
