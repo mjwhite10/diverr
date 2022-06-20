@@ -8,11 +8,13 @@ const DiverrGrid = ({ diverr }) => {
     <section className="diverr-grid">
       <article>
         <h1>{diverr.title}</h1>
+        <p className="category-sticker">{diverr.category}</p>
+
         <img
           src={
             diverr?.picture
               ? `${process.env.REACT_APP_BACKEND}/uploads/covers/${diverr.picture}`
-              : null
+              : '../../../images/logo-diverr2.svg'
           }
           alt={diverr?.title}
         ></img>

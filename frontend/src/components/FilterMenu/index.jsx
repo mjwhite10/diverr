@@ -3,62 +3,65 @@ import { useState } from 'react';
 import { QueryContext } from '../../context/QueryContext';
 import useCategories from '../../hooks/useCategories';
 import './style.css';
-const FilterMenu = ({ hidden }) => {
-  const { filterCategory } = useContext(QueryContext);
+const FilterMenu = () => {
+  const { filterArray, setFilterArray } = useContext(QueryContext);
   const [hiddenMenu, setHiddenMenu] = useState(true);
   const { categories } = useCategories();
-  const [checked, setChecked] = useState([]);
 
-  const onCheckOption = (e) => {
-    var updatedList = [...checked];
-    if (e.target.checked) {
-      updatedList = [...checked, e.target.id];
-    } else {
-      updatedList.splice(checked.indexOf(e.target.id), 1);
+  const handleSubmitForm = (e) => {
+    // setFilterArray(checked);
+    e.preventDefault();
+
+    const data = new FormData(e.target);
+
+    const categories = [];
+
+    for (const [name, value] of data.entries()) {
+      categories.push(name);
     }
-    setChecked(updatedList);
-  };
-
-  const onClickFilter = (e) => {
-    filterCategory(checked);
+    setFilterArray(categories);
   };
 
   return (
     <>
-      {!hidden ? (
-        <div
-          className="filter-list"
-          onMouseLeave={(e) => {
-            setHiddenMenu(true);
-            setChecked([]);
-          }}
+      <div
+        className="filter-list"
+        onMouseLeave={(e) => {
+          setHiddenMenu(true);
+        }}
+      >
+        <button
+          className="filter-list-button"
+          onClick={(e) => setHiddenMenu(!hiddenMenu)}
         >
-          <button
-            className="filter-list-button"
-            onClick={(e) => setHiddenMenu(!hiddenMenu)}
-          >
-            <i className="filter-list-button-icon" />
-            Filtrar
-          </button>
-          {!hiddenMenu && (
+          <i className="filter-list-button-icon" />
+          Filtrar
+        </button>
+        {!hiddenMenu && (
+          <form onSubmit={handleSubmitForm}>
             <ul className="filter-list-container">
               {categories.map((category) => {
                 return (
                   <li key={category.id}>
                     <input
+                      defaultChecked={filterArray.includes(
+                        category.description
+                      )}
                       type="checkbox"
+                      name={category.description}
                       id={category.description}
-                      onChange={onCheckOption}
                     />
-                    <label htmlFor={category.id}>{category.description}</label>
+                    <label htmlFor={category.description}>
+                      {category.description}
+                    </label>
                   </li>
                 );
               })}
-              <button onClick={onClickFilter}>Aceptar</button>
+              <button className="secondary-button">Aceptar</button>
             </ul>
-          )}
-        </div>
-      ) : null}
+          </form>
+        )}
+      </div>
     </>
   );
 };

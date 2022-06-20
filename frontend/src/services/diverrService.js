@@ -6,6 +6,12 @@ export const getAllDiverrsService = async (queryParams) =>
 
 export const getSingleDiverrService = async (id) =>
   await httpGet(`/diverr/${id}`);
+
+export const createDiverrService = async (data, token) =>
+  await httpPost(`/diverr`, data, token);
+
+export const deleteDiverrService = async (id, token) =>
+  await httpDelete(`/diverr/${id}`, token);
 //SOLUTIONS//
 export const createDiverrSolutionService = async (id, token) =>
   await httpPost(`/diverr/${id}/solution`, {}, token);
