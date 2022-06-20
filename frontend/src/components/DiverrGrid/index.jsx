@@ -7,7 +7,7 @@ const DiverrGrid = ({ diverr }) => {
   return (
     <section className="diverr-grid">
       <article>
-        <h3>{diverr.title}</h3>
+        <h1>{diverr.title}</h1>
         <img
           src={
             diverr?.picture
@@ -15,7 +15,6 @@ const DiverrGrid = ({ diverr }) => {
               : null
           }
           alt={diverr?.title}
-          style={{ objectFit: 'cover', width: '16rem', borderRadius: '6px' }}
         ></img>
 
         <p>{diverr.info}</p>
