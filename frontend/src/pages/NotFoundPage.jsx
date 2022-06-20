@@ -6,7 +6,7 @@ const NotFoundPage = () => {
       <h1>La página no existe</h1>
       <img
         className="error-page-gif"
-        src="../images/error.gif"
+        src="../../../images/error.gif"
         alt="error cat"
       />
       <Link className="link" to={'/'}>
