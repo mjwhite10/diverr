@@ -8,7 +8,7 @@ import {
 } from '../../services/diverrService';
 import './style.css';
 
-const Comment = ({ comment, removeComment, correctComment, allowComments }) => {
+const Comment = ({ comment, removeComment, correctComment, solution }) => {
   const [error, setError] = useState('');
   const { user, token } = useContext(AuthContext);
   const { id } = useParams();
@@ -79,15 +79,9 @@ const Comment = ({ comment, removeComment, correctComment, allowComments }) => {
             onChange={(e) => {
               setTextValue(e.target.value);
             }}
+            style={{ resize: 'none' }}
           ></textarea>
-          <div
-            className="edit-comment-button-container"
-            // style={{
-            //   display: 'flex',
-            //   justifyContent: 'space-around',
-            //   alignItems: 'center',
-            // }}
-          >
+          <div className="edit-comment-button-container">
             <button className="form-button primary-button" type="submit">
               Editar
             </button>
@@ -101,7 +95,7 @@ const Comment = ({ comment, removeComment, correctComment, allowComments }) => {
           </div>
         </form>
       )}
-      {!edit && comment.user && user?.id === comment.idUser && allowComments ? (
+      {!edit && comment.user && user?.id === comment.idUser && !solution ? (
         <aside className="comment-buttons">
           <button
             className="primary-button delete-comment-button"

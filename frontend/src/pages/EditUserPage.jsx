@@ -11,7 +11,7 @@ import {
   getUserDataService,
 } from '../services/userService';
 const EditUserPage = () => {
-  const { token, logout } = useContext(AuthContext);
+  const { token, logout, updateUserData } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [errorEmail, setErrorEmail] = useState(false);
   const [name, setName] = useState('');
@@ -35,7 +35,7 @@ const EditUserPage = () => {
       setSector(userdata.info);
     };
     loadUserInfo();
-  }, [token]);
+  }, []);
 
   const handleFormEdit = async (e) => {
     e.preventDefault();
@@ -44,8 +44,8 @@ const EditUserPage = () => {
       const data = new FormData(e.target);
       if (image !== '') data.append('avatar', image);
       await editUserDataService(data, token);
-      //Forzamos una recarga de la página para que actualice el resto de componentes
-      window.location.reload(false);
+      //Actualizamos los datos de usuario (asi el avatar del menu se actualiza tambuen)
+      await updateUserData();
     } catch (error) {
       console.log(error.message);
       if (error.message.includes('email')) {

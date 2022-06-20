@@ -8,17 +8,17 @@ import useComments from '../hooks/useComments';
 import BusinessPanel from '../components/BusinessPanel';
 import DiverrGrid from '../components/DiverrGrid';
 import useDiverr from '../hooks/useDiverr';
+
 import useDiverrSolution from '../hooks/useDiverrSolution';
-import { useState } from 'react';
-import { useEffect } from 'react';
 
 const DiverrPage = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
-  //Esta variable de estado se usa para ocultar o mostar los botones
-  //de delete y edit de los comentarios o para visualizar el panel de
-  //añadir comentarios
-  const [allowComments, setAllowComments] = useState(true);
+  const {
+    solution: diverrSolution,
+    loading: loadingDiverrSolution,
+    updateSolution,
+  } = useDiverrSolution({ id });
 
   //Diverr
   const {
@@ -26,12 +26,7 @@ const DiverrPage = () => {
     loading: loadingDiverrData,
     error: errorDiverrData,
   } = useDiverr({ id });
-  //Solution
-  //No recogemos el error ya que nos interesa que haya error cuando no hay solución
-  //Se puede modificar el backend para consultar si un diverr tiene o no solucion
-  const { solution, loading: loadingDiverrSolution } = useDiverrSolution({
-    id,
-  });
+
   //Commentarios
   const {
     comments,
@@ -44,10 +39,6 @@ const DiverrPage = () => {
     id,
   });
 
-  useEffect(() => {
-    setAllowComments(solution.length === 0);
-  }, [solution?.length]);
-
   return (
     <section className="diverr-page">
       {loadingDiverrData ? (
@@ -56,18 +47,17 @@ const DiverrPage = () => {
         <DiverrGrid diverr={diverrData} />
       )}
       {errorDiverrData && <p>❌{errorDiverrData}</p>}
-
-      {loadingDiverrSolution ? (
-        <p>Cargando solucion...</p>
-      ) : (
-        <BusinessPanel diverr={diverrData} solution={solution} />
-      )}
+      <BusinessPanel
+        diverr={diverrData}
+        solution={diverrSolution}
+        loadDiverrSolution={updateSolution}
+      />
 
       {user && (
         <NewComment
           addCommentToList={addComment}
           id={id}
-          allowComments={allowComments}
+          solution={diverrSolution}
         />
       )}
 
@@ -84,7 +74,7 @@ const DiverrPage = () => {
                   comment={comment}
                   correctComment={editComment}
                   removeComment={removeComment}
-                  allowComments={allowComments}
+                  solution={diverrSolution}
                 />
               </li>
             );

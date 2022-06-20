@@ -3,9 +3,19 @@ import { httpDelete, httpGet, httpPost, httpPut } from '../utilities/API';
 //DIVERRS//
 export const getAllDiverrsService = async (queryParams) =>
   await httpGet(`/diverr${queryParams}`);
+
 export const getSingleDiverrService = async (id) =>
   await httpGet(`/diverr/${id}`);
 //SOLUTIONS//
+export const createDiverrSolutionService = async (id, token) =>
+  await httpPost(`/diverr/${id}/solution`, {}, token);
+
+export const updateDiverrSolutionService = async (id, data, token) =>
+  await httpPut(`/diverr/${id}/solution`, data, token);
+
+export const deleteDiverrSolutionService = async (id, token) =>
+  await httpDelete(`/diverr/${id}/solution`, token);
+
 export const getDiverrSolutionService = async (id, token) =>
   await httpGet(`/diverr/${id}/solution`, token);
 //CATEGORIES
@@ -26,6 +36,3 @@ export const editDiverrCommentService = async (
 
 export const deleteDiverrCommentService = async (idDiverr, idComment, token) =>
   await httpDelete(`/diverr/${idDiverr}/comments/${idComment}`, token);
-//funcion peticion enviar comentario
-//funcion peticion borrar comentario
-//funcion peticion editar comentario

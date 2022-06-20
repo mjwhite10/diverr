@@ -254,7 +254,7 @@ h2 {
       'comments     comments';
   }
   main {
-    /* margin: 2rem 4rem; */
+    margin: 2rem 4rem;
   }
   .order-filter-menu {
     justify-content: flex-end;
@@ -302,6 +302,12 @@ h2 {
   .mydiverrs-page ul li {
     margin: 0;
   }
+  .diverr-page {
+    margin: 0 auto;
+    width: 80%;
+  }
+}
+@media (min-width: 1400px) {
   .diverr-page {
     margin: 0 auto;
     width: 40%;

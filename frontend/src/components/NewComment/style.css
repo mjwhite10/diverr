@@ -21,6 +21,7 @@
 .textarea-comment {
   margin-top: 0.5rem;
   height: 6rem;
+  padding: 0.5rem;
 }
 @media (min-width: 600px) {
 }
