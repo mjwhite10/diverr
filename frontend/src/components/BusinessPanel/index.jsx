@@ -93,9 +93,6 @@ const BusinessPanel = ({ diverr, solution, loadDiverrSolution }) => {
       setSending(false);
     }
   };
-
-  // if (sending) return <p>Enviando petición</p>;
-  console.log(solution);
   //Si el usuario que visualiza la pantalla no inició sesión...
   if (!user) return null;
 
