@@ -40,7 +40,13 @@ h2,
 h3 {
   color: var(--background);
 }
-
+.order-filter-menu {
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
 /*FORMS*/
 .form {
   display: flex;
@@ -134,14 +140,6 @@ h3 {
 .file-upload:hover,
 .image-upload:hover {
   text-decoration: underline;
-}
-
-.order-filter-menu {
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
 }
 
 /*HOME PAGE*/

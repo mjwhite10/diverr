@@ -7,7 +7,6 @@ const QueryContextProviderComponent = ({ children }) => {
   const [search, setSearch] = useState('');
   const [order, setOrder] = useState('');
   const [direction, setDirection] = useState('');
-  const [filter, setFilter] = useState(false);
   const [filterArray, setFilterArray] = useState([]);
   const [result, setResult] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -45,19 +44,6 @@ const QueryContextProviderComponent = ({ children }) => {
   const queryDirection = (direction) => {
     direction ? setDirection(`direction=${direction}&`) : setDirection('');
   };
-  const filterCategory = (category) => {
-    if (category.length === 0) {
-      setFilter(!filter);
-    } else {
-      setResult(
-        result.filter((diverr) => {
-          if (category.includes(diverr.category)) {
-            return diverr;
-          }
-        })
-      );
-    }
-  };
 
   //A esta función sólo se debe de llamar tras aceptar/cancelar una diver/solucion,
   //de esta manera nos aseguramos que no se va a devolver ningun diver asignado
@@ -79,7 +65,6 @@ const QueryContextProviderComponent = ({ children }) => {
         searchText,
         orderBy,
         queryDirection,
-        filterCategory,
         loading,
         error,
         result,

@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import { useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import './style.css';
 const LoadAvatar = ({ image, setImage }) => {

@@ -4,6 +4,8 @@ Diverr es una plataforma web donde las personas que necesiten algún servicio di
 texto, editar una foto, revisar un documento, etc… Solo necesidades que puedan realizarse
 mediante un fichero digital.
 
+Cada necesidad digital se denomina diverr. Un usuario registrado puede crear sus propios diverrs o bien solucionar los de otros.
+
 ## Backend
 
 ### Estructura de base de datos
@@ -15,48 +17,57 @@ mediante un fichero digital.
   - password \*
   - role \*
   - name
-  - bio
+  - info
   - avatar
   - createdAt
   - modifiedAt
   - lastAuthUpdate
 
-- Tabla de servicios:
+- Tabla de diverrs:
 
   - id
   - idUser \*
   - title \*
   - info \*
   - file
+  - picture
+  - price
   - idStatus \*
   - idCategory \*
   - createdAt
   - modifiedAt
 
-- Tabla de estados de un servicio:
+- Tabla de estados de un diverr:
 
   - id
   - description \*
 
-- Tabla de categorias de un servicio:
+- Tabla de categorias de un diverr:
 
   - id
   - description \*
 
-- Tabla de soluciones de servicios:
+- Tabla de soluciones de diverr:
 
   - id
-  - idService \*
+  - idDiverr \*
   - idUser \*
   - file
   - startedAt
   - finishedAt
+  - markAsFinished
 
 - Tabla de comentarios de un servicio:
   - id
   - content \*
   - idUser \*
-  - idService \*
+  - idDiverr \*
+  - createdAt
+  - modifiedAt
+
+#### Diagrama de la base de datos
+
+![Diagram](diagramDB.png)
 
 ### Endpoints
 
@@ -73,11 +84,9 @@ mediante un fichero digital.
 
 &nbsp;
 
-- `GET /users/:idUser` - Obtener un usuario en concreto. ✅ ✅
+- `GET /users/` - Obtener información del usuario que hace la petición. ✅ ✅
 
   - Cabecera auth: Sí
-  - Path Params:
-    - idUser
   - Retorna: info de usuario.
 
 &nbsp;
@@ -92,11 +101,9 @@ mediante un fichero digital.
 
 &nbsp;
 
-- `PUT /users/:idUser` - Editar el nombre, email, bio y avatar de un usuario. ✅ ✅
+- `PUT /users` - Editar la información almacenada del usuario del usuario que hace la petición. ✅ ✅
 
   - Cabecera auth: Si
-  - Path Params:
-    - idUser
   - Body:
     - email
     - nombre
@@ -106,11 +113,9 @@ mediante un fichero digital.
 
 &nbsp;
 
-- `PUT /users/:idUser/password` - Editar la contraseña de un usuario. ✅ ✅
+- `PUT /users/password` - Editar la contraseña del usuario que hace la petición. ✅ ✅
 
   - Cabecera auth: Si
-  - Path Params:
-    - idUser
   - Body:
     - oldPassword
     - newPassword
@@ -127,88 +132,117 @@ mediante un fichero digital.
 
 &nbsp;
 
-#### Endpoints de servicios
+- `DELETE /users/:idUser` - Eliminar un usuario. ✅ ✅
 
-- `GET /services` - Obtener un listado de todos los servicios. ✅ ✅
+  - Cabecera auth: Si
+  - Path Params:
+    - idUser
+  - Retorna: mensaje que indica que el usuario ha sido eliminado.
+
+&nbsp;
+
+- `GET /users/diverr` - Devuelve todas las necesidades creadas por un usuario. ✅ ✅
+
+  - Cabecera auth: Si
+  - Path Params:
+    - idUser
+  - Retorna: info de los diverrs abiertos.
+
+&nbsp;
+
+- `GET /users/solution` - Devuelve todas las soluciones asignadas a un usuario. ✅ ✅
+
+  - Cabecera auth: Si
+  - Path Params:
+    - idUser
+  - Retorna: info de los soluciones asignadas.
+
+&nbsp;
+
+#### Endpoints de diverrs
+
+- `GET /diverr` - Obtener un listado de todos los diverrs. ✅ ✅
 
   - Cabecera auth: No
   - Querystring:
     - search
-    - order (title,status o category)
+    - order (title,status,category o price)
     - direction
-  - Retorna: info de todos los servicios.
+  - Retorna: info de todos los diverrs.
 
   &nbsp;
 
-- `GET /services/:idService` - Obtener un servicio/necesidad en concreto ✅ ✅
+- `GET /diverr/:idDiverr` - Obtener un diverr/necesidad en concreto ✅ ✅
 
   - Cabecera auth: No
   - Path Params:
-    - idService
-  - Retorna: info de un servicio.
+    - idDiverr
+  - Retorna: info de un diverr.
 
 &nbsp;
 
-- `POST /services` - Crear un servicio/necesidad ✅ ✅
+- `POST /diverr` - Crear un diverr/necesidad ✅ ✅
 
   - Cabecera auth: Si
   - Body:
     - title
     - info
-    - serviceFile
     - category
-  - Retorna: mensaje que indica que se ha generado el servicio
+    - file
+    - picture
+    - price
+  - Retorna: mensaje que indica que se ha generado el diverr
 
 &nbsp;
 
-- `PUT /services/:idService` - Editar un servicio/necesidad ✅ ✅
+- `PUT /diverr/:idDiverr` - Editar un diverr/necesidad ✅ ✅
 
   - Cabecera auth: Si
   - Path Params:
-    - idService
+    - idDiverr
   - Body:
     - title
     - info
-    - file
     - category
-  - Retorna: mensaje que indica que el servicio ha sido editado
+    - file
+    - picture
+    - price
+  - Retorna: mensaje que indica que el diverr ha sido editado
 
 &nbsp;
 
-- `DELETE /services/:idService` - Borrar un servicio/necesidad ✅ ✅
+- `DELETE /diverr/:idDiverr` - Borrar un diverr/necesidad ✅ ✅
 
   - Cabecera auth: Si
   - Path Params
-    - idService
-  - Retorna: mensaje que indica que se ha generado el servicio
+    - idDiverr
+  - Retorna: mensaje que indica que se ha generado el diverr
 
 &nbsp;
 
-- `POST /services/:idService/solution` - Crea una solución a una necesidad/servicio ✅ ✅
+- `POST /diverr/:idDiverr/solution` - Crea una solución a una necesidad/diverr ✅ ✅
 
   - Cabecera auth: Si
   - Path Params:
-    - idService
-  - Body Params:
-    - idUser
+    - idDiverr
   - Retorna: mensaje que indica que se ha generado una solución
 
 &nbsp;
 
-- `GET /services/:idService/solution` - Obtener la solución asignada a una necesidad/servicio ✅ ✅
+- `GET /diverr/:idDiverr/solution` - Obtener la solución asignada a una necesidad/diverr ✅ ✅
 
   - Cabecera auth: Si
   - Path Params:
-    - idService
+    - idDiverr
   - Retorna: información de la solución asignada
 
 &nbsp;
 
-- `PUT /services/:idService/solution` - Permite editar una solución ✅ ✅
+- `PUT /diverr/:idDiverr/solution` - Permite editar una solución ✅ ✅
 
   - Cabecera auth: Si
   - Path Params:
-    - idService
+    - idDiverr
   - Body:
     - file
     - finished
@@ -216,51 +250,50 @@ mediante un fichero digital.
 
 &nbsp;
 
-- `DELETE /services/:idService/solution` - Eliminar una solución ✅ ✅
+- `DELETE /diverr/:idDiverr/solution` - Eliminar una solución ✅ ✅
 
   - Cabecera auth: Si
   - Path Params:
-    - idService
+    - idDiverr
   - Retorna: mensaje que indica que se elimino la solución
 
   &nbsp;
 
-- `POST /services/:idService/comments` - Añade un comentario a una necesidad/servicio existente ✅ ✅
+- `POST /diverr/:idDiverr/comments` - Añade un comentario a una necesidad/diverr existente ✅ ✅
 
   - Cabecera auth: Si
   - Path Params:
-    - idService
+    - idDiverr
   - Body:
-    - idUser
     - content
   - Retorna: info de todos los comentarios
 
   &nbsp;
 
-- `GET /services/:idService/comments/:idComment` - Devuelve un sólo comentario ✅ ✅
+- `GET /diverr/:idDiverr/comments/:idComment` - Devuelve un sólo comentario ✅ ✅
 
   - Cabecera auth: Si
   - Path Params:
-    - idService
+    - idDiverr
     - idComment
   - Retorna: mensaje con el comentario
 
     &nbsp;
 
-- `GET /services/:idService/comments` - Obtener los comentarios de una necesidad/servicio existente ✅ ✅
+- `GET /diverr/:idDiverr/comments` - Obtener los comentarios de una necesidad/diverr existente ✅ ✅
 
   - Cabecera auth: Si
   - Path Params:
-    - idService
+    - idDiverr
   - Retorna: mensaje con toda la info de los comentarios
 
   &nbsp;
 
-- `PUT /services/:idService/comments/:idComment` - Modificar un comentario ✅ ✅
+- `PUT /diverr/:idDiverr/comments/:idComment` - Modificar un comentario ✅ ✅
 
   - Cabecera auth: Si
   - Path Params:
-    - idService
+    - idDiverr
     - idComment
   - Body:
     - content
@@ -268,17 +301,17 @@ mediante un fichero digital.
 
   &nbsp;
 
-- `DELETE /services/:idService/comments/:idComment` - Eliminar un comentario ✅ ✅
+- `DELETE /diverr/:idDiverr/comments/:idComment` - Eliminar un comentario ✅ ✅
 
   - Cabecera auth: Si
   - Path Params:
-    - idService
+    - idDiverr
     - idComment
   - Retorna: mensaje que se eliminó el comentario
 
   &nbsp;
 
-- `GET /services/categories` - Devuelve las diferentes categorias con las que se clasifican los servicios ✅ ✅
+- `GET /diverr/categories` - Devuelve las diferentes categorias con las que se clasifican los servicios ✅ ✅
 
   - Cabecera auth: No
   - Path Params:
@@ -286,15 +319,104 @@ mediante un fichero digital.
 
     &nbsp;
 
-- `GET /services/status` - Devuelve las diferentes estados por los que pasa un servicio ✅ ✅
+- `GET /diverr/status` - Devuelve las diferentes estados por los que pasa un servicio ✅ ✅
 
   - Cabecera auth: No
   - Path Params:
   - Retorna: mensaje con todos los estados disponibles
 
     &nbsp;
-   
-   
+
+## Frontend
+
+### Componentes
+
+- `Auth` : Sección del header donde se incluyen los componentes necesarios para iniciar sesión, registrarse o bien, acceder al menú de la aplicación una vez se inicia una sesión de usuario.
+
+- `SearchBar`: Se utiliza para buscar diverrs.
+
+- `Header`: Cabecera de la página. Incluye los componentes Auth y SearchBar
+
+- `Footer`: Pié de la página.
+
+- `CardStiker`: Pequeña pegatina que se añade al componente DiverrCard para visualizar el precio a pagar por la solución de un Diverr.
+
+- `DiverrCard`: Pequeña tarjeta que contiene el titulo, la portada y el precio asignados a un diverr.
+
+- `BusinessPanel`: Panel de acciones sobre un diverr. El renderizado varia en función del usuario y de si tiene o no asignada una solución
+
+- `DiverrGrid`: Tarjeta grande que contiene toda la información de un diverr. Se renderiza en la página correspondiente a dicho diverr.
+
+- `Comment`: Renderiza cada uno de los comentarios de un diverr. Se puede editar o incluso borrar (siempre y cuando el usuario sea el mismo que lo genera)
+
+- `NewComment`: Permite generar un nuevo comentario.
+
+- `InputFieldForm`: Se emplea en los forms, es un input personalizable que además muestra mensajes de error.
+
+- `List`: Un componente genérico para renderizar listas
+
+- `CreateDiverrCard`: Renderiza una tarjeta que nos redirecciona a la página NewDiverPage
+
+- `LoadAvatar`: Se emplea para cargar un imagen de perfil del usuario. Renderiza la imagen actual o bien previsualiza la que se vaya a cargar.
+
+- `MyDiverrsList`: Renderiza una lista con varias DiverrCard y una CreateDiverrCard. Proporciona al usuario la capacidad de navegar hasta sus diverrs abiertos o bien crear uno nuevo
+
+- `ErrorMessage`: Muestra un mensaje de error, devuelve a HomePage.
+
+- `FilterMenu`: Renderiza un menu para filtrar los diverrs de la HomePage en función de su categoria
+
+- `OrderMenu`: Renderiza un menu para ordenar los diverrs de la HomePage según el precio, la fecha, la categoria...etc
+
+### Context
+
+- `AuthContext`: Proporciona un contexto que permite al resto de componente acceder a la información del usuario o al token. Además implementa las funciones de login y logout.
+
+- `QueryContext`: Proporciona un contexto de búsqueda de diverrs de la HomePage. Permite ordenar y filtrar los resultados devueltos por la API de backend
+
+### Hooks
+
+- `useCategories`: Se emplea para devolver todas las categorias existentes en el backend.
+
+- `useComments`: Permite gestionar un array de comentarios de un diverr, con la posibilidad de añadir, borrar o editar cualquier comentario de dicho array
+
+- `useDiverr`: Permite cargar la información de un diverr dado su id
+
+- `useDiverrSolution`: Permite cargar la información de una solución asignada a un diverr dado su id
+
+- `useMyDiverrs`: Permite gestionar un array de los diverrs creados por un usuario
+
+- `useMyDiverrsAssigned`: Permite gestionar un array de las soluciones asignadas a un usuario
+
+#### Pages
+
+- `DiverrPage`: Página de un diverr. Muestra su información, estado y sus comentarios.
+
+- `EditUserPage`: Página para editar información del usuario.
+
+- `HomePage`: Página principal de la aplicación, muestra todos los diverrs existentes y así como un menú para ordenarlos y/o filtrarlos.
+
+- `LoginPage`: Página para iniciar sesión.
+
+- `MyDiverrsPage`: Muestra los diverrs creados por el usuario y los diverrs asignados.
+
+- `NewDiverrPage`: Contiene un formulario para publicar un nuevo Diverr
+
+- `NotFoundPage`: Si se intenta acceder a una ruta que no existe, la aplicación te redirecciona a esta página
+
+- `RegisterPage`: Página para registrarse.
+
+- `SecurityPage`: Página para editar información de seguridad del usuario.
+
+#### Services
+
+- `diverrService`: Conjunto de funciones donde se encuentran todas las peticiones relativas a los diverrs.
+
+- `userService`: Conjunto de funciones donde se encuentran todas las peticiones relativas a los usuarios.
+
+#### Utilities
+
+- `API`: Conjunto de funciones génericas para hacer peticiones http.
+
 ## Autores ✒️
 
 Lunakadima ➡️ https://github.com/Lunakadima

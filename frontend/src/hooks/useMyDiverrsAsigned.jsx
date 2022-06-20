@@ -24,7 +24,7 @@ const useMyDiverrsAsigned = () => {
     loadDivers();
   }, []);
 
-  return { myAssignedDiverrs };
+  return { myAssignedDiverrs, loading, error };
 };
 
 export default useMyDiverrsAsigned;

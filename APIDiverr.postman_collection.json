@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"manu2@hackaboss.com\",\r\n    \"password\": \"1234\",\r\n    \"name\": \"Manu\"\r\n}",
+							"raw": "{\r\n    \"email\": \"manu@hackaboss.com\",\r\n    \"password\": \"1234\",\r\n    \"name\": \"Manu\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -24,11 +24,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/users",
+							"raw": "localhost:3050/users",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "3050",
 							"path": [
 								"users"
 							]
@@ -43,7 +43,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"luna@hackaboss.com\",\r\n    \"password\": \"node\"\r\n}",
+							"raw": "{\r\n    \"email\": \"manu@hackaboss.com\",\r\n    \"password\": \"node\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -51,11 +51,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/users/login",
+							"raw": "localhost:3050/users/login",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "3050",
 							"path": [
 								"users",
 								"login"
@@ -71,7 +71,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTEzMjUxLCJleHAiOjE2NTcxMDUyNTF9.CYSHKZKTsY2rKwHKD5QeBPG1S9jo1WNsz4hRWSCs9y0",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU1NzYyNzc1LCJleHAiOjE2NTgzNTQ3NzV9.n3dEYtQwDorHVnJrm7PLCH9DshGp6z_oFBVH51zvv5c",
 								"type": "text"
 							}
 						],
@@ -80,11 +80,11 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "manubla@hackaboss.com",
+									"value": "manu@hackaboss.com",
 									"type": "text"
 								},
 								{
-									"key": "bio",
+									"key": "info",
 									"value": "Lorem Ipsum Ipsum",
 									"type": "text"
 								},
@@ -96,19 +96,19 @@
 								{
 									"key": "avatar",
 									"type": "file",
-									"src": "/E:/HACKABOSS/APIFiverr/testing/avatares/avatar7.jpg"
+									"src": "/E:/HACKABOSS/APIFiverr/testing/avatares/avatar7.jpg",
+									"disabled": true
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/users/13",
+							"raw": "localhost:3050/users",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "3050",
 							"path": [
-								"users",
-								"13"
+								"users"
 							]
 						}
 					},
@@ -121,19 +121,18 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTEzMjUxLCJleHAiOjE2NTcxMDUyNTF9.CYSHKZKTsY2rKwHKD5QeBPG1S9jo1WNsz4hRWSCs9y0",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0ODcyNTQ2LCJleHAiOjE2NTc0NjQ1NDZ9.JTK4TBQNJvalu7zu2QAWBcte6d7cXItkN86sDvDLFQ0",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/users/13",
+							"raw": "localhost:3050/users",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "3050",
 							"path": [
-								"users",
-								"13"
+								"users"
 							]
 						}
 					},
@@ -151,11 +150,11 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/users/13",
+							"raw": "localhost:3050/users/13",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "3050",
 							"path": [
 								"users",
 								"13"
@@ -171,13 +170,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTEzMjUxLCJleHAiOjE2NTcxMDUyNTF9.CYSHKZKTsY2rKwHKD5QeBPG1S9jo1WNsz4hRWSCs9y0",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE2NTUyNDY5ODMsImV4cCI6MTY1NzgzODk4M30.yygehB1KjwVfPYB1sGfyvt03cQbDrM6ZHapRPMi5G7w",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"oldPassword\": \"1234\",\r\n    \"newPassword\": \"12345\"\r\n}",
+							"raw": "{\r\n    \"oldPassword\": \"node\",\r\n    \"newPassword\": \"nada\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -185,14 +184,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/users/15/password",
+							"raw": "localhost:3050/users/password",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "3050",
 							"path": [
 								"users",
-								"15",
 								"password"
 							]
 						}
@@ -205,6 +203,31 @@
 		{
 			"name": "Diverrs",
 			"item": [
+				{
+					"name": "List User Solution",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU1NzYyNzc1LCJleHAiOjE2NTgzNTQ3NzV9.n3dEYtQwDorHVnJrm7PLCH9DshGp6z_oFBVH51zvv5c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3050/users/solution",
+							"host": [
+								"localhost"
+							],
+							"port": "3050",
+							"path": [
+								"users",
+								"solution"
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "List Diverrs",
 					"protocolProfileBehavior": {
@@ -223,11 +246,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/diverr",
+							"raw": "localhost:3050/diverr?search=et",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "3050",
 							"path": [
 								"diverr"
 							],
@@ -244,7 +267,11 @@
 								},
 								{
 									"key": "search",
-									"value": "et",
+									"value": "et"
+								},
+								{
+									"key": "",
+									"value": null,
 									"disabled": true
 								}
 							]
@@ -398,7 +425,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete Service",
+					"name": "Delete Diverr",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -635,7 +662,7 @@
 					"response": []
 				},
 				{
-					"name": "Edit Service Comment",
+					"name": "Edit Diverr Comment",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -671,7 +698,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete Service Comment",
+					"name": "Delete Diverr Comment",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -703,11 +730,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/categories",
+							"raw": "localhost:3050/categories",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "3050",
 							"path": [
 								"categories"
 							]
@@ -728,6 +755,31 @@
 							"port": "3000",
 							"path": [
 								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List User Diverrs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU1MjkzNDgxLCJleHAiOjE2NTc4ODU0ODF9.y7iBmG25WXX9PDY5Q3Ofkss4pfEUANioBP3WyVh17gg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3050/users/diverr",
+							"host": [
+								"localhost"
+							],
+							"port": "3050",
+							"path": [
+								"users",
+								"diverr"
 							]
 						}
 					},

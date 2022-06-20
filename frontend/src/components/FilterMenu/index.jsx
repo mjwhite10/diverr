@@ -9,14 +9,13 @@ const FilterMenu = () => {
   const { categories } = useCategories();
 
   const handleSubmitForm = (e) => {
-    // setFilterArray(checked);
     e.preventDefault();
 
     const data = new FormData(e.target);
 
     const categories = [];
 
-    for (const [name, value] of data.entries()) {
+    for (const [name] of data.entries()) {
       categories.push(name);
     }
     setFilterArray(categories);

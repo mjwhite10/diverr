@@ -16,59 +16,48 @@ const BusinessPanel = ({ diverr, solution, loadDiverrSolution }) => {
   const { updateData } = useContext(QueryContext);
   const { id } = useParams();
   const [error, setError] = useState('');
-  const [sending, setSending] = useState('');
   const [solutionFile, setSolutionFile] = useState('');
   const navigate = useNavigate();
 
   /**Función para aceptar un diverr y crear una solucion */
   const onAcceptDiverrClick = async (e) => {
     try {
-      setSending(true);
       await createDiverrSolutionService(id, token);
-      await loadDiverrSolution({ id });
-      await updateData();
+      await loadDiverrSolution({ id }); //Llamamos a está función para que el resto de componentes se actualicen
+      await updateData(); //Llamamos a está función para que en la HomePage se muestre o no este diverr
       setError('');
     } catch (error) {
       setError(error.message);
-    } finally {
-      setSending(false);
     }
   };
 
   /**Función para cancelar una solución en curso */
   const onCancelSolutionClick = async (e) => {
     try {
-      setSending(true);
       await deleteDiverrSolutionService(id, token);
       await loadDiverrSolution({ id });
       await updateData();
       setError('');
     } catch (error) {
       setError(error.message);
-    } finally {
-      setSending(false);
     }
   };
 
   const onValidateSolutionClick = async (e) => {
     e.preventDefault();
     try {
-      setSending(true);
       const data = new FormData();
       data.append('finished', true);
       await updateDiverrSolutionService(id, data, token);
       await loadDiverrSolution({ id });
     } catch (error) {
       console.log(error.message);
-    } finally {
-      setSending(false);
     }
   };
 
   const onHandleFormUploadSolutionFile = async (e) => {
     e.preventDefault();
     try {
-      setSending(true);
       const data = new FormData(e.target);
       data.append('finished', false);
       await updateDiverrSolutionService(id, data, token);
@@ -76,23 +65,19 @@ const BusinessPanel = ({ diverr, solution, loadDiverrSolution }) => {
       await loadDiverrSolution({ id });
     } catch (error) {
       console.log(error.message);
-    } finally {
-      setSending(false);
     }
   };
 
   const onDeleteDiverrClick = async (e) => {
     try {
-      setSending(true);
       await deleteDiverrService(id, token);
       await updateData();
       navigate('/');
     } catch (error) {
       console.log(error.message);
-    } finally {
-      setSending(false);
     }
   };
+
   //Si el usuario que visualiza la pantalla no inició sesión...
   if (!user) return null;
 
