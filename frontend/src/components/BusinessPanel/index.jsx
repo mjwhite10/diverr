@@ -116,6 +116,7 @@ const BusinessPanel = ({ diverr, solution, loadDiverrSolution }) => {
           className="form-upload-solution"
           onSubmit={onHandleFormUploadSolutionFile}
         >
+
           <label className="custom-file-upload">
             <input
               type="file"
@@ -144,7 +145,7 @@ const BusinessPanel = ({ diverr, solution, loadDiverrSolution }) => {
   if (solution && user.id === diverr.idUser)
     return (
       <section className="business-panel">
-        <h3>Control panel</h3>
+        <h3>Panel de control</h3>
         <article className="user-validation">
           {solution.file ? (
             <a
