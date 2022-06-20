@@ -1,4 +1,8 @@
-# Diverr
+&nbsp;
+
+![Logo](/frontend/public/images/LOGO_DIVERR.svg)
+
+&nbsp;
 
 Diverr es una plataforma web donde las personas que necesiten algún servicio digital puedan pedir ayuda a otros usuarios). Por ejemplo: traducir un
 texto, editar una foto, revisar un documento, etc… Solo necesidades que puedan realizarse
