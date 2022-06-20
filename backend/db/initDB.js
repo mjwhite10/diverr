@@ -105,8 +105,6 @@ async function main() {
           FOREIGN KEY (idDiverr) REFERENCES diverrs(id)
     );`);
 
-    console.log('Creando usuarios administradores');
-
     const uploadAvatarPath = path.join(__dirname, '../uploads/avatar');
     const uploadDiverrsPath = path.join(__dirname, '../uploads/diverrs');
     const uploadSolutionsPath = path.join(__dirname, '../uploads/solutions');
@@ -121,6 +119,8 @@ async function main() {
     await createPathIfNotExits(uploadDiverrsPath);
     await createPathIfNotExits(uploadSolutionsPath);
     await createPathIfNotExits(uploadCoverPath);
+
+    console.log('Creando usuarios administradores');
 
     const avatar1 = await getRandomAvatar();
     const avatar2 = await getRandomAvatar();
