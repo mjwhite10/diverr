@@ -10,13 +10,13 @@ const DiverrCard = ({ diverr, showPrice = true }) => {
     >
       <img
         src={`${process.env.REACT_APP_BACKEND}/uploads/covers/${diverr.picture}`}
-        alt={diverr.title}
+        alt={diverr?.title}
       ></img>
       {showPrice ? <CardSticker>{diverr.price} €</CardSticker> : null}
       <p>{diverr.title}</p>
-      {/* <p>
+      <p>
         <b>{diverr.category}</b>
-      </p> */}
+      </p>
 
       {/* <p>{new Date(diverr.createdAt).toLocaleString()}</p> */}
     </article>

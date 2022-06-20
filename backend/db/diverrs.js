@@ -57,7 +57,7 @@ const getDiverrById = async (id) => {
     connection = await getConnection();
     const [diverr] = await connection.query(
       `
-        SELECT D.id, D.idUser, U.name as user,D.price, D.title, D.info, D.file,D.picture, DC.description as category, DS.description as status, D.createdAt
+        SELECT D.id, D.idUser, U.name as user,U.avatar,D.price, D.title, D.info, D.file,D.picture, DC.description as category, DS.description as status, D.createdAt
         FROM diverrs AS D
         INNER JOIN diverrs_categories AS DC
         ON D.idCategory = DC.id
@@ -221,7 +221,7 @@ const editDiverrSolutionById = async (idDiverr, file, finished) => {
       await connection.query(
         `
         UPDATE diverrs_solution
-        SET file = ?
+        SET file = ?,finishedAt = null, markAsFinished = 0
         WHERE idDiverr = ?`,
         [file, idDiverr]
       );

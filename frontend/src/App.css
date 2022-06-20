@@ -255,11 +255,10 @@ h3 {
       'comments     comments';
   }
 
-
-  /* main {
+  main {
     margin: 2rem 4rem;
-  } */
-  
+  }
+
   .order-filter-menu {
     justify-content: flex-end;
     margin: 1.5rem 2rem;
@@ -309,5 +308,12 @@ h3 {
   .diverr-page {
     margin: 0 auto;
     width: 80%;
+  }
+}
+@media (min-width: 1400px) {
+  .diverr-page {
+    margin: 0 auto;
+    width: 40%;
+
   }
 }

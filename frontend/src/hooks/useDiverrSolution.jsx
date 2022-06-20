@@ -4,10 +4,9 @@ import { useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { getDiverrSolutionService } from '../services/diverrService';
 const useDiverrSolution = ({ id }) => {
-  const { token } = useContext(AuthContext);
-  const [solution, setSolution] = useState([]);
+  const [solution, setSolution] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const { token } = useContext(AuthContext);
 
   useEffect(() => {
     const loadData = async () => {
@@ -16,7 +15,8 @@ const useDiverrSolution = ({ id }) => {
         const data = await getDiverrSolutionService(id, token);
         setSolution(data);
       } catch (error) {
-        setError(error.message);
+        console.log(error.message);
+        setSolution(null);
       } finally {
         setLoading(false);
       }
@@ -24,7 +24,19 @@ const useDiverrSolution = ({ id }) => {
     loadData();
   }, []);
 
-  return { solution, loading, error };
+  const updateSolution = async ({ id }) => {
+    try {
+      setLoading(true);
+      const data = await getDiverrSolutionService(id, token);
+      setSolution(data);
+    } catch (error) {
+      setSolution(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { solution, loading, updateSolution };
 };
 
 export default useDiverrSolution;

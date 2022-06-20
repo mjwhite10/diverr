@@ -31,8 +31,19 @@ const AuthContextProviderComponent = ({ children }) => {
     setToken(token);
   };
 
+  const updateUserData = async () => {
+    try {
+      const data = await getUserDataService(token);
+      setUser(data);
+    } catch (error) {
+      logout();
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ token, user, login, logout }}>
+    <AuthContext.Provider
+      value={{ token, user, login, logout, updateUserData }}
+    >
       {children}
     </AuthContext.Provider>
   );

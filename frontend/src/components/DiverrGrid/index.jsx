@@ -9,8 +9,12 @@ const DiverrGrid = ({ diverr }) => {
       <article>
         <h3>{diverr.title}</h3>
         <img
-          src={`${process.env.REACT_APP_BACKEND}/uploads/covers/${diverr.picture}`}
-          alt={diverr.title}
+          src={
+            diverr?.picture
+              ? `${process.env.REACT_APP_BACKEND}/uploads/covers/${diverr.picture}`
+              : null
+          }
+          alt={diverr?.title}
           style={{ objectFit: 'cover', width: '16rem', borderRadius: '6px' }}
         ></img>
 
@@ -18,14 +22,14 @@ const DiverrGrid = ({ diverr }) => {
         <figure>
           <img
             src={
-              user.avatar
-                ? `${process.env.REACT_APP_BACKEND}/uploads/avatar/${user.avatar}`
+              user?.avatar
+                ? `${process.env.REACT_APP_BACKEND}/uploads/avatar/${diverr?.avatar}`
                 : '../../images/logo-diverr2.svg'
             }
             alt="User"
             className=""
           />
-          <h3>{user.name}</h3>
+          <h3>{diverr?.user}</h3>
         </figure>
       </article>
     </section>

@@ -76,7 +76,11 @@
 .user-validation a:hover {
   color: gray;
 }
-
+.user-validation > p {
+  color: var(--background);
+  font-weight: bold;
+  font-size: 0.75rem;
+}
 @media (min-width: 800px) {
   .business-panel article,
   .business-panel form {

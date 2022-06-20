@@ -26,6 +26,8 @@ const editDiverrSolution = async (req, res, next) => {
 
     //Comprobamos que existe el diverr
     const diverr = await getDiverrById(idDiverr);
+    if (!diverr)
+      throw generateError(`No existe ningun diverr con id ${idDiverr}`, 404);
 
     //Comprobamos que el diverr tiene asignada una solución
     const solution = await getDiverrSolutionById(idDiverr);
@@ -63,7 +65,7 @@ const editDiverrSolution = async (req, res, next) => {
         );
       }
     } else {
-      fileName = diverr.file;
+      fileName = solution.file;
     }
 
     //Modificamos la solución

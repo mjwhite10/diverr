@@ -9,6 +9,7 @@
   text-align: start;
   padding: 0.5rem 1rem;
   opacity: 0.9;
+  list-style: none;
 }
 .filter-list-container label {
   margin-left: 0.5rem;

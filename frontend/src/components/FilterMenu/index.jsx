@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
 import { QueryContext } from '../../context/QueryContext';
@@ -10,18 +9,6 @@ const FilterMenu = ({ hidden }) => {
   const { categories } = useCategories();
   const [checked, setChecked] = useState([]);
 
-  useEffect(() => {
-    const filterData = async () => {
-      // if (checked.join()) {
-      //   console.log('(' + checked.join() + ')');
-      // } else {
-      //   console.log('no data');
-      // }
-    };
-
-    filterData();
-  }, [checked]);
-
   const onCheckOption = (e) => {
     var updatedList = [...checked];
     if (e.target.checked) {
@@ -30,6 +17,10 @@ const FilterMenu = ({ hidden }) => {
       updatedList.splice(checked.indexOf(e.target.id), 1);
     }
     setChecked(updatedList);
+  };
+
+  const onClickFilter = (e) => {
+    filterCategory(checked);
   };
 
   return (
@@ -49,23 +40,23 @@ const FilterMenu = ({ hidden }) => {
             <i className="filter-list-button-icon" />
             Filtrar
           </button>
-          {!hiddenMenu ? (
-            <div className="filter-list-container">
+          {!hiddenMenu && (
+            <ul className="filter-list-container">
               {categories.map((category) => {
                 return (
-                  <div key={category.id}>
+                  <li key={category.id}>
                     <input
                       type="checkbox"
-                      id={category.id}
+                      id={category.description}
                       onChange={onCheckOption}
-                      value={category}
                     />
                     <label htmlFor={category.id}>{category.description}</label>
-                  </div>
+                  </li>
                 );
               })}
-            </div>
-          ) : null}
+              <button onClick={onClickFilter}>Aceptar</button>
+            </ul>
+          )}
         </div>
       ) : null}
     </>

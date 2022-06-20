@@ -15,7 +15,6 @@ const newDiverrSolution = async (req, res, next) => {
     const diverr = await getDiverrById(idDiverr);
     //Comprobamos que el diverr no tiene asignada una solución
     const solution = await getDiverrSolutionById(idDiverr);
-    console.log('solution', solution);
     if (solution)
       throw generateError(
         `El diverr con id ${idDiverr} ya tenía asignada una solución`,
