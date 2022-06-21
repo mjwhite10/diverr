@@ -12,6 +12,8 @@ Cada necesidad digital se denomina diverr. Un usuario registrado puede crear sus
 
 &nbsp;
 
+## Capturas
+
 ![Logo](HomePage_Desktop.png)
 
 &nbsp;
