@@ -10,6 +10,26 @@ mediante un fichero digital.
 
 Cada necesidad digital se denomina diverr. Un usuario registrado puede crear sus propios diverrs o bien solucionar los de otros.
 
+&nbsp;
+
+![Logo](HomePage_Desktop.png)
+
+&nbsp;
+
+![Logo](DiverrPage_Desktop.png)
+
+&nbsp;
+
+<p align="center">
+<img src="./HomePage_Mobile.png" />
+</p>
+
+&nbsp;
+
+<p align="center">
+<img src="./EditUserPage_Mobile.png" />
+</p>
+
 ## Backend
 
 ### Estructura de base de datos
